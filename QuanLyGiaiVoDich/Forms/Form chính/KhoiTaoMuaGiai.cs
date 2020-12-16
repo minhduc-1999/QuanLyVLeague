@@ -24,13 +24,13 @@ namespace QuanLyGiaiVoDich
             //call data access
             try
             {
-                Database.MuaGiai_DAO.createMuaGiai(tenMuaGiaTextBox.Text);
-                string new_MaMuaGiai = Database.MuaGiai_DAO.queryMaMuaGiai(tenMuaGiaTextBox.Text, 0);
-                Database.DieuKien_DAO.createDIEUKIEN(new_MaMuaGiai, 15, 40, 11, 40, 3, 3, 3, 0, 1);
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(1, new_MaMuaGiai, "Điểm");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(2, new_MaMuaGiai, "Hiệu Số");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(3, new_MaMuaGiai, "Số Bàn Sân Khách");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(4, new_MaMuaGiai, "Kết Quả Đối Đầu");
+                DAO_QLBongDa.Database.MuaGiai_DAO.createMuaGiai(tenMuaGiaTextBox.Text);
+                string new_MaMuaGiai = DAO_QLBongDa.Database.MuaGiai_DAO.queryMaMuaGiai(tenMuaGiaTextBox.Text, 0);
+                DAO_QLBongDa.Database.DieuKien_DAO.createDIEUKIEN(new_MaMuaGiai, 15, 40, 11, 40, 3, 3, 3, 0, 1);
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.createThuTuUuTien(1, new_MaMuaGiai, "Điểm");
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.createThuTuUuTien(2, new_MaMuaGiai, "Hiệu Số");
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.createThuTuUuTien(3, new_MaMuaGiai, "Số Bàn Sân Khách");
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.createThuTuUuTien(4, new_MaMuaGiai, "Kết Quả Đối Đầu");
 
             }
             catch (Exception ex)

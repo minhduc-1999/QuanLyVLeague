@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-namespace QuanLyGiaiVoDich.Database
+using DTO_QLBongDa.helper;
+namespace DAO_QLBongDa.Database
 {
     public class BangXepHang_DAO
     {
@@ -80,12 +81,12 @@ namespace QuanLyGiaiVoDich.Database
             return 0;
         }
 
-        public static List<helper.MutablePair<String, int>> tieBreaker(List<String> MaDoi)
+        public static List<MutablePair<string, int>> tieBreaker(List<String> MaDoi)
         {
-            List<helper.MutablePair<String, int>> res = new List<helper.MutablePair<String, int>>();
+            List<MutablePair<string, int>> res = new List<MutablePair<String, int>>();
             foreach (String entry in MaDoi)
             {
-                res.Add(new helper.MutablePair<String, int>(entry, 0));
+                res.Add(new MutablePair<String, int>(entry, 0));
             }
             for (int i = 0; i < res.Count; i++)
             {
@@ -98,7 +99,7 @@ namespace QuanLyGiaiVoDich.Database
                 }
             }
 
-            res.Sort((helper.MutablePair<String, int> a, helper.MutablePair<String, int> b) =>
+            res.Sort((MutablePair<String, int> a, MutablePair<String, int> b) =>
             {
                 return b.Second - a.Second;
             });

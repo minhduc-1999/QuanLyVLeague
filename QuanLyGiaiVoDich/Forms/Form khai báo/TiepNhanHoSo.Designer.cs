@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class TiepNhanHoSo
     {
@@ -33,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.muaGiaiComboBox = new System.Windows.Forms.ComboBox();
             this.muaGiaiAllowNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.khoiTaoDoiBongButton = new System.Windows.Forms.Button();
             this.sanNhaComboBox = new System.Windows.Forms.ComboBox();
             this.sanThiDauAllowNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -83,9 +85,9 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.muaGiaiAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
-            this.sanThiDauAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter();
-            this.loaiCauThuAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter();
+            this.muaGiaiAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
+            this.sanThiDauAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter();
+            this.loaiCauThuAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter();
             this.errorProvider_khoiTaoDoiBong = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider_khoiTaoCauThu = new System.Windows.Forms.ErrorProvider(this.components);
             this.importBtn = new System.Windows.Forms.Button();
@@ -851,12 +853,12 @@
         private System.Windows.Forms.Label soLuongCauThuNuocNgoaiToiDaLabel;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource muaGiaiAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
         private System.Windows.Forms.BindingSource sanThiDauAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter sanThiDauAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter sanThiDauAllowNullTableAdapter;
         private System.Windows.Forms.ComboBox loaiCauThuComboBox;
         private System.Windows.Forms.BindingSource loaiCauThuAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter loaiCauThuAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter loaiCauThuAllowNullTableAdapter;
         private System.Windows.Forms.NumericUpDown soAoPicker;
         private System.Windows.Forms.Label soAoLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

@@ -24,7 +24,7 @@ namespace QuanLyGiaiVoDich
         private void ChinhSuaSanThiDau_Load(object sender, EventArgs e)
         {
             string maDoiNha, tenSan, tenDVSoHuu;
-            Database.SanThiDau_DAO.selectSanThiDau(selectedStadiumId, out tenSan, out tenDVSoHuu, out maDoiNha);
+            DAO_QLBongDa.Database.SanThiDau_DAO.selectSanThiDau(selectedStadiumId, out tenSan, out tenDVSoHuu, out maDoiNha);
             tenSanThiDauTextBox.Text = tenSan;
             tenDonViSoHuuTextBox.Text = tenDVSoHuu;
         }
@@ -33,7 +33,7 @@ namespace QuanLyGiaiVoDich
         {
             try
             {
-                Database.SanThiDau_DAO.updateSanThiDau(selectedStadiumId, tenSanThiDauTextBox.Text, tenDonViSoHuuTextBox.Text);
+                DAO_QLBongDa.Database.SanThiDau_DAO.updateSanThiDau(selectedStadiumId, tenSanThiDauTextBox.Text, tenDonViSoHuuTextBox.Text);
                 MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                 surpressDiscardPrompt = true;
                 this.Close();
@@ -51,7 +51,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.SanThiDau_DAO.removeSanThiDau(selectedStadiumId);
+                    DAO_QLBongDa.Database.SanThiDau_DAO.removeSanThiDau(selectedStadiumId);
                     MessageBox.Show("Xóa thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();

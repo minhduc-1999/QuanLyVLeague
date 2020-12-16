@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO_QLBongDa.helper;
 
 namespace QuanLyGiaiVoDich
 {
@@ -31,7 +26,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.BangXepHang_DAO.updateBXH(GlobalState.selectedSeasonId);
+                    DAO_QLBongDa.Database.BangXepHang_DAO.updateBXH(GlobalState.selectedSeasonId);
                     this.bangXepHangExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.BangXepHangExt);
                 }
                 catch (Exception ex)
@@ -65,7 +60,7 @@ namespace QuanLyGiaiVoDich
                     if (MaDoiDongHang.Count >= 2)
                     {
                         //if there are more than 2 team with the same ranking, try to resolve using tiebreaker rule, outputting their respective leaderboard priority
-                        List<helper.MutablePair<String, int>> tbRes = Database.BangXepHang_DAO.tieBreaker(MaDoiDongHang);
+                        List<MutablePair<String, int>> tbRes = DAO_QLBongDa.Database.BangXepHang_DAO.tieBreaker(MaDoiDongHang);
                         //iterate through the list, if one's priority value is different from the one above it, update its rank according to the first previously same-rank entry's current rank
                         int current_pr = -1;
                         int current_place = origin_place;
@@ -76,7 +71,7 @@ namespace QuanLyGiaiVoDich
                                 current_pr = tbRes[j].Second;
                                 current_place = origin_place + j;
                             }
-                            Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
+                            DAO_QLBongDa.Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
                         }
                     }
                     MaDoiDongHang.Clear();
@@ -87,7 +82,7 @@ namespace QuanLyGiaiVoDich
                     if (MaDoiDongHang.Count >= 2)
                     {
                         //if there are more than 2 team with the same ranking, try to resolve using tiebreaker rule, outputting their respective leaderboard priority
-                        List<helper.MutablePair<String, int>> tbRes = Database.BangXepHang_DAO.tieBreaker(MaDoiDongHang);
+                        List<MutablePair<String, int>> tbRes = DAO_QLBongDa.Database.BangXepHang_DAO.tieBreaker(MaDoiDongHang);
                         //iterate through the list, if one's priority value is different from the one above it, update its rank according to the first previously same-rank entry's current rank
                         int current_pr = -1;
                         int current_place = origin_place;
@@ -98,7 +93,7 @@ namespace QuanLyGiaiVoDich
                                 current_pr = tbRes[j].Second;
                                 current_place = origin_place + j;
                             }
-                            Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
+                            DAO_QLBongDa.Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
                         }
                     }
                     MaDoiDongHang.Clear();

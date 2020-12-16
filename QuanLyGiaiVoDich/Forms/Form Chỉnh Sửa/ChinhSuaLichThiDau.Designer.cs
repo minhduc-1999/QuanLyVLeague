@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class ChinhSuaLichThiDau
     {
@@ -38,7 +40,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.vongThiDauComboBox = new System.Windows.Forms.ComboBox();
             this.vongDauBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.label10 = new System.Windows.Forms.Label();
             this.muaGiaiComboBox = new System.Windows.Forms.ComboBox();
             this.muaGiaiAllowNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -81,10 +83,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.doiBongTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter();
-            this.sanThiDauTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauTableAdapter();
-            this.muaGiaiAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
-            this.vongDauTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
+            this.doiBongTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter();
+            this.sanThiDauTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauTableAdapter();
+            this.muaGiaiAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
+            this.vongDauTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -815,13 +817,13 @@
         private System.Windows.Forms.Panel panel8;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource doiBongBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter doiBongTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter doiBongTableAdapter;
         private System.Windows.Forms.BindingSource doiBongBindingSource1;
         private System.Windows.Forms.BindingSource sanThiDauBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauTableAdapter sanThiDauTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauTableAdapter sanThiDauTableAdapter;
         private System.Windows.Forms.BindingSource muaGiaiAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
         private System.Windows.Forms.BindingSource vongDauBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
     }
 }

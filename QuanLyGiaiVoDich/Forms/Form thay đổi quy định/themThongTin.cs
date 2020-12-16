@@ -45,7 +45,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.LoaiBanThang_DAO.createLoaiBanThang(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
+                    DAO_QLBongDa.Database.LoaiBanThang_DAO.createLoaiBanThang(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.Close();
                 }
@@ -58,7 +58,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.LoaiCauThu_DAO.createLoaiCauThu(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
+                    DAO_QLBongDa.Database.LoaiCauThu_DAO.createLoaiCauThu(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.Close();
                 }

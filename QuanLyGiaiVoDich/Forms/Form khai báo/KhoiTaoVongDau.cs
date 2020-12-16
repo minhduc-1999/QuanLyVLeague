@@ -48,7 +48,7 @@ namespace QuanLyGiaiVoDich
                 {
                     try
                     {
-                        Database.VongDau_DAO.createVongDau(tenVongDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue);
+                        DAO_QLBongDa.Database.VongDau_DAO.createVongDau(tenVongDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue);
                         tenVongDauTextBox.Text = "";
                         xoaVongDau.Enabled = false;
                         MessageBox.Show("Thêm thành công", "Thông báo");
@@ -87,7 +87,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.VongDau_DAO.removeVongDau(selectedRow.Cells[0].Value.ToString());
+                    DAO_QLBongDa.Database.VongDau_DAO.removeVongDau(selectedRow.Cells[0].Value.ToString());
                     selectedRow = null;
                     this.vongDauTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.VongDau);
                     xoaVongDau.Enabled = false;

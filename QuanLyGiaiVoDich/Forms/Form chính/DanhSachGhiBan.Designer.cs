@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class DanhSachGhiBan
     {
@@ -35,15 +37,15 @@
             this.label15 = new System.Windows.Forms.Label();
             this.danhSachGhiBanData = new System.Windows.Forms.DataGridView();
             this.cauThuExtBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.muaGiaiComboBox = new System.Windows.Forms.ComboBox();
             this.muaGiaiAllowNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.xuatDanhSachGhiBan = new System.Windows.Forms.Button();
-            this.cauThuExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter();
-            this.muaGiaiAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
+            this.cauThuExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter();
+            this.muaGiaiAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.xuatGhiBan = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -332,9 +334,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource cauThuExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter cauThuExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter cauThuExtTableAdapter;
         private System.Windows.Forms.BindingSource muaGiaiAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button xuatGhiBan;
         private System.Windows.Forms.Panel panel4;

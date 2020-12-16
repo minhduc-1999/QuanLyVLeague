@@ -39,7 +39,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.SanThiDau_DAO.createSanThiDau(tenSanThiDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue, tenDonViSoHuuTextBox.Text);
+                    DAO_QLBongDa.Database.SanThiDau_DAO.createSanThiDau(tenSanThiDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue, tenDonViSoHuuTextBox.Text);
                     xoaSanThiDau.Enabled = false;
                     MessageBox.Show("Thêm thành công", "Thông Báo");
                 }
@@ -102,7 +102,7 @@ namespace QuanLyGiaiVoDich
         {
             try
             {
-                Database.VongDau_DAO.removeVongDau(selectedRow.Cells[0].Value.ToString());
+                DAO_QLBongDa.Database.VongDau_DAO.removeVongDau(selectedRow.Cells[0].Value.ToString());
                 selectedRow = null;
                 this.sanThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.SanThiDauExt);
                 xoaSanThiDau.Enabled = false;

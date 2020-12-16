@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace QuanLyGiaiVoDich.Database
+namespace DAO_QLBongDa.Database
 {
     public class DatabaseManager
     {
@@ -16,7 +11,7 @@ namespace QuanLyGiaiVoDich.Database
         //use Database.DatabaseManger.Instance.getConnection() to get connection
 
         private static DatabaseManager instance = null;
-        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyGiaiVoDich.Properties.Settings.QuanLyGiaiVoDichConnectionString"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyGiaiVoDichConnectionString"].ConnectionString;
         private SqlConnection connection = null;
 
         public DatabaseManager()

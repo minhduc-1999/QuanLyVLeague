@@ -34,7 +34,7 @@ namespace QuanLyGiaiVoDich
                 foreach (var item in lst)
                 {
                     String selectedPlayerId = item.Row[0].ToString();
-                    Database.DanhSachThamGia_DAO.createDanhSachThamGia(GlobalState.selectedMatchId, selectedPlayerId, false, false);
+                    DAO_QLBongDa.Database.DanhSachThamGia_DAO.createDanhSachThamGia(GlobalState.selectedMatchId, selectedPlayerId, false, false);
                 }
                 this.Close();
             }

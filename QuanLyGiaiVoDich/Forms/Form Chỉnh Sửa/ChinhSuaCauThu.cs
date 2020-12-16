@@ -35,7 +35,7 @@ namespace QuanLyGiaiVoDich
             string tenCauThu, maLoaiCauThu, ghiChu, maDoi;
             int soAo, soBanThang;
             DateTime ngaySinh;
-            Database.CauThu_DAO.selectCauThu(selectedPlayerId, out tenCauThu, out ngaySinh, out maLoaiCauThu, out ghiChu, out maDoi, out soBanThang, out soAo);
+            DAO_QLBongDa.Database.CauThu_DAO.selectCauThu(selectedPlayerId, out tenCauThu, out ngaySinh, out maLoaiCauThu, out ghiChu, out maDoi, out soBanThang, out soAo);
             ngaySinhPicker.Value = ngaySinh;
             loaiCauThuComboBox.SelectedValue = maLoaiCauThu;
             doiBongComboBox.SelectedValue = maDoi;
@@ -52,7 +52,7 @@ namespace QuanLyGiaiVoDich
             loaiCauThuLabel.Text = loaiCauThuComboBox.Text;
 
             //load constraint
-            Database.DieuKien_DAO.queryGioiHanTuoi(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa);
+            DAO_QLBongDa.Database.DieuKien_DAO.queryGioiHanTuoi(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa);
         }
 
         // Calculate age of soccer player
@@ -100,7 +100,7 @@ namespace QuanLyGiaiVoDich
                 // update information for soccer player
                 try
                 {
-                    Database.CauThu_DAO.updateCauThu(selectedPlayerId, tenCauThuLabel.Text, ngaySinhPicker.Value, loaiCauThuComboBox.SelectedValue.ToString(), ghiChuEditBox.Text, doiBongComboBox.SelectedValue.ToString(), Int32.Parse(soBanThangLabel.Text), Int16.Parse(chonSoAo.Value.ToString()));
+                    DAO_QLBongDa.Database.CauThu_DAO.updateCauThu(selectedPlayerId, tenCauThuLabel.Text, ngaySinhPicker.Value, loaiCauThuComboBox.SelectedValue.ToString(), ghiChuEditBox.Text, doiBongComboBox.SelectedValue.ToString(), Int32.Parse(soBanThangLabel.Text), Int16.Parse(chonSoAo.Value.ToString()));
                     MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();
@@ -135,7 +135,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.CauThu_DAO.updateRoiDoiBong(selectedPlayerId, DateTime.Now);
+                    DAO_QLBongDa.Database.CauThu_DAO.updateRoiDoiBong(selectedPlayerId, DateTime.Now);
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();

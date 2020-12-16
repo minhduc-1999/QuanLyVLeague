@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class ChinhSuaCauThu
     {
@@ -38,7 +40,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.loaiCauThuComboBox = new System.Windows.Forms.ComboBox();
             this.loaiCauThuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.hoTenTextBox = new System.Windows.Forms.TextBox();
             this.doiBongComboBox = new System.Windows.Forms.ComboBox();
             this.doiBongBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -76,8 +78,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.doiBongTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter();
-            this.loaiCauThuTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuTableAdapter();
+            this.doiBongTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter();
+            this.loaiCauThuTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.loaiCauThuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyGiaiVoDichDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doiBongBindingSource)).BeginInit();
@@ -716,9 +718,9 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource doiBongBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter doiBongTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongTableAdapter doiBongTableAdapter;
         private System.Windows.Forms.BindingSource loaiCauThuBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuTableAdapter loaiCauThuTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuTableAdapter loaiCauThuTableAdapter;
         private System.Windows.Forms.Label soAoLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;

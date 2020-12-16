@@ -1,0 +1,1801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="QuanLyGiaiVoDichDataSet" targetNamespace="http://tempuri.org/QuanLyGiaiVoDichDataSet.xsd" xmlns:mstns="http://tempuri.org/QuanLyGiaiVoDichDataSet.xsd" xmlns="http://tempuri.org/QuanLyGiaiVoDichDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QuanLyGiaiVoDichConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QuanLyGiaiVoDichConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAO_QLBongDa.Properties.Settings.GlobalReference.Default.QuanLyGiaiVoDichConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MuaGiaiAllowNullTableAdapter" GeneratorDataComponentClassName="MuaGiaiAllowNullTableAdapter" Name="MuaGiaiAllowNull" UserDataComponentName="MuaGiaiAllowNullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.MUAGIAI" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaMuaGiai, TenMuaGiai
+FROM            MUAGIAI
+UNION
+SELECT '0', N'&lt;Chọn mùa giải&gt;'
+ORDER BY 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="TenMuaGiai" DataSetColumn="TenMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DoiBongAllowNullTableAdapter" GeneratorDataComponentClassName="DoiBongAllowNullTableAdapter" Name="DoiBongAllowNull" UserDataComponentName="DoiBongAllowNullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.DOIBONG" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaDoi, TenDoi, MaMuaGiai
+FROM            DOIBONG
+UNION 
+SELECT '0', N'&lt;Chọn đội bóng&gt;', '0'
+ORDER BY 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SanThiDauAllowNullTableAdapter" GeneratorDataComponentClassName="SanThiDauAllowNullTableAdapter" Name="SanThiDauAllowNull" UserDataComponentName="SanThiDauAllowNullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.SANTHIDAU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaSanThiDau, TenSanThiDau, MaMuaGiai, MaDoiNha
+FROM            SANTHIDAU
+UNION
+SELECT '0', N'&lt;Chọn sân thi đấu&gt;', '0', '0'
+ORDER BY 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaSanThiDau" DataSetColumn="MaSanThiDau" />
+              <Mapping SourceColumn="TenSanThiDau" DataSetColumn="TenSanThiDau" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="MaDoiNha" DataSetColumn="MaDoiNha" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LoaiCauThuAllowNullTableAdapter" GeneratorDataComponentClassName="LoaiCauThuAllowNullTableAdapter" Name="LoaiCauThuAllowNull" UserDataComponentName="LoaiCauThuAllowNullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.LOAICAUTHU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaLoaiCauThu, TenLoaiCauThu, MaMuaGiai
+FROM            LOAICAUTHU
+UNION
+SELECT '0', N'&lt;Chọn loại cầu thủ&gt;', '0'
+ORDER BY 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaLoaiCauThu" DataSetColumn="MaLoaiCauThu" />
+              <Mapping SourceColumn="TenLoaiCauThu" DataSetColumn="TenLoaiCauThu" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VongDauAllowNullTableAdapter" GeneratorDataComponentClassName="VongDauAllowNullTableAdapter" Name="VongDauAllowNull" UserDataComponentName="VongDauAllowNullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.VONGDAU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaVongDau, TenVongDau, MaMuaGiai
+FROM            VONGDAU
+UNION
+SELECT '0', N'&lt;Chọn vòng đấu&gt;', '0'
+ORDER BY 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaVongDau" DataSetColumn="MaVongDau" />
+              <Mapping SourceColumn="TenVongDau" DataSetColumn="TenVongDau" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LoaiBanThangTableAdapter" GeneratorDataComponentClassName="LoaiBanThangTableAdapter" Name="LoaiBanThang" UserDataComponentName="LoaiBanThangTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.LOAIBANTHANG" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [LOAIBANTHANG] WHERE (([MaLoaiBanThang] = @Original_MaLoaiBanThang) AND ((@IsNull_TenLoaiBanThang = 1 AND [TenLoaiBanThang] IS NULL) OR ([TenLoaiBanThang] = @Original_TenLoaiBanThang)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiBanThang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiBanThang" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiBanThang" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [LOAIBANTHANG] ([MaLoaiBanThang], [TenLoaiBanThang], [MaMuaGiai]) VALUES (@MaLoaiBanThang, @TenLoaiBanThang, @MaMuaGiai);
+SELECT MaLoaiBanThang, TenLoaiBanThang, MaMuaGiai FROM LOAIBANTHANG WHERE (MaLoaiBanThang = @MaLoaiBanThang)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiBanThang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiBanThang" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaLoaiBanThang, TenLoaiBanThang, MaMuaGiai
+FROM            LOAIBANTHANG</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [LOAIBANTHANG] SET [MaLoaiBanThang] = @MaLoaiBanThang, [TenLoaiBanThang] = @TenLoaiBanThang, [MaMuaGiai] = @MaMuaGiai WHERE (([MaLoaiBanThang] = @Original_MaLoaiBanThang) AND ((@IsNull_TenLoaiBanThang = 1 AND [TenLoaiBanThang] IS NULL) OR ([TenLoaiBanThang] = @Original_TenLoaiBanThang)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)));
+SELECT MaLoaiBanThang, TenLoaiBanThang, MaMuaGiai FROM LOAIBANTHANG WHERE (MaLoaiBanThang = @MaLoaiBanThang)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiBanThang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiBanThang" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiBanThang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiBanThang" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiBanThang" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiBanThang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaLoaiBanThang" DataSetColumn="MaLoaiBanThang" />
+              <Mapping SourceColumn="TenLoaiBanThang" DataSetColumn="TenLoaiBanThang" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VongDauTableAdapter" GeneratorDataComponentClassName="VongDauTableAdapter" Name="VongDau" UserDataComponentName="VongDauTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.VONGDAU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [VONGDAU] WHERE (([MaVongDau] = @Original_MaVongDau) AND ((@IsNull_TenVongDau = 1 AND [TenVongDau] IS NULL) OR ([TenVongDau] = @Original_TenVongDau)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaVongDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaVongDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenVongDau" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenVongDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [VONGDAU] ([MaVongDau], [TenVongDau], [MaMuaGiai]) VALUES (@MaVongDau, @TenVongDau, @MaMuaGiai);
+SELECT MaVongDau, TenVongDau, MaMuaGiai FROM VONGDAU WHERE (MaVongDau = @MaVongDau) ORDER BY TenVongDau</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaVongDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaVongDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenVongDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaVongDau, TenVongDau, MaMuaGiai
+FROM            VONGDAU
+ORDER BY TenVongDau</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [VONGDAU] SET [MaVongDau] = @MaVongDau, [TenVongDau] = @TenVongDau, [MaMuaGiai] = @MaMuaGiai WHERE (([MaVongDau] = @Original_MaVongDau) AND ((@IsNull_TenVongDau = 1 AND [TenVongDau] IS NULL) OR ([TenVongDau] = @Original_TenVongDau)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)));
+SELECT MaVongDau, TenVongDau, MaMuaGiai FROM VONGDAU WHERE (MaVongDau = @MaVongDau) ORDER BY TenVongDau</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaVongDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaVongDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenVongDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaVongDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaVongDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenVongDau" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenVongDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenVongDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaVongDau" DataSetColumn="MaVongDau" />
+              <Mapping SourceColumn="TenVongDau" DataSetColumn="TenVongDau" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SanThiDauTableAdapter" GeneratorDataComponentClassName="SanThiDauTableAdapter" Name="SanThiDau" UserDataComponentName="SanThiDauTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.SANTHIDAU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [SANTHIDAU] WHERE (([MaSanThiDau] = @Original_MaSanThiDau) AND ((@IsNull_TenSanThiDau = 1 AND [TenSanThiDau] IS NULL) OR ([TenSanThiDau] = @Original_TenSanThiDau)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaSanThiDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSanThiDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenSanThiDau" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenSanThiDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [SANTHIDAU] ([MaSanThiDau], [TenSanThiDau], [MaMuaGiai]) VALUES (@MaSanThiDau, @TenSanThiDau, @MaMuaGiai);
+SELECT MaSanThiDau, TenSanThiDau, MaMuaGiai FROM SANTHIDAU WHERE (MaSanThiDau = @MaSanThiDau)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaSanThiDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSanThiDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenSanThiDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaSanThiDau, TenSanThiDau, MaMuaGiai
+FROM            SANTHIDAU</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [SANTHIDAU] SET [MaSanThiDau] = @MaSanThiDau, [TenSanThiDau] = @TenSanThiDau, [MaMuaGiai] = @MaMuaGiai WHERE (([MaSanThiDau] = @Original_MaSanThiDau) AND ((@IsNull_TenSanThiDau = 1 AND [TenSanThiDau] IS NULL) OR ([TenSanThiDau] = @Original_TenSanThiDau)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)));
+SELECT MaSanThiDau, TenSanThiDau, MaMuaGiai FROM SANTHIDAU WHERE (MaSanThiDau = @MaSanThiDau)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaSanThiDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSanThiDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenSanThiDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaSanThiDau" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSanThiDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenSanThiDau" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenSanThiDau" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenSanThiDau" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaSanThiDau" DataSetColumn="MaSanThiDau" />
+              <Mapping SourceColumn="TenSanThiDau" DataSetColumn="TenSanThiDau" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DoiBongTableAdapter" GeneratorDataComponentClassName="DoiBongTableAdapter" Name="DoiBong" UserDataComponentName="DoiBongTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.DOIBONG" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [DOIBONG] WHERE (([MaDoi] = @Original_MaDoi) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)) AND ((@IsNull_TenDoi = 1 AND [TenDoi] IS NULL) OR ([TenDoi] = @Original_TenDoi)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenDoi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenDoi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [DOIBONG] ([MaDoi], [MaMuaGiai], [TenDoi]) VALUES (@MaDoi, @MaMuaGiai, @TenDoi);
+SELECT MaDoi, MaMuaGiai, TenDoi FROM DOIBONG WHERE (MaDoi = @MaDoi)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenDoi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaDoi, MaMuaGiai, TenDoi
+FROM            DOIBONG</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [DOIBONG] SET [MaDoi] = @MaDoi, [MaMuaGiai] = @MaMuaGiai, [TenDoi] = @TenDoi WHERE (([MaDoi] = @Original_MaDoi) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)) AND ((@IsNull_TenDoi = 1 AND [TenDoi] IS NULL) OR ([TenDoi] = @Original_TenDoi)));
+SELECT MaDoi, MaMuaGiai, TenDoi FROM DOIBONG WHERE (MaDoi = @MaDoi)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenDoi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenDoi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenDoi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SanThiDauExtTableAdapter" GeneratorDataComponentClassName="SanThiDauExtTableAdapter" Name="SanThiDauExt" UserDataComponentName="SanThiDauExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SANTHIDAU.MaSanThiDau, SANTHIDAU.TenSanThiDau, SANTHIDAU.DonViSoHuu, DOIBONG.TenDoi, SANTHIDAU.MaMuaGiai
+FROM            DOIBONG RIGHT JOIN
+                         SANTHIDAU ON DOIBONG.MaDoi = SANTHIDAU.MaDoiNha</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaSanThiDau" DataSetColumn="MaSanThiDau" />
+              <Mapping SourceColumn="TenSanThiDau" DataSetColumn="TenSanThiDau" />
+              <Mapping SourceColumn="DonViSoHuu" DataSetColumn="DonViSoHuu" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CauThuExtTableAdapter" GeneratorDataComponentClassName="CauThuExtTableAdapter" Name="CauThuExt" UserDataComponentName="CauThuExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CAUTHU.MaCauThu, CAUTHU.TenCauThu, CAUTHU.NgaySinh, DOIBONG.TenDoi, CAUTHU.GhiChu, CAUTHU.SoBanThang, CAUTHU.NgayRoiDi, LOAICAUTHU.TenLoaiCauThu, DOIBONG.MaMuaGiai, CAUTHU.SoAo, 
+                         CAUTHU.MaLoaiCauThu, CAUTHU.MaDoi
+FROM            CAUTHU INNER JOIN
+                         DOIBONG ON CAUTHU.MaDoi = DOIBONG.MaDoi INNER JOIN
+                         LOAICAUTHU ON CAUTHU.MaLoaiCauThu = LOAICAUTHU.MaLoaiCauThu</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaCauThu" DataSetColumn="MaCauThu" />
+              <Mapping SourceColumn="TenCauThu" DataSetColumn="TenCauThu" />
+              <Mapping SourceColumn="NgaySinh" DataSetColumn="NgaySinh" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="GhiChu" DataSetColumn="GhiChu" />
+              <Mapping SourceColumn="SoBanThang" DataSetColumn="SoBanThang" />
+              <Mapping SourceColumn="NgayRoiDi" DataSetColumn="NgayRoiDi" />
+              <Mapping SourceColumn="TenLoaiCauThu" DataSetColumn="TenLoaiCauThu" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="SoAo" DataSetColumn="SoAo" />
+              <Mapping SourceColumn="MaLoaiCauThu" DataSetColumn="MaLoaiCauThu" />
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LichThiDauExtTableAdapter" GeneratorDataComponentClassName="LichThiDauExtTableAdapter" Name="LichThiDauExt" UserDataComponentName="LichThiDauExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        DOIBONG.TenDoi, DOIBONG_1.TenDoi AS TenDoi2, VONGDAU.TenVongDau, TRANDAU.MaTranDau, TRANDAU.NgayThiDau, TRANDAU.GioThiDau, TRANDAU.MaSanThiDau, SANTHIDAU.TenSanThiDau, TRANDAU.MaMuaGiai, 
+                         TRANDAU.SoBanThangDoiNha, VONGDAU.MaVongDau, TRANDAU.DoiChuNha, TRANDAU.DoiKhach
+FROM            TRANDAU INNER JOIN
+                         SANTHIDAU ON TRANDAU.MaSanThiDau = SANTHIDAU.MaSanThiDau INNER JOIN
+                         VONGDAU ON TRANDAU.MaVongDau = VONGDAU.MaVongDau INNER JOIN
+                         DOIBONG ON TRANDAU.DoiChuNha = DOIBONG.MaDoi INNER JOIN
+                         DOIBONG AS DOIBONG_1 ON TRANDAU.DoiKhach = DOIBONG_1.MaDoi</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="TenVongDau" DataSetColumn="TenVongDau" />
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="NgayThiDau" DataSetColumn="NgayThiDau" />
+              <Mapping SourceColumn="GioThiDau" DataSetColumn="GioThiDau" />
+              <Mapping SourceColumn="MaSanThiDau" DataSetColumn="MaSanThiDau" />
+              <Mapping SourceColumn="TenSanThiDau" DataSetColumn="TenSanThiDau" />
+              <Mapping SourceColumn="TenDoi2" DataSetColumn="TenDoi2" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="SoBanThangDoiNha" DataSetColumn="SoBanThangDoiNha" />
+              <Mapping SourceColumn="MaVongDau" DataSetColumn="MaVongDau" />
+              <Mapping SourceColumn="DoiChuNha" DataSetColumn="DoiChuNha" />
+              <Mapping SourceColumn="DoiKhach" DataSetColumn="DoiKhach" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BanThangExtTableAdapter" GeneratorDataComponentClassName="BanThangExtTableAdapter" Name="BanThangExt" UserDataComponentName="BanThangExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        LOAIBANTHANG.TenLoaiBanThang, CAUTHU.TenCauThu, BANTHANG.MaBanThang, BANTHANG.ThoiDiem, BANTHANG.MaTranDau, CAUTHU.SoAo
+FROM            BANTHANG INNER JOIN
+                         CAUTHU ON BANTHANG.MaCauThu = CAUTHU.MaCauThu INNER JOIN
+                         LOAIBANTHANG ON BANTHANG.MaLoaiBanThang = LOAIBANTHANG.MaLoaiBanThang</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TenLoaiBanThang" DataSetColumn="TenLoaiBanThang" />
+              <Mapping SourceColumn="TenCauThu" DataSetColumn="TenCauThu" />
+              <Mapping SourceColumn="MaBanThang" DataSetColumn="MaBanThang" />
+              <Mapping SourceColumn="ThoiDiem" DataSetColumn="ThoiDiem" />
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="SoAo" DataSetColumn="SoAo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThePhatExtTableAdapter" GeneratorDataComponentClassName="ThePhatExtTableAdapter" Name="ThePhatExt" UserDataComponentName="ThePhatExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PHATTHE.MaPhatThe, LOAITHE.TenThe, CAUTHU.TenCauThu, PHATTHE.ThoiDiem, PHATTHE.MaTranDau, CAUTHU.SoAo
+FROM            CAUTHU INNER JOIN
+                         PHATTHE ON CAUTHU.MaCauThu = PHATTHE.MaCauThu INNER JOIN
+                         LOAITHE ON PHATTHE.MaLoaiThe = LOAITHE.MaLoaiThe</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaPhatThe" DataSetColumn="MaPhatThe" />
+              <Mapping SourceColumn="TenThe" DataSetColumn="TenThe" />
+              <Mapping SourceColumn="TenCauThu" DataSetColumn="TenCauThu" />
+              <Mapping SourceColumn="ThoiDiem" DataSetColumn="ThoiDiem" />
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="SoAo" DataSetColumn="SoAo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThayNguoiExtTableAdapter" GeneratorDataComponentClassName="ThayNguoiExtTableAdapter" Name="ThayNguoiExt" UserDataComponentName="ThayNguoiExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CHITIETTHAYNGUOI.MaThayNguoi, CAUTHU.TenCauThu, CAUTHU_1.TenCauThu AS TenCauThu2, CHITIETTHAYNGUOI.ThoiDiem, CHITIETTHAYNGUOI.MaTranDau, CAUTHU.SoAo, CAUTHU_1.SoAo AS SoAo2
+FROM            CHITIETTHAYNGUOI INNER JOIN
+                         CAUTHU ON CHITIETTHAYNGUOI.MaCauThuVaoSan = CAUTHU.MaCauThu INNER JOIN
+                         CAUTHU AS CAUTHU_1 ON CHITIETTHAYNGUOI.MaCauThuRaSan = CAUTHU_1.MaCauThu</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaThayNguoi" DataSetColumn="MaThayNguoi" />
+              <Mapping SourceColumn="TenCauThu" DataSetColumn="TenCauThu" />
+              <Mapping SourceColumn="TenCauThu2" DataSetColumn="TenCauThu2" />
+              <Mapping SourceColumn="ThoiDiem" DataSetColumn="ThoiDiem" />
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="SoAo" DataSetColumn="SoAo" />
+              <Mapping SourceColumn="SoAo2" DataSetColumn="SoAo2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RaSanExtTableAdapter" GeneratorDataComponentClassName="RaSanExtTableAdapter" Name="RaSanExt" UserDataComponentName="RaSanExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        DANHSACHTHAMGIA.MaTranDau, CAUTHU.TenCauThu, DANHSACHTHAMGIA.CauThuDuBi, DANHSACHTHAMGIA.CauThuChinhThuc, CAUTHU.MaDoi, DANHSACHTHAMGIA.MaCauThu, CAUTHU.SoAo
+FROM            CAUTHU INNER JOIN
+                         DANHSACHTHAMGIA ON CAUTHU.MaCauThu = DANHSACHTHAMGIA.MaCauThu</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       DANHSACHTHAMGIA
+SET                CauThuDuBi = @CauThuDuBi, CauThuChinhThuc = @CauThuChinhThuc
+WHERE        (MaCauThu = @MaCauThu)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CauThuDuBi" ColumnName="CauThuDuBi" DataSourceName="[F:\VS2019\QUANLYGIAIVODICH\QUANLYGIAIVODICH\QUANLYGIAIVODICH.MDF].dbo.DANHSACHTHAMGIA" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@CauThuDuBi" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="CauThuDuBi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CauThuChinhThuc" ColumnName="CauThuChinhThuc" DataSourceName="[F:\VS2019\QUANLYGIAIVODICH\QUANLYGIAIVODICH\QUANLYGIAIVODICH.MDF].dbo.DANHSACHTHAMGIA" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@CauThuChinhThuc" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="CauThuChinhThuc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MaCauThu" ColumnName="MaCauThu" DataSourceName="[F:\VS2019\QUANLYGIAIVODICH\QUANLYGIAIVODICH\QUANLYGIAIVODICH.MDF].dbo.DANHSACHTHAMGIA" DataTypeServer="varchar(45)" DbType="AnsiString" Direction="Input" ParameterName="@MaCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="45" SourceColumn="MaCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="MaCauThu" DataSetColumn="MaCauThu" />
+              <Mapping SourceColumn="TenCauThu" DataSetColumn="TenCauThu" />
+              <Mapping SourceColumn="CauThuDuBi" DataSetColumn="CauThuDuBi" />
+              <Mapping SourceColumn="CauThuChinhThuc" DataSetColumn="CauThuChinhThuc" />
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="SoAo" DataSetColumn="SoAo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CauThuTableAdapter" GeneratorDataComponentClassName="CauThuTableAdapter" Name="CauThu" UserDataComponentName="CauThuTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.CAUTHU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CAUTHU] WHERE (([MaCauThu] = @Original_MaCauThu) AND ((@IsNull_NgayRoiDi = 1 AND [NgayRoiDi] IS NULL) OR ([NgayRoiDi] = @Original_NgayRoiDi)) AND ((@IsNull_MaDoi = 1 AND [MaDoi] IS NULL) OR ([MaDoi] = @Original_MaDoi)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NgayRoiDi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_NgayRoiDi" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaDoi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CAUTHU] ([MaCauThu], [NgayRoiDi], [MaDoi]) VALUES (@MaCauThu, @NgayRoiDi, @MaDoi);
+SELECT MaCauThu, CAST(SoAo AS NVARCHAR(5)) + ' - ' + TenCauThu AS cauThuSoAo, NgayRoiDi, MaDoi FROM CAUTHU WHERE (MaCauThu = @MaCauThu) ORDER BY cauThuSoAo</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@NgayRoiDi" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaCauThu, CAST(SoAo AS NVARCHAR(5)) + ' - ' + TenCauThu AS cauThuSoAo, NgayRoiDi, MaDoi
+FROM            CAUTHU
+ORDER BY cauThuSoAo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CAUTHU] SET [MaCauThu] = @MaCauThu, [NgayRoiDi] = @NgayRoiDi, [MaDoi] = @MaDoi WHERE (([MaCauThu] = @Original_MaCauThu) AND ((@IsNull_NgayRoiDi = 1 AND [NgayRoiDi] IS NULL) OR ([NgayRoiDi] = @Original_NgayRoiDi)) AND ((@IsNull_MaDoi = 1 AND [MaDoi] IS NULL) OR ([MaDoi] = @Original_MaDoi)));
+SELECT MaCauThu, CAST(SoAo AS NVARCHAR(5)) + ' - ' + TenCauThu AS cauThuSoAo, NgayRoiDi, MaDoi FROM CAUTHU WHERE (MaCauThu = @MaCauThu) ORDER BY cauThuSoAo</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@NgayRoiDi" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NgayRoiDi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@Original_NgayRoiDi" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="NgayRoiDi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaDoi" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaDoi" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaDoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaCauThu" DataSetColumn="MaCauThu" />
+              <Mapping SourceColumn="NgayRoiDi" DataSetColumn="NgayRoiDi" />
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="cauThuSoAo" DataSetColumn="cauThuSoAo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RaSanSelectorTableAdapter" GeneratorDataComponentClassName="RaSanSelectorTableAdapter" Name="RaSanSelector" UserDataComponentName="RaSanSelectorTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        DANHSACHTHAMGIA.MaTranDau, CAUTHU.MaDoi, DANHSACHTHAMGIA.CauThuDuBi, DANHSACHTHAMGIA.CauThuChinhThuc, CAST(CAUTHU.SoAo AS NVARCHAR(5)) + ' - ' + CAUTHU.TenCauThu AS cauThuSoAo, DANHSACHTHAMGIA.MaCauThu
+FROM            CAUTHU INNER JOIN
+                         DANHSACHTHAMGIA ON CAUTHU.MaCauThu = DANHSACHTHAMGIA.MaCauThu</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="CauThuDuBi" DataSetColumn="CauThuDuBi" />
+              <Mapping SourceColumn="CauThuChinhThuc" DataSetColumn="CauThuChinhThuc" />
+              <Mapping SourceColumn="cauThuSoAo" DataSetColumn="cauThuSoAo" />
+              <Mapping SourceColumn="MaCauThu" DataSetColumn="MaCauThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LoaiTheTableAdapter" GeneratorDataComponentClassName="LoaiTheTableAdapter" Name="LoaiThe" UserDataComponentName="LoaiTheTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.LOAITHE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [LOAITHE] WHERE (((@IsNull_TenThe = 1 AND [TenThe] IS NULL) OR ([TenThe] = @Original_TenThe)) AND ([MaLoaiThe] = @Original_MaLoaiThe))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenThe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenThe" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiThe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiThe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [LOAITHE] ([TenThe], [MaLoaiThe]) VALUES (@TenThe, @MaLoaiThe);
+SELECT TenThe, MaLoaiThe FROM LOAITHE WHERE (MaLoaiThe = @MaLoaiThe)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenThe" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiThe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiThe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TenThe, MaLoaiThe
+FROM            LOAITHE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [LOAITHE] SET [TenThe] = @TenThe, [MaLoaiThe] = @MaLoaiThe WHERE (((@IsNull_TenThe = 1 AND [TenThe] IS NULL) OR ([TenThe] = @Original_TenThe)) AND ([MaLoaiThe] = @Original_MaLoaiThe));
+SELECT TenThe, MaLoaiThe FROM LOAITHE WHERE (MaLoaiThe = @MaLoaiThe)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenThe" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiThe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiThe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenThe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenThe" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenThe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiThe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiThe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TenThe" DataSetColumn="TenThe" />
+              <Mapping SourceColumn="MaLoaiThe" DataSetColumn="MaLoaiThe" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KetQuaTranDauExtTableAdapter" GeneratorDataComponentClassName="KetQuaTranDauExtTableAdapter" Name="KetQuaTranDauExt" UserDataComponentName="KetQuaTranDauExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TRANDAU.MaTranDau, VONGDAU.TenVongDau, DOIBONG.TenDoi, DOIBONG_1.TenDoi AS TenDoi2, TRANDAU.SoBanThangDoiNha, TRANDAU.SoBanThangDoiKhach, TRANDAU.ThoiGianThiDau, SANTHIDAU.TenSanThiDau, 
+                         TRANDAU.MaMuaGiai, TRANDAU.DoiChuNha, TRANDAU.DoiKhach, TRANDAU.NgayThiDauChinh, TRANDAU.MaSanThiDauChinh, TRANDAU.MaVongDau
+FROM            TRANDAU INNER JOIN
+                         SANTHIDAU ON TRANDAU.MaSanThiDauChinh = SANTHIDAU.MaSanThiDau INNER JOIN
+                         DOIBONG ON TRANDAU.DoiKhach = DOIBONG.MaDoi INNER JOIN
+                         DOIBONG AS DOIBONG_1 ON TRANDAU.DoiChuNha = DOIBONG_1.MaDoi INNER JOIN
+                         VONGDAU ON TRANDAU.MaVongDau = VONGDAU.MaVongDau</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaTranDau" DataSetColumn="MaTranDau" />
+              <Mapping SourceColumn="TenVongDau" DataSetColumn="TenVongDau" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="TenDoi2" DataSetColumn="TenDoi2" />
+              <Mapping SourceColumn="SoBanThangDoiNha" DataSetColumn="SoBanThangDoiNha" />
+              <Mapping SourceColumn="SoBanThangDoiKhach" DataSetColumn="SoBanThangDoiKhach" />
+              <Mapping SourceColumn="ThoiGianThiDau" DataSetColumn="ThoiGianThiDau" />
+              <Mapping SourceColumn="TenSanThiDau" DataSetColumn="TenSanThiDau" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="DoiChuNha" DataSetColumn="DoiChuNha" />
+              <Mapping SourceColumn="DoiKhach" DataSetColumn="DoiKhach" />
+              <Mapping SourceColumn="NgayThiDauChinh" DataSetColumn="NgayThiDauChinh" />
+              <Mapping SourceColumn="MaSanThiDauChinh" DataSetColumn="MaSanThiDauChinh" />
+              <Mapping SourceColumn="MaVongDau" DataSetColumn="MaVongDau" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LoaiCauThuTableAdapter" GeneratorDataComponentClassName="LoaiCauThuTableAdapter" Name="LoaiCauThu" UserDataComponentName="LoaiCauThuTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.LOAICAUTHU" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [LOAICAUTHU] WHERE (([MaLoaiCauThu] = @Original_MaLoaiCauThu) AND ((@IsNull_TenLoaiCauThu = 1 AND [TenLoaiCauThu] IS NULL) OR ([TenLoaiCauThu] = @Original_TenLoaiCauThu)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiCauThu" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiCauThu" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [LOAICAUTHU] ([MaLoaiCauThu], [TenLoaiCauThu], [MaMuaGiai]) VALUES (@MaLoaiCauThu, @TenLoaiCauThu, @MaMuaGiai);
+SELECT MaLoaiCauThu, TenLoaiCauThu, MaMuaGiai FROM LOAICAUTHU WHERE (MaLoaiCauThu = @MaLoaiCauThu)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiCauThu" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MaLoaiCauThu, TenLoaiCauThu, MaMuaGiai
+FROM            LOAICAUTHU</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [LOAICAUTHU] SET [MaLoaiCauThu] = @MaLoaiCauThu, [TenLoaiCauThu] = @TenLoaiCauThu, [MaMuaGiai] = @MaMuaGiai WHERE (([MaLoaiCauThu] = @Original_MaLoaiCauThu) AND ((@IsNull_TenLoaiCauThu = 1 AND [TenLoaiCauThu] IS NULL) OR ([TenLoaiCauThu] = @Original_TenLoaiCauThu)) AND ((@IsNull_MaMuaGiai = 1 AND [MaMuaGiai] IS NULL) OR ([MaMuaGiai] = @Original_MaMuaGiai)));
+SELECT MaLoaiCauThu, TenLoaiCauThu, MaMuaGiai FROM LOAICAUTHU WHERE (MaLoaiCauThu = @MaLoaiCauThu)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaLoaiCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiCauThu" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaLoaiCauThu" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiCauThu" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiCauThu" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiCauThu" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MaMuaGiai" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaLoaiCauThu" DataSetColumn="MaLoaiCauThu" />
+              <Mapping SourceColumn="TenLoaiCauThu" DataSetColumn="TenLoaiCauThu" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThuTuUuTienTableAdapter" GeneratorDataComponentClassName="ThuTuUuTienTableAdapter" Name="ThuTuUuTien" UserDataComponentName="ThuTuUuTienTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectName="dbo.THUTUUUTIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [THUTUUUTIEN] WHERE (([ChiSoUuTien] = @Original_ChiSoUuTien) AND ([MaMuaGiai] = @Original_MaMuaGiai) AND ((@IsNull_TenLoaiUuTien = 1 AND [TenLoaiUuTien] IS NULL) OR ([TenLoaiUuTien] = @Original_TenLoaiUuTien)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ChiSoUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ChiSoUuTien" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiUuTien" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [THUTUUUTIEN] ([ChiSoUuTien], [MaMuaGiai], [TenLoaiUuTien]) VALUES (@ChiSoUuTien, @MaMuaGiai, @TenLoaiUuTien);
+SELECT ChiSoUuTien, MaMuaGiai, TenLoaiUuTien FROM THUTUUUTIEN WHERE (ChiSoUuTien = @ChiSoUuTien) AND (MaMuaGiai = @MaMuaGiai) ORDER BY ChiSoUuTien</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ChiSoUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ChiSoUuTien" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiUuTien" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ChiSoUuTien, MaMuaGiai, TenLoaiUuTien
+FROM            THUTUUUTIEN
+ORDER BY ChiSoUuTien</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [THUTUUUTIEN] SET [ChiSoUuTien] = @ChiSoUuTien, [MaMuaGiai] = @MaMuaGiai, [TenLoaiUuTien] = @TenLoaiUuTien WHERE (([ChiSoUuTien] = @Original_ChiSoUuTien) AND ([MaMuaGiai] = @Original_MaMuaGiai) AND ((@IsNull_TenLoaiUuTien = 1 AND [TenLoaiUuTien] IS NULL) OR ([TenLoaiUuTien] = @Original_TenLoaiUuTien)));
+SELECT ChiSoUuTien, MaMuaGiai, TenLoaiUuTien FROM THUTUUUTIEN WHERE (ChiSoUuTien = @ChiSoUuTien) AND (MaMuaGiai = @MaMuaGiai) ORDER BY ChiSoUuTien</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ChiSoUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ChiSoUuTien" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenLoaiUuTien" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ChiSoUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ChiSoUuTien" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaMuaGiai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaMuaGiai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TenLoaiUuTien" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenLoaiUuTien" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenLoaiUuTien" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ChiSoUuTien" DataSetColumn="ChiSoUuTien" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="TenLoaiUuTien" DataSetColumn="TenLoaiUuTien" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BangXepHangExtTableAdapter" GeneratorDataComponentClassName="BangXepHangExtTableAdapter" Name="BangXepHangExt" UserDataComponentName="BangXepHangExtTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QuanLyGiaiVoDichConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        BANGXEPHANG.MaDoi, DOIBONG.TenDoi, DOIBONG.MaMuaGiai, BANGXEPHANG.Ngay, BANGXEPHANG.Thang, BANGXEPHANG.Thua, BANGXEPHANG.Hoa, BANGXEPHANG.HieuSo, BANGXEPHANG.Diem, 
+                         BANGXEPHANG.SoBanThangSanKhach, BANGXEPHANG.XepHang
+FROM            BANGXEPHANG INNER JOIN
+                         DOIBONG ON BANGXEPHANG.MaDoi = DOIBONG.MaDoi</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaDoi" DataSetColumn="MaDoi" />
+              <Mapping SourceColumn="TenDoi" DataSetColumn="TenDoi" />
+              <Mapping SourceColumn="MaMuaGiai" DataSetColumn="MaMuaGiai" />
+              <Mapping SourceColumn="Ngay" DataSetColumn="Ngay" />
+              <Mapping SourceColumn="Thang" DataSetColumn="Thang" />
+              <Mapping SourceColumn="Thua" DataSetColumn="Thua" />
+              <Mapping SourceColumn="Hoa" DataSetColumn="Hoa" />
+              <Mapping SourceColumn="HieuSo" DataSetColumn="HieuSo" />
+              <Mapping SourceColumn="Diem" DataSetColumn="Diem" />
+              <Mapping SourceColumn="SoBanThangSanKhach" DataSetColumn="SoBanThangSanKhach" />
+              <Mapping SourceColumn="XepHang" DataSetColumn="XepHang" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="QuanLyGiaiVoDichDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="QuanLyGiaiVoDichDataSet" msprop:Generator_UserDSName="QuanLyGiaiVoDichDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MuaGiaiAllowNull" msprop:Generator_TableClassName="MuaGiaiAllowNullDataTable" msprop:Generator_TableVarName="tableMuaGiaiAllowNull" msprop:Generator_TablePropName="MuaGiaiAllowNull" msprop:Generator_RowDeletingName="MuaGiaiAllowNullRowDeleting" msprop:Generator_RowChangingName="MuaGiaiAllowNullRowChanging" msprop:Generator_RowEvHandlerName="MuaGiaiAllowNullRowChangeEventHandler" msprop:Generator_RowDeletedName="MuaGiaiAllowNullRowDeleted" msprop:Generator_UserTableName="MuaGiaiAllowNull" msprop:Generator_RowChangedName="MuaGiaiAllowNullRowChanged" msprop:Generator_RowEvArgName="MuaGiaiAllowNullRowChangeEvent" msprop:Generator_RowClassName="MuaGiaiAllowNullRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTenMuaGiai" msprop:Generator_ColumnPropNameInRow="TenMuaGiai" msprop:Generator_ColumnPropNameInTable="TenMuaGiaiColumn" msprop:Generator_UserColumnName="TenMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DoiBongAllowNull" msprop:Generator_TableClassName="DoiBongAllowNullDataTable" msprop:Generator_TableVarName="tableDoiBongAllowNull" msprop:Generator_TablePropName="DoiBongAllowNull" msprop:Generator_RowDeletingName="DoiBongAllowNullRowDeleting" msprop:Generator_RowChangingName="DoiBongAllowNullRowChanging" msprop:Generator_RowEvHandlerName="DoiBongAllowNullRowChangeEventHandler" msprop:Generator_RowDeletedName="DoiBongAllowNullRowDeleted" msprop:Generator_UserTableName="DoiBongAllowNull" msprop:Generator_RowChangedName="DoiBongAllowNullRowChanged" msprop:Generator_RowEvArgName="DoiBongAllowNullRowChangeEvent" msprop:Generator_RowClassName="DoiBongAllowNullRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaDoi" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SanThiDauAllowNull" msprop:Generator_TableClassName="SanThiDauAllowNullDataTable" msprop:Generator_TableVarName="tableSanThiDauAllowNull" msprop:Generator_TablePropName="SanThiDauAllowNull" msprop:Generator_RowDeletingName="SanThiDauAllowNullRowDeleting" msprop:Generator_RowChangingName="SanThiDauAllowNullRowChanging" msprop:Generator_RowEvHandlerName="SanThiDauAllowNullRowChangeEventHandler" msprop:Generator_RowDeletedName="SanThiDauAllowNullRowDeleted" msprop:Generator_UserTableName="SanThiDauAllowNull" msprop:Generator_RowChangedName="SanThiDauAllowNullRowChanged" msprop:Generator_RowEvArgName="SanThiDauAllowNullRowChangeEvent" msprop:Generator_RowClassName="SanThiDauAllowNullRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaSanThiDau" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaSanThiDau" msprop:Generator_ColumnPropNameInRow="MaSanThiDau" msprop:Generator_ColumnPropNameInTable="MaSanThiDauColumn" msprop:Generator_UserColumnName="MaSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenSanThiDau" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTenSanThiDau" msprop:Generator_ColumnPropNameInRow="TenSanThiDau" msprop:Generator_ColumnPropNameInTable="TenSanThiDauColumn" msprop:Generator_UserColumnName="TenSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaDoiNha" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaDoiNha" msprop:Generator_ColumnPropNameInRow="MaDoiNha" msprop:Generator_ColumnPropNameInTable="MaDoiNhaColumn" msprop:Generator_UserColumnName="MaDoiNha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoaiCauThuAllowNull" msprop:Generator_TableClassName="LoaiCauThuAllowNullDataTable" msprop:Generator_TableVarName="tableLoaiCauThuAllowNull" msprop:Generator_TablePropName="LoaiCauThuAllowNull" msprop:Generator_RowDeletingName="LoaiCauThuAllowNullRowDeleting" msprop:Generator_RowChangingName="LoaiCauThuAllowNullRowChanging" msprop:Generator_RowEvHandlerName="LoaiCauThuAllowNullRowChangeEventHandler" msprop:Generator_RowDeletedName="LoaiCauThuAllowNullRowDeleted" msprop:Generator_UserTableName="LoaiCauThuAllowNull" msprop:Generator_RowChangedName="LoaiCauThuAllowNullRowChanged" msprop:Generator_RowEvArgName="LoaiCauThuAllowNullRowChangeEvent" msprop:Generator_RowClassName="LoaiCauThuAllowNullRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaLoaiCauThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaLoaiCauThu" msprop:Generator_ColumnPropNameInRow="MaLoaiCauThu" msprop:Generator_ColumnPropNameInTable="MaLoaiCauThuColumn" msprop:Generator_UserColumnName="MaLoaiCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenLoaiCauThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTenLoaiCauThu" msprop:Generator_ColumnPropNameInRow="TenLoaiCauThu" msprop:Generator_ColumnPropNameInTable="TenLoaiCauThuColumn" msprop:Generator_UserColumnName="TenLoaiCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VongDauAllowNull" msprop:Generator_TableClassName="VongDauAllowNullDataTable" msprop:Generator_TableVarName="tableVongDauAllowNull" msprop:Generator_TablePropName="VongDauAllowNull" msprop:Generator_RowDeletingName="VongDauAllowNullRowDeleting" msprop:Generator_RowChangingName="VongDauAllowNullRowChanging" msprop:Generator_RowEvHandlerName="VongDauAllowNullRowChangeEventHandler" msprop:Generator_RowDeletedName="VongDauAllowNullRowDeleted" msprop:Generator_UserTableName="VongDauAllowNull" msprop:Generator_RowChangedName="VongDauAllowNullRowChanged" msprop:Generator_RowEvArgName="VongDauAllowNullRowChangeEvent" msprop:Generator_RowClassName="VongDauAllowNullRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaVongDau" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaVongDau" msprop:Generator_ColumnPropNameInRow="MaVongDau" msprop:Generator_ColumnPropNameInTable="MaVongDauColumn" msprop:Generator_UserColumnName="MaVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenVongDau" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTenVongDau" msprop:Generator_ColumnPropNameInRow="TenVongDau" msprop:Generator_ColumnPropNameInTable="TenVongDauColumn" msprop:Generator_UserColumnName="TenVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoaiBanThang" msprop:Generator_TableClassName="LoaiBanThangDataTable" msprop:Generator_TableVarName="tableLoaiBanThang" msprop:Generator_RowChangedName="LoaiBanThangRowChanged" msprop:Generator_TablePropName="LoaiBanThang" msprop:Generator_RowDeletingName="LoaiBanThangRowDeleting" msprop:Generator_RowChangingName="LoaiBanThangRowChanging" msprop:Generator_RowEvHandlerName="LoaiBanThangRowChangeEventHandler" msprop:Generator_RowDeletedName="LoaiBanThangRowDeleted" msprop:Generator_RowClassName="LoaiBanThangRow" msprop:Generator_UserTableName="LoaiBanThang" msprop:Generator_RowEvArgName="LoaiBanThangRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaLoaiBanThang" msprop:Generator_ColumnVarNameInTable="columnMaLoaiBanThang" msprop:Generator_ColumnPropNameInRow="MaLoaiBanThang" msprop:Generator_ColumnPropNameInTable="MaLoaiBanThangColumn" msprop:Generator_UserColumnName="MaLoaiBanThang">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenLoaiBanThang" msprop:Generator_ColumnVarNameInTable="columnTenLoaiBanThang" msprop:Generator_ColumnPropNameInRow="TenLoaiBanThang" msprop:Generator_ColumnPropNameInTable="TenLoaiBanThangColumn" msprop:Generator_UserColumnName="TenLoaiBanThang" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VongDau" msprop:Generator_TableClassName="VongDauDataTable" msprop:Generator_TableVarName="tableVongDau" msprop:Generator_RowChangedName="VongDauRowChanged" msprop:Generator_TablePropName="VongDau" msprop:Generator_RowDeletingName="VongDauRowDeleting" msprop:Generator_RowChangingName="VongDauRowChanging" msprop:Generator_RowEvHandlerName="VongDauRowChangeEventHandler" msprop:Generator_RowDeletedName="VongDauRowDeleted" msprop:Generator_RowClassName="VongDauRow" msprop:Generator_UserTableName="VongDau" msprop:Generator_RowEvArgName="VongDauRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaVongDau" msprop:Generator_ColumnVarNameInTable="columnMaVongDau" msprop:Generator_ColumnPropNameInRow="MaVongDau" msprop:Generator_ColumnPropNameInTable="MaVongDauColumn" msprop:Generator_UserColumnName="MaVongDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenVongDau" msprop:Generator_ColumnVarNameInTable="columnTenVongDau" msprop:Generator_ColumnPropNameInRow="TenVongDau" msprop:Generator_ColumnPropNameInTable="TenVongDauColumn" msprop:Generator_UserColumnName="TenVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SanThiDau" msprop:Generator_TableClassName="SanThiDauDataTable" msprop:Generator_TableVarName="tableSanThiDau" msprop:Generator_RowChangedName="SanThiDauRowChanged" msprop:Generator_TablePropName="SanThiDau" msprop:Generator_RowDeletingName="SanThiDauRowDeleting" msprop:Generator_RowChangingName="SanThiDauRowChanging" msprop:Generator_RowEvHandlerName="SanThiDauRowChangeEventHandler" msprop:Generator_RowDeletedName="SanThiDauRowDeleted" msprop:Generator_RowClassName="SanThiDauRow" msprop:Generator_UserTableName="SanThiDau" msprop:Generator_RowEvArgName="SanThiDauRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaSanThiDau" msprop:Generator_ColumnVarNameInTable="columnMaSanThiDau" msprop:Generator_ColumnPropNameInRow="MaSanThiDau" msprop:Generator_ColumnPropNameInTable="MaSanThiDauColumn" msprop:Generator_UserColumnName="MaSanThiDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenSanThiDau" msprop:Generator_ColumnVarNameInTable="columnTenSanThiDau" msprop:Generator_ColumnPropNameInRow="TenSanThiDau" msprop:Generator_ColumnPropNameInTable="TenSanThiDauColumn" msprop:Generator_UserColumnName="TenSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DoiBong" msprop:Generator_TableClassName="DoiBongDataTable" msprop:Generator_TableVarName="tableDoiBong" msprop:Generator_RowChangedName="DoiBongRowChanged" msprop:Generator_TablePropName="DoiBong" msprop:Generator_RowDeletingName="DoiBongRowDeleting" msprop:Generator_RowChangingName="DoiBongRowChanging" msprop:Generator_RowEvHandlerName="DoiBongRowChangeEventHandler" msprop:Generator_RowDeletedName="DoiBongRowDeleted" msprop:Generator_RowClassName="DoiBongRow" msprop:Generator_UserTableName="DoiBong" msprop:Generator_RowEvArgName="DoiBongRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SanThiDauExt" msprop:Generator_TableClassName="SanThiDauExtDataTable" msprop:Generator_TableVarName="tableSanThiDauExt" msprop:Generator_TablePropName="SanThiDauExt" msprop:Generator_RowDeletingName="SanThiDauExtRowDeleting" msprop:Generator_RowChangingName="SanThiDauExtRowChanging" msprop:Generator_RowEvHandlerName="SanThiDauExtRowChangeEventHandler" msprop:Generator_RowDeletedName="SanThiDauExtRowDeleted" msprop:Generator_UserTableName="SanThiDauExt" msprop:Generator_RowChangedName="SanThiDauExtRowChanged" msprop:Generator_RowEvArgName="SanThiDauExtRowChangeEvent" msprop:Generator_RowClassName="SanThiDauExtRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaSanThiDau" msprop:Generator_ColumnVarNameInTable="columnMaSanThiDau" msprop:Generator_ColumnPropNameInRow="MaSanThiDau" msprop:Generator_ColumnPropNameInTable="MaSanThiDauColumn" msprop:Generator_UserColumnName="MaSanThiDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenSanThiDau" msprop:Generator_ColumnVarNameInTable="columnTenSanThiDau" msprop:Generator_ColumnPropNameInRow="TenSanThiDau" msprop:Generator_ColumnPropNameInTable="TenSanThiDauColumn" msprop:Generator_UserColumnName="TenSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DonViSoHuu" msprop:Generator_ColumnVarNameInTable="columnDonViSoHuu" msprop:Generator_ColumnPropNameInRow="DonViSoHuu" msprop:Generator_ColumnPropNameInTable="DonViSoHuuColumn" msprop:Generator_UserColumnName="DonViSoHuu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CauThuExt" msprop:Generator_TableClassName="CauThuExtDataTable" msprop:Generator_TableVarName="tableCauThuExt" msprop:Generator_RowChangedName="CauThuExtRowChanged" msprop:Generator_TablePropName="CauThuExt" msprop:Generator_RowDeletingName="CauThuExtRowDeleting" msprop:Generator_RowChangingName="CauThuExtRowChanging" msprop:Generator_RowEvHandlerName="CauThuExtRowChangeEventHandler" msprop:Generator_RowDeletedName="CauThuExtRowDeleted" msprop:Generator_RowClassName="CauThuExtRow" msprop:Generator_UserTableName="CauThuExt" msprop:Generator_RowEvArgName="CauThuExtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaCauThu" msprop:Generator_ColumnVarNameInTable="columnMaCauThu" msprop:Generator_ColumnPropNameInRow="MaCauThu" msprop:Generator_ColumnPropNameInTable="MaCauThuColumn" msprop:Generator_UserColumnName="MaCauThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu" msprop:Generator_ColumnVarNameInTable="columnTenCauThu" msprop:Generator_ColumnPropNameInRow="TenCauThu" msprop:Generator_ColumnPropNameInTable="TenCauThuColumn" msprop:Generator_UserColumnName="TenCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NgaySinh" msprop:Generator_ColumnVarNameInTable="columnNgaySinh" msprop:Generator_ColumnPropNameInRow="NgaySinh" msprop:Generator_ColumnPropNameInTable="NgaySinhColumn" msprop:Generator_UserColumnName="NgaySinh" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GhiChu" msprop:Generator_ColumnVarNameInTable="columnGhiChu" msprop:Generator_ColumnPropNameInRow="GhiChu" msprop:Generator_ColumnPropNameInTable="GhiChuColumn" msprop:Generator_UserColumnName="GhiChu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoBanThang" msprop:Generator_ColumnVarNameInTable="columnSoBanThang" msprop:Generator_ColumnPropNameInRow="SoBanThang" msprop:Generator_ColumnPropNameInTable="SoBanThangColumn" msprop:Generator_UserColumnName="SoBanThang" type="xs:int" minOccurs="0" />
+              <xs:element name="NgayRoiDi" msprop:Generator_ColumnVarNameInTable="columnNgayRoiDi" msprop:Generator_ColumnPropNameInRow="NgayRoiDi" msprop:Generator_ColumnPropNameInTable="NgayRoiDiColumn" msprop:Generator_UserColumnName="NgayRoiDi" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenLoaiCauThu" msprop:Generator_ColumnVarNameInTable="columnTenLoaiCauThu" msprop:Generator_ColumnPropNameInRow="TenLoaiCauThu" msprop:Generator_ColumnPropNameInTable="TenLoaiCauThuColumn" msprop:Generator_UserColumnName="TenLoaiCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoAo" msprop:Generator_ColumnVarNameInTable="columnSoAo" msprop:Generator_ColumnPropNameInRow="SoAo" msprop:Generator_ColumnPropNameInTable="SoAoColumn" msprop:Generator_UserColumnName="SoAo" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="MaLoaiCauThu" msprop:Generator_ColumnVarNameInTable="columnMaLoaiCauThu" msprop:Generator_ColumnPropNameInRow="MaLoaiCauThu" msprop:Generator_ColumnPropNameInTable="MaLoaiCauThuColumn" msprop:Generator_UserColumnName="MaLoaiCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LichThiDauExt" msprop:Generator_TableClassName="LichThiDauExtDataTable" msprop:Generator_TableVarName="tableLichThiDauExt" msprop:Generator_TablePropName="LichThiDauExt" msprop:Generator_RowDeletingName="LichThiDauExtRowDeleting" msprop:Generator_RowChangingName="LichThiDauExtRowChanging" msprop:Generator_RowEvHandlerName="LichThiDauExtRowChangeEventHandler" msprop:Generator_RowDeletedName="LichThiDauExtRowDeleted" msprop:Generator_UserTableName="LichThiDauExt" msprop:Generator_RowChangedName="LichThiDauExtRowChanged" msprop:Generator_RowEvArgName="LichThiDauExtRowChangeEvent" msprop:Generator_RowClassName="LichThiDauExtRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenVongDau" msprop:Generator_ColumnVarNameInTable="columnTenVongDau" msprop:Generator_ColumnPropNameInRow="TenVongDau" msprop:Generator_ColumnPropNameInTable="TenVongDauColumn" msprop:Generator_UserColumnName="TenVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NgayThiDau" msprop:Generator_ColumnVarNameInTable="columnNgayThiDau" msprop:Generator_ColumnPropNameInRow="NgayThiDau" msprop:Generator_ColumnPropNameInTable="NgayThiDauColumn" msprop:Generator_UserColumnName="NgayThiDau" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GioThiDau" msprop:Generator_ColumnVarNameInTable="columnGioThiDau" msprop:Generator_ColumnPropNameInRow="GioThiDau" msprop:Generator_ColumnPropNameInTable="GioThiDauColumn" msprop:Generator_UserColumnName="GioThiDau" type="xs:duration" minOccurs="0" />
+              <xs:element name="MaSanThiDau" msprop:Generator_ColumnVarNameInTable="columnMaSanThiDau" msprop:Generator_ColumnPropNameInRow="MaSanThiDau" msprop:Generator_ColumnPropNameInTable="MaSanThiDauColumn" msprop:Generator_UserColumnName="MaSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenSanThiDau" msprop:Generator_ColumnVarNameInTable="columnTenSanThiDau" msprop:Generator_ColumnPropNameInRow="TenSanThiDau" msprop:Generator_ColumnPropNameInTable="TenSanThiDauColumn" msprop:Generator_UserColumnName="TenSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi2" msprop:Generator_ColumnVarNameInTable="columnTenDoi2" msprop:Generator_ColumnPropNameInRow="TenDoi2" msprop:Generator_ColumnPropNameInTable="TenDoi2Column" msprop:Generator_UserColumnName="TenDoi2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoBanThangDoiNha" msprop:Generator_ColumnVarNameInTable="columnSoBanThangDoiNha" msprop:Generator_ColumnPropNameInRow="SoBanThangDoiNha" msprop:Generator_ColumnPropNameInTable="SoBanThangDoiNhaColumn" msprop:Generator_UserColumnName="SoBanThangDoiNha" type="xs:int" minOccurs="0" />
+              <xs:element name="MaVongDau" msprop:Generator_ColumnVarNameInTable="columnMaVongDau" msprop:Generator_ColumnPropNameInRow="MaVongDau" msprop:Generator_ColumnPropNameInTable="MaVongDauColumn" msprop:Generator_UserColumnName="MaVongDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoiChuNha" msprop:Generator_ColumnVarNameInTable="columnDoiChuNha" msprop:Generator_ColumnPropNameInRow="DoiChuNha" msprop:Generator_ColumnPropNameInTable="DoiChuNhaColumn" msprop:Generator_UserColumnName="DoiChuNha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoiKhach" msprop:Generator_ColumnVarNameInTable="columnDoiKhach" msprop:Generator_ColumnPropNameInRow="DoiKhach" msprop:Generator_ColumnPropNameInTable="DoiKhachColumn" msprop:Generator_UserColumnName="DoiKhach" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BanThangExt" msprop:Generator_TableClassName="BanThangExtDataTable" msprop:Generator_TableVarName="tableBanThangExt" msprop:Generator_RowChangedName="BanThangExtRowChanged" msprop:Generator_TablePropName="BanThangExt" msprop:Generator_RowDeletingName="BanThangExtRowDeleting" msprop:Generator_RowChangingName="BanThangExtRowChanging" msprop:Generator_RowEvHandlerName="BanThangExtRowChangeEventHandler" msprop:Generator_RowDeletedName="BanThangExtRowDeleted" msprop:Generator_RowClassName="BanThangExtRow" msprop:Generator_UserTableName="BanThangExt" msprop:Generator_RowEvArgName="BanThangExtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenLoaiBanThang" msprop:Generator_ColumnVarNameInTable="columnTenLoaiBanThang" msprop:Generator_ColumnPropNameInRow="TenLoaiBanThang" msprop:Generator_ColumnPropNameInTable="TenLoaiBanThangColumn" msprop:Generator_UserColumnName="TenLoaiBanThang" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu" msprop:Generator_ColumnVarNameInTable="columnTenCauThu" msprop:Generator_ColumnPropNameInRow="TenCauThu" msprop:Generator_ColumnPropNameInTable="TenCauThuColumn" msprop:Generator_UserColumnName="TenCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaBanThang" msprop:Generator_ColumnVarNameInTable="columnMaBanThang" msprop:Generator_ColumnPropNameInRow="MaBanThang" msprop:Generator_ColumnPropNameInTable="MaBanThangColumn" msprop:Generator_UserColumnName="MaBanThang">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ThoiDiem" msprop:Generator_ColumnVarNameInTable="columnThoiDiem" msprop:Generator_ColumnPropNameInRow="ThoiDiem" msprop:Generator_ColumnPropNameInTable="ThoiDiemColumn" msprop:Generator_UserColumnName="ThoiDiem" type="xs:duration" minOccurs="0" />
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoAo" msprop:Generator_ColumnVarNameInTable="columnSoAo" msprop:Generator_ColumnPropNameInRow="SoAo" msprop:Generator_ColumnPropNameInTable="SoAoColumn" msprop:Generator_UserColumnName="SoAo" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ThePhatExt" msprop:Generator_TableClassName="ThePhatExtDataTable" msprop:Generator_TableVarName="tableThePhatExt" msprop:Generator_RowChangedName="ThePhatExtRowChanged" msprop:Generator_TablePropName="ThePhatExt" msprop:Generator_RowDeletingName="ThePhatExtRowDeleting" msprop:Generator_RowChangingName="ThePhatExtRowChanging" msprop:Generator_RowEvHandlerName="ThePhatExtRowChangeEventHandler" msprop:Generator_RowDeletedName="ThePhatExtRowDeleted" msprop:Generator_RowClassName="ThePhatExtRow" msprop:Generator_UserTableName="ThePhatExt" msprop:Generator_RowEvArgName="ThePhatExtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaPhatThe" msprop:Generator_ColumnVarNameInTable="columnMaPhatThe" msprop:Generator_ColumnPropNameInRow="MaPhatThe" msprop:Generator_ColumnPropNameInTable="MaPhatTheColumn" msprop:Generator_UserColumnName="MaPhatThe">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenThe" msprop:Generator_ColumnVarNameInTable="columnTenThe" msprop:Generator_ColumnPropNameInRow="TenThe" msprop:Generator_ColumnPropNameInTable="TenTheColumn" msprop:Generator_UserColumnName="TenThe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu" msprop:Generator_ColumnVarNameInTable="columnTenCauThu" msprop:Generator_ColumnPropNameInRow="TenCauThu" msprop:Generator_ColumnPropNameInTable="TenCauThuColumn" msprop:Generator_UserColumnName="TenCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ThoiDiem" msprop:Generator_ColumnVarNameInTable="columnThoiDiem" msprop:Generator_ColumnPropNameInRow="ThoiDiem" msprop:Generator_ColumnPropNameInTable="ThoiDiemColumn" msprop:Generator_UserColumnName="ThoiDiem" type="xs:duration" minOccurs="0" />
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoAo" msprop:Generator_ColumnVarNameInTable="columnSoAo" msprop:Generator_ColumnPropNameInRow="SoAo" msprop:Generator_ColumnPropNameInTable="SoAoColumn" msprop:Generator_UserColumnName="SoAo" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ThayNguoiExt" msprop:Generator_TableClassName="ThayNguoiExtDataTable" msprop:Generator_TableVarName="tableThayNguoiExt" msprop:Generator_RowChangedName="ThayNguoiExtRowChanged" msprop:Generator_TablePropName="ThayNguoiExt" msprop:Generator_RowDeletingName="ThayNguoiExtRowDeleting" msprop:Generator_RowChangingName="ThayNguoiExtRowChanging" msprop:Generator_RowEvHandlerName="ThayNguoiExtRowChangeEventHandler" msprop:Generator_RowDeletedName="ThayNguoiExtRowDeleted" msprop:Generator_RowClassName="ThayNguoiExtRow" msprop:Generator_UserTableName="ThayNguoiExt" msprop:Generator_RowEvArgName="ThayNguoiExtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaThayNguoi" msprop:Generator_ColumnVarNameInTable="columnMaThayNguoi" msprop:Generator_ColumnPropNameInRow="MaThayNguoi" msprop:Generator_ColumnPropNameInTable="MaThayNguoiColumn" msprop:Generator_UserColumnName="MaThayNguoi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu" msprop:Generator_ColumnVarNameInTable="columnTenCauThu" msprop:Generator_ColumnPropNameInRow="TenCauThu" msprop:Generator_ColumnPropNameInTable="TenCauThuColumn" msprop:Generator_UserColumnName="TenCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu2" msprop:Generator_ColumnVarNameInTable="columnTenCauThu2" msprop:Generator_ColumnPropNameInRow="TenCauThu2" msprop:Generator_ColumnPropNameInTable="TenCauThu2Column" msprop:Generator_UserColumnName="TenCauThu2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ThoiDiem" msprop:Generator_ColumnVarNameInTable="columnThoiDiem" msprop:Generator_ColumnPropNameInRow="ThoiDiem" msprop:Generator_ColumnPropNameInTable="ThoiDiemColumn" msprop:Generator_UserColumnName="ThoiDiem" type="xs:duration" minOccurs="0" />
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoAo" msprop:Generator_ColumnVarNameInTable="columnSoAo" msprop:Generator_ColumnPropNameInRow="SoAo" msprop:Generator_ColumnPropNameInTable="SoAoColumn" msprop:Generator_UserColumnName="SoAo" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="SoAo2" msprop:Generator_ColumnVarNameInTable="columnSoAo2" msprop:Generator_ColumnPropNameInRow="SoAo2" msprop:Generator_ColumnPropNameInTable="SoAo2Column" msprop:Generator_UserColumnName="SoAo2" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RaSanExt" msprop:Generator_TableClassName="RaSanExtDataTable" msprop:Generator_TableVarName="tableRaSanExt" msprop:Generator_RowChangedName="RaSanExtRowChanged" msprop:Generator_TablePropName="RaSanExt" msprop:Generator_RowDeletingName="RaSanExtRowDeleting" msprop:Generator_RowChangingName="RaSanExtRowChanging" msprop:Generator_RowEvHandlerName="RaSanExtRowChangeEventHandler" msprop:Generator_RowDeletedName="RaSanExtRowDeleted" msprop:Generator_RowClassName="RaSanExtRow" msprop:Generator_UserTableName="RaSanExt" msprop:Generator_RowEvArgName="RaSanExtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaCauThu" msprop:Generator_ColumnVarNameInTable="columnMaCauThu" msprop:Generator_ColumnPropNameInRow="MaCauThu" msprop:Generator_ColumnPropNameInTable="MaCauThuColumn" msprop:Generator_UserColumnName="MaCauThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenCauThu" msprop:Generator_ColumnVarNameInTable="columnTenCauThu" msprop:Generator_ColumnPropNameInRow="TenCauThu" msprop:Generator_ColumnPropNameInTable="TenCauThuColumn" msprop:Generator_UserColumnName="TenCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CauThuDuBi" msprop:Generator_ColumnVarNameInTable="columnCauThuDuBi" msprop:Generator_ColumnPropNameInRow="CauThuDuBi" msprop:Generator_ColumnPropNameInTable="CauThuDuBiColumn" msprop:Generator_UserColumnName="CauThuDuBi" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CauThuChinhThuc" msprop:Generator_ColumnVarNameInTable="columnCauThuChinhThuc" msprop:Generator_ColumnPropNameInRow="CauThuChinhThuc" msprop:Generator_ColumnPropNameInTable="CauThuChinhThucColumn" msprop:Generator_UserColumnName="CauThuChinhThuc" type="xs:boolean" minOccurs="0" />
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoAo" msprop:Generator_ColumnVarNameInTable="columnSoAo" msprop:Generator_ColumnPropNameInRow="SoAo" msprop:Generator_ColumnPropNameInTable="SoAoColumn" msprop:Generator_UserColumnName="SoAo" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CauThu" msprop:Generator_TableClassName="CauThuDataTable" msprop:Generator_TableVarName="tableCauThu" msprop:Generator_RowChangedName="CauThuRowChanged" msprop:Generator_TablePropName="CauThu" msprop:Generator_RowDeletingName="CauThuRowDeleting" msprop:Generator_RowChangingName="CauThuRowChanging" msprop:Generator_RowEvHandlerName="CauThuRowChangeEventHandler" msprop:Generator_RowDeletedName="CauThuRowDeleted" msprop:Generator_RowClassName="CauThuRow" msprop:Generator_UserTableName="CauThu" msprop:Generator_RowEvArgName="CauThuRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaCauThu" msprop:Generator_ColumnVarNameInTable="columnMaCauThu" msprop:Generator_ColumnPropNameInRow="MaCauThu" msprop:Generator_ColumnPropNameInTable="MaCauThuColumn" msprop:Generator_UserColumnName="MaCauThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NgayRoiDi" msprop:Generator_ColumnVarNameInTable="columnNgayRoiDi" msprop:Generator_ColumnPropNameInRow="NgayRoiDi" msprop:Generator_ColumnPropNameInTable="NgayRoiDiColumn" msprop:Generator_UserColumnName="NgayRoiDi" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cauThuSoAo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncauThuSoAo" msprop:Generator_ColumnPropNameInRow="cauThuSoAo" msprop:Generator_ColumnPropNameInTable="cauThuSoAoColumn" msprop:Generator_UserColumnName="cauThuSoAo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="53" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RaSanSelector" msprop:Generator_TableClassName="RaSanSelectorDataTable" msprop:Generator_TableVarName="tableRaSanSelector" msprop:Generator_RowChangedName="RaSanSelectorRowChanged" msprop:Generator_TablePropName="RaSanSelector" msprop:Generator_RowDeletingName="RaSanSelectorRowDeleting" msprop:Generator_RowChangingName="RaSanSelectorRowChanging" msprop:Generator_RowEvHandlerName="RaSanSelectorRowChangeEventHandler" msprop:Generator_RowDeletedName="RaSanSelectorRowDeleted" msprop:Generator_RowClassName="RaSanSelectorRow" msprop:Generator_UserTableName="RaSanSelector" msprop:Generator_RowEvArgName="RaSanSelectorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CauThuDuBi" msprop:Generator_ColumnVarNameInTable="columnCauThuDuBi" msprop:Generator_ColumnPropNameInRow="CauThuDuBi" msprop:Generator_ColumnPropNameInTable="CauThuDuBiColumn" msprop:Generator_UserColumnName="CauThuDuBi" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CauThuChinhThuc" msprop:Generator_ColumnVarNameInTable="columnCauThuChinhThuc" msprop:Generator_ColumnPropNameInRow="CauThuChinhThuc" msprop:Generator_ColumnPropNameInTable="CauThuChinhThucColumn" msprop:Generator_UserColumnName="CauThuChinhThuc" type="xs:boolean" minOccurs="0" />
+              <xs:element name="cauThuSoAo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncauThuSoAo" msprop:Generator_ColumnPropNameInRow="cauThuSoAo" msprop:Generator_ColumnPropNameInTable="cauThuSoAoColumn" msprop:Generator_UserColumnName="cauThuSoAo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="53" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaCauThu" msprop:Generator_ColumnVarNameInTable="columnMaCauThu" msprop:Generator_ColumnPropNameInRow="MaCauThu" msprop:Generator_ColumnPropNameInTable="MaCauThuColumn" msprop:Generator_UserColumnName="MaCauThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoaiThe" msprop:Generator_TableClassName="LoaiTheDataTable" msprop:Generator_TableVarName="tableLoaiThe" msprop:Generator_RowChangedName="LoaiTheRowChanged" msprop:Generator_TablePropName="LoaiThe" msprop:Generator_RowDeletingName="LoaiTheRowDeleting" msprop:Generator_RowChangingName="LoaiTheRowChanging" msprop:Generator_RowEvHandlerName="LoaiTheRowChangeEventHandler" msprop:Generator_RowDeletedName="LoaiTheRowDeleted" msprop:Generator_RowClassName="LoaiTheRow" msprop:Generator_UserTableName="LoaiThe" msprop:Generator_RowEvArgName="LoaiTheRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenThe" msprop:Generator_ColumnVarNameInTable="columnTenThe" msprop:Generator_ColumnPropNameInRow="TenThe" msprop:Generator_ColumnPropNameInTable="TenTheColumn" msprop:Generator_UserColumnName="TenThe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaLoaiThe" msprop:Generator_ColumnVarNameInTable="columnMaLoaiThe" msprop:Generator_ColumnPropNameInRow="MaLoaiThe" msprop:Generator_ColumnPropNameInTable="MaLoaiTheColumn" msprop:Generator_UserColumnName="MaLoaiThe">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KetQuaTranDauExt" msprop:Generator_TableClassName="KetQuaTranDauExtDataTable" msprop:Generator_TableVarName="tableKetQuaTranDauExt" msprop:Generator_TablePropName="KetQuaTranDauExt" msprop:Generator_RowDeletingName="KetQuaTranDauExtRowDeleting" msprop:Generator_RowChangingName="KetQuaTranDauExtRowChanging" msprop:Generator_RowEvHandlerName="KetQuaTranDauExtRowChangeEventHandler" msprop:Generator_RowDeletedName="KetQuaTranDauExtRowDeleted" msprop:Generator_UserTableName="KetQuaTranDauExt" msprop:Generator_RowChangedName="KetQuaTranDauExtRowChanged" msprop:Generator_RowEvArgName="KetQuaTranDauExtRowChangeEvent" msprop:Generator_RowClassName="KetQuaTranDauExtRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaTranDau" msprop:Generator_ColumnVarNameInTable="columnMaTranDau" msprop:Generator_ColumnPropNameInRow="MaTranDau" msprop:Generator_ColumnPropNameInTable="MaTranDauColumn" msprop:Generator_UserColumnName="MaTranDau">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenVongDau" msprop:Generator_ColumnVarNameInTable="columnTenVongDau" msprop:Generator_ColumnPropNameInRow="TenVongDau" msprop:Generator_ColumnPropNameInTable="TenVongDauColumn" msprop:Generator_UserColumnName="TenVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi2" msprop:Generator_ColumnVarNameInTable="columnTenDoi2" msprop:Generator_ColumnPropNameInRow="TenDoi2" msprop:Generator_ColumnPropNameInTable="TenDoi2Column" msprop:Generator_UserColumnName="TenDoi2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoBanThangDoiNha" msprop:Generator_ColumnVarNameInTable="columnSoBanThangDoiNha" msprop:Generator_ColumnPropNameInRow="SoBanThangDoiNha" msprop:Generator_ColumnPropNameInTable="SoBanThangDoiNhaColumn" msprop:Generator_UserColumnName="SoBanThangDoiNha" type="xs:int" minOccurs="0" />
+              <xs:element name="SoBanThangDoiKhach" msprop:Generator_ColumnVarNameInTable="columnSoBanThangDoiKhach" msprop:Generator_ColumnPropNameInRow="SoBanThangDoiKhach" msprop:Generator_ColumnPropNameInTable="SoBanThangDoiKhachColumn" msprop:Generator_UserColumnName="SoBanThangDoiKhach" type="xs:int" minOccurs="0" />
+              <xs:element name="ThoiGianThiDau" msprop:Generator_ColumnVarNameInTable="columnThoiGianThiDau" msprop:Generator_ColumnPropNameInRow="ThoiGianThiDau" msprop:Generator_ColumnPropNameInTable="ThoiGianThiDauColumn" msprop:Generator_UserColumnName="ThoiGianThiDau" type="xs:duration" minOccurs="0" />
+              <xs:element name="TenSanThiDau" msprop:Generator_ColumnVarNameInTable="columnTenSanThiDau" msprop:Generator_ColumnPropNameInRow="TenSanThiDau" msprop:Generator_ColumnPropNameInTable="TenSanThiDauColumn" msprop:Generator_UserColumnName="TenSanThiDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoiChuNha" msprop:Generator_ColumnVarNameInTable="columnDoiChuNha" msprop:Generator_ColumnPropNameInRow="DoiChuNha" msprop:Generator_ColumnPropNameInTable="DoiChuNhaColumn" msprop:Generator_UserColumnName="DoiChuNha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DoiKhach" msprop:Generator_ColumnVarNameInTable="columnDoiKhach" msprop:Generator_ColumnPropNameInRow="DoiKhach" msprop:Generator_ColumnPropNameInTable="DoiKhachColumn" msprop:Generator_UserColumnName="DoiKhach" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NgayThiDauChinh" msprop:Generator_ColumnVarNameInTable="columnNgayThiDauChinh" msprop:Generator_ColumnPropNameInRow="NgayThiDauChinh" msprop:Generator_ColumnPropNameInTable="NgayThiDauChinhColumn" msprop:Generator_UserColumnName="NgayThiDauChinh" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MaSanThiDauChinh" msprop:Generator_ColumnVarNameInTable="columnMaSanThiDauChinh" msprop:Generator_ColumnPropNameInRow="MaSanThiDauChinh" msprop:Generator_ColumnPropNameInTable="MaSanThiDauChinhColumn" msprop:Generator_UserColumnName="MaSanThiDauChinh" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaVongDau" msprop:Generator_ColumnVarNameInTable="columnMaVongDau" msprop:Generator_ColumnPropNameInRow="MaVongDau" msprop:Generator_ColumnPropNameInTable="MaVongDauColumn" msprop:Generator_UserColumnName="MaVongDau" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoaiCauThu" msprop:Generator_TableClassName="LoaiCauThuDataTable" msprop:Generator_TableVarName="tableLoaiCauThu" msprop:Generator_RowChangedName="LoaiCauThuRowChanged" msprop:Generator_TablePropName="LoaiCauThu" msprop:Generator_RowDeletingName="LoaiCauThuRowDeleting" msprop:Generator_RowChangingName="LoaiCauThuRowChanging" msprop:Generator_RowEvHandlerName="LoaiCauThuRowChangeEventHandler" msprop:Generator_RowDeletedName="LoaiCauThuRowDeleted" msprop:Generator_RowClassName="LoaiCauThuRow" msprop:Generator_UserTableName="LoaiCauThu" msprop:Generator_RowEvArgName="LoaiCauThuRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaLoaiCauThu" msprop:Generator_ColumnVarNameInTable="columnMaLoaiCauThu" msprop:Generator_ColumnPropNameInRow="MaLoaiCauThu" msprop:Generator_ColumnPropNameInTable="MaLoaiCauThuColumn" msprop:Generator_UserColumnName="MaLoaiCauThu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenLoaiCauThu" msprop:Generator_ColumnVarNameInTable="columnTenLoaiCauThu" msprop:Generator_ColumnPropNameInRow="TenLoaiCauThu" msprop:Generator_ColumnPropNameInTable="TenLoaiCauThuColumn" msprop:Generator_UserColumnName="TenLoaiCauThu" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ThuTuUuTien" msprop:Generator_TableClassName="ThuTuUuTienDataTable" msprop:Generator_TableVarName="tableThuTuUuTien" msprop:Generator_RowChangedName="ThuTuUuTienRowChanged" msprop:Generator_TablePropName="ThuTuUuTien" msprop:Generator_RowDeletingName="ThuTuUuTienRowDeleting" msprop:Generator_RowChangingName="ThuTuUuTienRowChanging" msprop:Generator_RowEvHandlerName="ThuTuUuTienRowChangeEventHandler" msprop:Generator_RowDeletedName="ThuTuUuTienRowDeleted" msprop:Generator_RowClassName="ThuTuUuTienRow" msprop:Generator_UserTableName="ThuTuUuTien" msprop:Generator_RowEvArgName="ThuTuUuTienRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChiSoUuTien" msprop:Generator_ColumnVarNameInTable="columnChiSoUuTien" msprop:Generator_ColumnPropNameInRow="ChiSoUuTien" msprop:Generator_ColumnPropNameInTable="ChiSoUuTienColumn" msprop:Generator_UserColumnName="ChiSoUuTien" type="xs:int" />
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenLoaiUuTien" msprop:Generator_ColumnVarNameInTable="columnTenLoaiUuTien" msprop:Generator_ColumnPropNameInRow="TenLoaiUuTien" msprop:Generator_ColumnPropNameInTable="TenLoaiUuTienColumn" msprop:Generator_UserColumnName="TenLoaiUuTien" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BangXepHangExt" msprop:Generator_TableClassName="BangXepHangExtDataTable" msprop:Generator_TableVarName="tableBangXepHangExt" msprop:Generator_TablePropName="BangXepHangExt" msprop:Generator_RowDeletingName="BangXepHangExtRowDeleting" msprop:Generator_RowChangingName="BangXepHangExtRowChanging" msprop:Generator_RowEvHandlerName="BangXepHangExtRowChangeEventHandler" msprop:Generator_RowDeletedName="BangXepHangExtRowDeleted" msprop:Generator_UserTableName="BangXepHangExt" msprop:Generator_RowChangedName="BangXepHangExtRowChanged" msprop:Generator_RowEvArgName="BangXepHangExtRowChangeEvent" msprop:Generator_RowClassName="BangXepHangExtRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaDoi" msprop:Generator_ColumnVarNameInTable="columnMaDoi" msprop:Generator_ColumnPropNameInRow="MaDoi" msprop:Generator_ColumnPropNameInTable="MaDoiColumn" msprop:Generator_UserColumnName="MaDoi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenDoi" msprop:Generator_ColumnVarNameInTable="columnTenDoi" msprop:Generator_ColumnPropNameInRow="TenDoi" msprop:Generator_ColumnPropNameInTable="TenDoiColumn" msprop:Generator_UserColumnName="TenDoi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaMuaGiai" msprop:Generator_ColumnVarNameInTable="columnMaMuaGiai" msprop:Generator_ColumnPropNameInRow="MaMuaGiai" msprop:Generator_ColumnPropNameInTable="MaMuaGiaiColumn" msprop:Generator_UserColumnName="MaMuaGiai" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ngay" msprop:Generator_ColumnVarNameInTable="columnNgay" msprop:Generator_ColumnPropNameInRow="Ngay" msprop:Generator_ColumnPropNameInTable="NgayColumn" msprop:Generator_UserColumnName="Ngay" type="xs:dateTime" />
+              <xs:element name="Thang" msprop:Generator_ColumnVarNameInTable="columnThang" msprop:Generator_ColumnPropNameInRow="Thang" msprop:Generator_ColumnPropNameInTable="ThangColumn" msprop:Generator_UserColumnName="Thang" type="xs:int" minOccurs="0" />
+              <xs:element name="Thua" msprop:Generator_ColumnVarNameInTable="columnThua" msprop:Generator_ColumnPropNameInRow="Thua" msprop:Generator_ColumnPropNameInTable="ThuaColumn" msprop:Generator_UserColumnName="Thua" type="xs:int" minOccurs="0" />
+              <xs:element name="Hoa" msprop:Generator_ColumnVarNameInTable="columnHoa" msprop:Generator_ColumnPropNameInRow="Hoa" msprop:Generator_ColumnPropNameInTable="HoaColumn" msprop:Generator_UserColumnName="Hoa" type="xs:int" minOccurs="0" />
+              <xs:element name="HieuSo" msprop:Generator_ColumnVarNameInTable="columnHieuSo" msprop:Generator_ColumnPropNameInRow="HieuSo" msprop:Generator_ColumnPropNameInTable="HieuSoColumn" msprop:Generator_UserColumnName="HieuSo" type="xs:int" minOccurs="0" />
+              <xs:element name="Diem" msprop:Generator_ColumnVarNameInTable="columnDiem" msprop:Generator_ColumnPropNameInRow="Diem" msprop:Generator_ColumnPropNameInTable="DiemColumn" msprop:Generator_UserColumnName="Diem" type="xs:int" minOccurs="0" />
+              <xs:element name="SoBanThangSanKhach" msprop:Generator_ColumnVarNameInTable="columnSoBanThangSanKhach" msprop:Generator_ColumnPropNameInRow="SoBanThangSanKhach" msprop:Generator_ColumnPropNameInTable="SoBanThangSanKhachColumn" msprop:Generator_UserColumnName="SoBanThangSanKhach" type="xs:int" minOccurs="0" />
+              <xs:element name="XepHang" msprop:Generator_ColumnVarNameInTable="columnXepHang" msprop:Generator_ColumnPropNameInRow="XepHang" msprop:Generator_ColumnPropNameInTable="XepHangColumn" msprop:Generator_UserColumnName="XepHang" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LoaiBanThang" />
+      <xs:field xpath="mstns:MaLoaiBanThang" />
+    </xs:unique>
+    <xs:unique name="VongDau_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VongDau" />
+      <xs:field xpath="mstns:MaVongDau" />
+    </xs:unique>
+    <xs:unique name="SanThiDau_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SanThiDau" />
+      <xs:field xpath="mstns:MaSanThiDau" />
+    </xs:unique>
+    <xs:unique name="DoiBong_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DoiBong" />
+      <xs:field xpath="mstns:MaDoi" />
+    </xs:unique>
+    <xs:unique name="SanThiDauExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SanThiDauExt" />
+      <xs:field xpath="mstns:MaSanThiDau" />
+    </xs:unique>
+    <xs:unique name="CauThuExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CauThuExt" />
+      <xs:field xpath="mstns:MaCauThu" />
+    </xs:unique>
+    <xs:unique name="LichThiDauExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LichThiDauExt" />
+      <xs:field xpath="mstns:MaTranDau" />
+    </xs:unique>
+    <xs:unique name="BanThangExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BanThangExt" />
+      <xs:field xpath="mstns:MaBanThang" />
+    </xs:unique>
+    <xs:unique name="ThePhatExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ThePhatExt" />
+      <xs:field xpath="mstns:MaPhatThe" />
+    </xs:unique>
+    <xs:unique name="ThayNguoiExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ThayNguoiExt" />
+      <xs:field xpath="mstns:MaThayNguoi" />
+    </xs:unique>
+    <xs:unique name="RaSanExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RaSanExt" />
+      <xs:field xpath="mstns:MaTranDau" />
+      <xs:field xpath="mstns:MaCauThu" />
+    </xs:unique>
+    <xs:unique name="CauThu_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CauThu" />
+      <xs:field xpath="mstns:MaCauThu" />
+    </xs:unique>
+    <xs:unique name="RaSanSelector_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RaSanSelector" />
+      <xs:field xpath="mstns:MaTranDau" />
+      <xs:field xpath="mstns:MaCauThu" />
+    </xs:unique>
+    <xs:unique name="LoaiThe_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LoaiThe" />
+      <xs:field xpath="mstns:MaLoaiThe" />
+    </xs:unique>
+    <xs:unique name="KetQuaTranDauExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:KetQuaTranDauExt" />
+      <xs:field xpath="mstns:MaTranDau" />
+    </xs:unique>
+    <xs:unique name="LoaiCauThu_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LoaiCauThu" />
+      <xs:field xpath="mstns:MaLoaiCauThu" />
+    </xs:unique>
+    <xs:unique name="ThuTuUuTien_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ThuTuUuTien" />
+      <xs:field xpath="mstns:ChiSoUuTien" />
+      <xs:field xpath="mstns:MaMuaGiai" />
+    </xs:unique>
+    <xs:unique name="BangXepHangExt_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BangXepHangExt" />
+      <xs:field xpath="mstns:MaDoi" />
+      <xs:field xpath="mstns:Ngay" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_DOIBONG_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="DoiBongAllowNull" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="DoiBongAllowNull" msprop:Generator_ChildPropName="GetDoiBongAllowNullRows" msprop:Generator_UserRelationName="FK_DOIBONG_MaMuaGiai" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_DOIBONG_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_SANTHIDAU_MaDoiNha" msdata:parent="DoiBongAllowNull" msdata:child="SanThiDauAllowNull" msdata:parentkey="MaDoi" msdata:childkey="MaDoiNha" msprop:Generator_UserChildTable="SanThiDauAllowNull" msprop:Generator_ChildPropName="GetSanThiDauAllowNullRows" msprop:Generator_UserRelationName="FK_SANTHIDAU_MaDoiNha" msprop:Generator_ParentPropName="DoiBongAllowNullRow" msprop:Generator_RelationVarName="relationFK_SANTHIDAU_MaDoiNha" msprop:Generator_UserParentTable="DoiBongAllowNull" />
+      <msdata:Relationship name="FK_SANTHIDAU_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="SanThiDauAllowNull" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="SanThiDauAllowNull" msprop:Generator_ChildPropName="GetSanThiDauAllowNullRows" msprop:Generator_UserRelationName="FK_SANTHIDAU_MaMuaGiai" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_SANTHIDAU_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_LOAICAUTHU_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="LoaiCauThuAllowNull" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="LoaiCauThuAllowNull" msprop:Generator_ChildPropName="GetLoaiCauThuAllowNullRows" msprop:Generator_UserRelationName="FK_LOAICAUTHU_MaMuaGiai" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_LOAICAUTHU_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_VONGDAU_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="VongDauAllowNull" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="VongDauAllowNull" msprop:Generator_ChildPropName="GetVongDauAllowNullRows" msprop:Generator_UserRelationName="FK_VONGDAU_MaMuaGiai" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_VONGDAU_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_LOAIBANTHANG_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="LoaiBanThang" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="LoaiBanThang" msprop:Generator_ChildPropName="GetLoaiBanThangRows" msprop:Generator_UserRelationName="FK_LOAIBANTHANG_MaMuaGiai" msprop:Generator_RelationVarName="relationFK_LOAIBANTHANG_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_VONGDAU_MaMuaGiai1" msdata:parent="MuaGiaiAllowNull" msdata:child="VongDau" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="VongDau" msprop:Generator_ChildPropName="GetVongDauRows" msprop:Generator_UserRelationName="FK_VONGDAU_MaMuaGiai1" msprop:Generator_RelationVarName="relationFK_VONGDAU_MaMuaGiai1" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_SANTHIDAU_MaMuaGiai1" msdata:parent="MuaGiaiAllowNull" msdata:child="SanThiDau" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="SanThiDau" msprop:Generator_ChildPropName="GetSanThiDauRows" msprop:Generator_UserRelationName="FK_SANTHIDAU_MaMuaGiai1" msprop:Generator_RelationVarName="relationFK_SANTHIDAU_MaMuaGiai1" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_SANTHIDAU_MaDoiNha1" msdata:parent="DoiBong" msdata:child="SanThiDauAllowNull" msdata:parentkey="MaDoi" msdata:childkey="MaDoiNha" msprop:Generator_UserChildTable="SanThiDauAllowNull" msprop:Generator_ChildPropName="GetSanThiDauAllowNullRows" msprop:Generator_UserRelationName="FK_SANTHIDAU_MaDoiNha1" msprop:Generator_ParentPropName="DoiBongRow" msprop:Generator_RelationVarName="relationFK_SANTHIDAU_MaDoiNha1" msprop:Generator_UserParentTable="DoiBong" />
+      <msdata:Relationship name="FK_DOIBONG_MaMuaGiai1" msdata:parent="MuaGiaiAllowNull" msdata:child="DoiBong" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="DoiBong" msprop:Generator_ChildPropName="GetDoiBongRows" msprop:Generator_UserRelationName="FK_DOIBONG_MaMuaGiai1" msprop:Generator_RelationVarName="relationFK_DOIBONG_MaMuaGiai1" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_DOIBONG_MaMuaGiai2" msdata:parent="MuaGiaiAllowNull" msdata:child="SanThiDauExt" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="SanThiDauExt" msprop:Generator_ChildPropName="GetSanThiDauExtRows" msprop:Generator_UserRelationName="FK_DOIBONG_MaMuaGiai2" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_DOIBONG_MaMuaGiai2" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_DOIBONG_MaMuaGiai3" msdata:parent="MuaGiaiAllowNull" msdata:child="LichThiDauExt" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="LichThiDauExt" msprop:Generator_ChildPropName="GetLichThiDauExtRows" msprop:Generator_UserRelationName="FK_DOIBONG_MaMuaGiai3" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_DOIBONG_MaMuaGiai3" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi" msdata:parent="DoiBongAllowNull" msdata:child="RaSanExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="RaSanExt" msprop:Generator_ChildPropName="GetRaSanExtRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi" msprop:Generator_UserParentTable="DoiBongAllowNull" msprop:Generator_ParentPropName="DoiBongAllowNullRow" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi1" msdata:parent="DoiBong" msdata:child="RaSanExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="RaSanExt" msprop:Generator_ChildPropName="GetRaSanExtRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi1" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi1" msprop:Generator_UserParentTable="DoiBong" msprop:Generator_ParentPropName="DoiBongRow" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi2" msdata:parent="DoiBongAllowNull" msdata:child="CauThu" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="CauThu" msprop:Generator_ChildPropName="GetCauThuRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi2" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi2" msprop:Generator_UserParentTable="DoiBongAllowNull" msprop:Generator_ParentPropName="DoiBongAllowNullRow" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi3" msdata:parent="DoiBong" msdata:child="CauThu" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="CauThu" msprop:Generator_ChildPropName="GetCauThuRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi3" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi3" msprop:Generator_UserParentTable="DoiBong" msprop:Generator_ParentPropName="DoiBongRow" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi4" msdata:parent="DoiBongAllowNull" msdata:child="RaSanSelector" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="RaSanSelector" msprop:Generator_ChildPropName="GetRaSanSelectorRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi4" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi4" msprop:Generator_UserParentTable="DoiBongAllowNull" msprop:Generator_ParentPropName="DoiBongAllowNullRow" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi5" msdata:parent="DoiBong" msdata:child="RaSanSelector" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="RaSanSelector" msprop:Generator_ChildPropName="GetRaSanSelectorRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi5" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi5" msprop:Generator_UserParentTable="DoiBong" msprop:Generator_ParentPropName="DoiBongRow" />
+      <msdata:Relationship name="FK_DOIBONG_MaMuaGiai4" msdata:parent="MuaGiaiAllowNull" msdata:child="KetQuaTranDauExt" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="KetQuaTranDauExt" msprop:Generator_ChildPropName="GetKetQuaTranDauExtRows" msprop:Generator_UserRelationName="FK_DOIBONG_MaMuaGiai4" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" msprop:Generator_RelationVarName="relationFK_DOIBONG_MaMuaGiai4" msprop:Generator_UserParentTable="MuaGiaiAllowNull" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi6" msdata:parent="DoiBongAllowNull" msdata:child="CauThuExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="CauThuExt" msprop:Generator_ChildPropName="GetCauThuExtRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi6" msprop:Generator_ParentPropName="DoiBongAllowNullRow" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi6" msprop:Generator_UserParentTable="DoiBongAllowNull" />
+      <msdata:Relationship name="FK_CAUTHU_MaDoi7" msdata:parent="DoiBong" msdata:child="CauThuExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="CauThuExt" msprop:Generator_ChildPropName="GetCauThuExtRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaDoi7" msprop:Generator_ParentPropName="DoiBongRow" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaDoi7" msprop:Generator_UserParentTable="DoiBong" />
+      <msdata:Relationship name="FK_CAUTHU_MaLoaiCauThu" msdata:parent="LoaiCauThuAllowNull" msdata:child="CauThuExt" msdata:parentkey="MaLoaiCauThu" msdata:childkey="MaLoaiCauThu" msprop:Generator_UserChildTable="CauThuExt" msprop:Generator_ChildPropName="GetCauThuExtRows" msprop:Generator_UserRelationName="FK_CAUTHU_MaLoaiCauThu" msprop:Generator_ParentPropName="LoaiCauThuAllowNullRow" msprop:Generator_RelationVarName="relationFK_CAUTHU_MaLoaiCauThu" msprop:Generator_UserParentTable="LoaiCauThuAllowNull" />
+      <msdata:Relationship name="FK_LOAICAUTHU_MaMuaGiai1" msdata:parent="MuaGiaiAllowNull" msdata:child="LoaiCauThu" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="LoaiCauThu" msprop:Generator_ChildPropName="GetLoaiCauThuRows" msprop:Generator_UserRelationName="FK_LOAICAUTHU_MaMuaGiai1" msprop:Generator_RelationVarName="relationFK_LOAICAUTHU_MaMuaGiai1" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_THUTUUUTIEN_MaMuaGiai" msdata:parent="MuaGiaiAllowNull" msdata:child="ThuTuUuTien" msdata:parentkey="MaMuaGiai" msdata:childkey="MaMuaGiai" msprop:Generator_UserChildTable="ThuTuUuTien" msprop:Generator_ChildPropName="GetThuTuUuTienRows" msprop:Generator_UserRelationName="FK_THUTUUUTIEN_MaMuaGiai" msprop:Generator_RelationVarName="relationFK_THUTUUUTIEN_MaMuaGiai" msprop:Generator_UserParentTable="MuaGiaiAllowNull" msprop:Generator_ParentPropName="MuaGiaiAllowNullRow" />
+      <msdata:Relationship name="FK_BANGXEPHANG_MaDoi" msdata:parent="DoiBongAllowNull" msdata:child="BangXepHangExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="BangXepHangExt" msprop:Generator_ChildPropName="GetBangXepHangExtRows" msprop:Generator_UserRelationName="FK_BANGXEPHANG_MaDoi" msprop:Generator_ParentPropName="DoiBongAllowNullRow" msprop:Generator_RelationVarName="relationFK_BANGXEPHANG_MaDoi" msprop:Generator_UserParentTable="DoiBongAllowNull" />
+      <msdata:Relationship name="FK_BANGXEPHANG_MaDoi1" msdata:parent="DoiBong" msdata:child="BangXepHangExt" msdata:parentkey="MaDoi" msdata:childkey="MaDoi" msprop:Generator_UserChildTable="BangXepHangExt" msprop:Generator_ChildPropName="GetBangXepHangExtRows" msprop:Generator_UserRelationName="FK_BANGXEPHANG_MaDoi1" msprop:Generator_ParentPropName="DoiBongRow" msprop:Generator_RelationVarName="relationFK_BANGXEPHANG_MaDoi1" msprop:Generator_UserParentTable="DoiBong" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanLyGiaiVoDich.helper
+namespace DTO_QLBongDa.helper
 {
     public class MutablePair<T, U>
     {

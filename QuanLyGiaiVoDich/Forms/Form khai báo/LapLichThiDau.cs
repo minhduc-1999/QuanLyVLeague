@@ -52,7 +52,7 @@ namespace QuanLyGiaiVoDich
             //TODO: automatically update stadium to selected team's home stadium
             try
             {
-                sanThiDauComboBox.SelectedValue = Database.SanThiDau_DAO.queryMaSanNha(doChuNhaComboBox.SelectedValue.ToString());
+                sanThiDauComboBox.SelectedValue = DAO_QLBongDa.Database.SanThiDau_DAO.queryMaSanNha(doChuNhaComboBox.SelectedValue.ToString());
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace QuanLyGiaiVoDich
                 //save match schedule
                 try
                 {
-                    Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, doChuNhaComboBox.SelectedValue.ToString(), doiKhachComboBox.SelectedValue.ToString(), ngayThiDauPicker.Value, gioThiDauPicker.Value, sanThiDauComboBox.SelectedValue.ToString(), vongThiDauComboBox.SelectedValue.ToString());
+                    DAO_QLBongDa.Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, doChuNhaComboBox.SelectedValue.ToString(), doiKhachComboBox.SelectedValue.ToString(), ngayThiDauPicker.Value, gioThiDauPicker.Value, sanThiDauComboBox.SelectedValue.ToString(), vongThiDauComboBox.SelectedValue.ToString());
                     button1.Enabled = false;
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.lichThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.LichThiDauExt);
@@ -94,7 +94,7 @@ namespace QuanLyGiaiVoDich
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Database.TranDau_DAO.kiemTraTranDauDaDienRa(selectedRow.Cells[0].Value.ToString()))
+            if (DAO_QLBongDa.Database.TranDau_DAO.kiemTraTranDauDaDienRa(selectedRow.Cells[0].Value.ToString()))
             {
                 MessageBox.Show("Bạn không thể xóa trận đấu đã diễn ra", "Thông báo");
                 return;
@@ -105,7 +105,7 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     //TODO: check if match has been processed
-                    Database.TranDau_DAO.removeTranDau(selectedRow.Cells[0].Value.ToString());
+                    DAO_QLBongDa.Database.TranDau_DAO.removeTranDau(selectedRow.Cells[0].Value.ToString());
                     selectedRow = null;
                     this.lichThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.LichThiDauExt);
                     button1.Enabled = false;

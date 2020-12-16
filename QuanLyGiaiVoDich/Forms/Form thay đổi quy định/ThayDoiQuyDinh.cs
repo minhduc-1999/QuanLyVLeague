@@ -71,7 +71,7 @@ namespace QuanLyGiaiVoDich
 
             int diemThang; int diemHoa; int diemThua; int soCauThuToiThieu; int soCauThuToiDa;
             int soCauThuNuocNgoaiToiDa; int soLanThayNguoiToiDa; int tuoiToiThieu; int tuoiToiDa;
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa, out soCauThuToiThieu, out soCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa, out diemThang, out diemThua, out diemHoa);
+            DAO_QLBongDa.Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa, out soCauThuToiThieu, out soCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa, out diemThang, out diemThua, out diemHoa);
             soLuongCauThuMax.Value = soCauThuToiDa;
             soLuongCauThuMin.Value = soCauThuToiThieu;
             soLuongNuocNgoaiMax.Value = soCauThuNuocNgoaiToiDa;
@@ -101,7 +101,7 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     String selectedGoalTypeId = (loaiBanThangListBox.SelectedItem as DataRowView)["MaLoaiBanThang"].ToString();
-                    Database.LoaiBanThang_DAO.removeLoaiBanThang(selectedGoalTypeId);
+                    DAO_QLBongDa.Database.LoaiBanThang_DAO.removeLoaiBanThang(selectedGoalTypeId);
                     this.loaiBanThangTableAdapter.Fill(quanLyGiaiVoDichDataSet.LoaiBanThang);
                     MessageBox.Show("Xóa loại bàn thắng thành công", "Thông báo");
                 }
@@ -126,7 +126,7 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     String selectedPlayerTypeId = (loaiCauThuListBox.SelectedItem as DataRowView)["MaLoaiCauThu"].ToString();
-                    Database.LoaiCauThu_DAO.removeLoaiCauThu(selectedPlayerTypeId);
+                    DAO_QLBongDa.Database.LoaiCauThu_DAO.removeLoaiCauThu(selectedPlayerTypeId);
                     this.loaiCauThuTableAdapter.Fill(quanLyGiaiVoDichDataSet.LoaiCauThu);
                     MessageBox.Show("Xóa loại cầu thủ thành công", "Thông báo");
                 }
@@ -150,11 +150,11 @@ namespace QuanLyGiaiVoDich
 
                 if (source_pos == 4 || dest_pos == 4) return;
 
-                string swap_source = Database.ThuTuUuTien_DAO.selectThuTuUuTien(source_pos, GlobalState.selectedSeasonId);
-                string swap_dest = Database.ThuTuUuTien_DAO.selectThuTuUuTien(dest_pos, GlobalState.selectedSeasonId);
+                string swap_source = DAO_QLBongDa.Database.ThuTuUuTien_DAO.selectThuTuUuTien(source_pos, GlobalState.selectedSeasonId);
+                string swap_dest = DAO_QLBongDa.Database.ThuTuUuTien_DAO.selectThuTuUuTien(dest_pos, GlobalState.selectedSeasonId);
 
-                Database.ThuTuUuTien_DAO.updateThuTuUuTien(source_pos, GlobalState.selectedSeasonId, swap_dest);
-                Database.ThuTuUuTien_DAO.updateThuTuUuTien(dest_pos, GlobalState.selectedSeasonId, swap_source);
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.updateThuTuUuTien(source_pos, GlobalState.selectedSeasonId, swap_dest);
+                DAO_QLBongDa.Database.ThuTuUuTien_DAO.updateThuTuUuTien(dest_pos, GlobalState.selectedSeasonId, swap_source);
                 thuTuUuTienTableAdapter.Fill(quanLyGiaiVoDichDataSet.ThuTuUuTien);
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace QuanLyGiaiVoDich
                 //TODO: update things
                 try
                 {
-                    Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId,
+                    DAO_QLBongDa.Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId,
                         Int16.Parse(doiTuoiMin.Value.ToString()),
                         Int16.Parse(doiTuoiMax.Value.ToString()),
                         Int16.Parse(soLuongCauThuMin.Value.ToString()),
@@ -296,7 +296,7 @@ namespace QuanLyGiaiVoDich
         private void MacDichButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Đã đặt lại quy định mặc định!", "Thông Báo");
-            Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId, 15, 40, 11, 40, 3, 3, 3, 0, 1);
+            DAO_QLBongDa.Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId, 15, 40, 11, 40, 3, 3, 3, 0, 1);
             ThayDoiQuyDinh_Load(this, new EventArgs());
         }
     }

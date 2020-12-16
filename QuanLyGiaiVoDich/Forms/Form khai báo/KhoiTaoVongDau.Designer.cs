@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class KhoiTaoVongDau
     {
@@ -40,7 +42,7 @@
             this.themVongDau = new System.Windows.Forms.Button();
             this.muaGiaiComboBox = new System.Windows.Forms.ComboBox();
             this.muaGiaiAllowNullBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,8 +50,8 @@
             this.maVongDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenVongDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vongDauBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vongDauTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
-            this.muaGiaiAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
+            this.vongDauTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
+            this.muaGiaiAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.importButton = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
@@ -349,9 +351,9 @@
         private System.Windows.Forms.TextBox tenVongDauTextBox;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource vongDauBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
         private System.Windows.Forms.BindingSource muaGiaiAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridViewTextBoxColumn maVongDauDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenVongDauDataGridViewTextBoxColumn;

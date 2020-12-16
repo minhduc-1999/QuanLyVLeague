@@ -1,4 +1,5 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+namespace QuanLyGiaiVoDich
 {
     partial class Home
     {
@@ -62,7 +63,7 @@
             this.donViSoHuuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenDoiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sanThiDauExtBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -264,16 +265,16 @@
             this.lapLichThiDauButton = new System.Windows.Forms.Button();
             this.tiepNhanHoSoButton = new System.Windows.Forms.Button();
             this.menuLabel = new System.Windows.Forms.Label();
-            this.sanThiDauExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauExtTableAdapter();
-            this.vongDauTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
-            this.doiBongAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongAllowNullTableAdapter();
-            this.sanThiDauAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter();
-            this.loaiCauThuAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter();
-            this.vongDauAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.VongDauAllowNullTableAdapter();
+            this.sanThiDauExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauExtTableAdapter();
+            this.vongDauTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter();
+            this.doiBongAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongAllowNullTableAdapter();
+            this.sanThiDauAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter();
+            this.loaiCauThuAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter();
+            this.vongDauAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauAllowNullTableAdapter();
             this.vongDauBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cauThuExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter();
-            this.lichThiDauExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter();
-            this.ketQuaTranDauExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.KetQuaTranDauExtTableAdapter();
+            this.cauThuExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter();
+            this.lichThiDauExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter();
+            this.ketQuaTranDauExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.KetQuaTranDauExtTableAdapter();
             this.thongtinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MaTranDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenVongDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -3405,36 +3406,36 @@
         private System.Windows.Forms.ListBox listBox1;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource sanThiDauExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauExtTableAdapter sanThiDauExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauExtTableAdapter sanThiDauExtTableAdapter;
         private System.Windows.Forms.BindingSource vongDauBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauTableAdapter vongDauTableAdapter;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.DoiBongAllowNullTableAdapter doiBongAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.DoiBongAllowNullTableAdapter doiBongAllowNullTableAdapter;
         private System.Windows.Forms.BindingSource sanThiDauAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter sanThiDauAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.SanThiDauAllowNullTableAdapter sanThiDauAllowNullTableAdapter;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource1;
         private System.Windows.Forms.BindingSource loaiCauThuAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter loaiCauThuAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LoaiCauThuAllowNullTableAdapter loaiCauThuAllowNullTableAdapter;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.BindingSource sanThiDauAllowNullBindingSource1;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource3;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource2;
         private System.Windows.Forms.BindingSource vongDauAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.VongDauAllowNullTableAdapter vongDauAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.VongDauAllowNullTableAdapter vongDauAllowNullTableAdapter;
         private System.Windows.Forms.BindingSource sanThiDauAllowNullBindingSource2;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource5;
         private System.Windows.Forms.BindingSource doiBongAllowNullBindingSource4;
         private System.Windows.Forms.BindingSource vongDauAllowNullBindingSource1;
         private System.Windows.Forms.BindingSource vongDauBindingSource1;
         private System.Windows.Forms.BindingSource cauThuExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter cauThuExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuExtTableAdapter cauThuExtTableAdapter;
         private System.Windows.Forms.BindingSource lichThiDauExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter lichThiDauExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter lichThiDauExtTableAdapter;
         private System.Windows.Forms.TextBox maLichThiDauTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource ketQuaTranDauExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.KetQuaTranDauExtTableAdapter ketQuaTranDauExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.KetQuaTranDauExtTableAdapter ketQuaTranDauExtTableAdapter;
         private System.Windows.Forms.BindingSource cauThuExtBindingSource1;
         private System.Windows.Forms.CheckBox ngayThangCheckBox;
         private System.Windows.Forms.CheckBox gioCheckBox;

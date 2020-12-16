@@ -200,7 +200,7 @@ namespace QuanLyGiaiVoDich
 
             // get seasonID
             maMuaGiai = GlobalState.selectedSeasonId;
-            Database.MuaGiai_DAO.selectMuaGiai(maMuaGiai, out tenMuaGiai, out trangThaiMuaGiai);
+            DAO_QLBongDa.Database.MuaGiai_DAO.selectMuaGiai(maMuaGiai, out tenMuaGiai, out trangThaiMuaGiai);
 
             surpressStatusChangePrompt = true;
             trangThaiComboBox.SelectedIndex = trangThaiMuaGiai;
@@ -306,8 +306,8 @@ namespace QuanLyGiaiVoDich
             this.sanThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.SanThiDauExt);
             this.lichThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.LichThiDauExt);
 
-            List<string> Top3Team = Database.BangXepHang_DAO.getTop3(GlobalState.selectedSeasonId);
-            List<string> Top3Player = Database.CauThu_DAO.getTop3(GlobalState.selectedSeasonId);
+            List<string> Top3Team = DAO_QLBongDa.Database.BangXepHang_DAO.getTop3(GlobalState.selectedSeasonId);
+            List<string> Top3Player = DAO_QLBongDa.Database.CauThu_DAO.getTop3(GlobalState.selectedSeasonId);
 
             label14.Text = Top3Team[0];
             label36.Text = Top3Team[1];
@@ -320,7 +320,7 @@ namespace QuanLyGiaiVoDich
 
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Database.DatabaseManager.Instance.terminateConnection();
+            DAO_QLBongDa.Database.DatabaseManager.Instance.terminateConnection();
         }
 
         private void traCuuCauThu_Click(object sender, EventArgs e)
@@ -350,7 +350,7 @@ namespace QuanLyGiaiVoDich
 
             //TODO: load team result and recent match history
             int tranThang, tranHoa, tranThua, hieuSo, banThangSanKhach, diemSo;
-            Database.KetQuaDoiBong_DAO.selectKetQuaDoiBong(traCuuTenDoiComboBox.SelectedValue.ToString(), out tranThang, out tranThua, out tranHoa, out hieuSo, out diemSo, out banThangSanKhach);
+            DAO_QLBongDa.Database.KetQuaDoiBong_DAO.selectKetQuaDoiBong(traCuuTenDoiComboBox.SelectedValue.ToString(), out tranThang, out tranThua, out tranHoa, out hieuSo, out diemSo, out banThangSanKhach);
             ketQuaDiem.Text = diemSo.ToString();
             ketQuaTHT.Text = tranThang.ToString() + " / " + tranHoa.ToString() + " / " + tranThua.ToString();
             ketQuaHieuSo.Text = hieuSo.ToString();
@@ -358,7 +358,7 @@ namespace QuanLyGiaiVoDich
             maDoiTextBox.Text = traCuuTenDoiComboBox.SelectedValue.ToString();
 
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(Database.TranDau_DAO.load5TranGanNhat(traCuuTenDoiComboBox.SelectedValue.ToString(), GlobalState.selectedSeasonId).ToArray());
+            listBox1.Items.AddRange(DAO_QLBongDa.Database.TranDau_DAO.load5TranGanNhat(traCuuTenDoiComboBox.SelectedValue.ToString(), GlobalState.selectedSeasonId).ToArray());
         }
 
         private void ngayThangCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -465,7 +465,7 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     trangThaiMuaGiai = trangThaiComboBox.SelectedIndex;
-                    Database.MuaGiai_DAO.updateMuaGiai(GlobalState.selectedSeasonId, tenMuaGiai, trangThaiMuaGiai);
+                    DAO_QLBongDa.Database.MuaGiai_DAO.updateMuaGiai(GlobalState.selectedSeasonId, tenMuaGiai, trangThaiMuaGiai);
                 }
                 catch (Exception ex)
                 {

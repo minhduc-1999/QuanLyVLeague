@@ -41,7 +41,7 @@ namespace QuanLyGiaiVoDich
             DateTime ngayThiDau, gioThiDau;
             try
             {
-                Database.TranDau_DAO.loadThongTinThiDau(selectedMatchId, out doiNha, out doiKhach, out ngayThiDau, out gioThiDau, out sanThiDau, out vongDau);
+                DAO_QLBongDa.Database.TranDau_DAO.loadThongTinThiDau(selectedMatchId, out doiNha, out doiKhach, out ngayThiDau, out gioThiDau, out sanThiDau, out vongDau);
                 vongThiDauComboBox.SelectedValue = vongDau;
                 doChuNhaComboBox.SelectedValue = doiNha;
                 doiKhachComboBox.SelectedValue = doiKhach;
@@ -69,7 +69,7 @@ namespace QuanLyGiaiVoDich
             try
             {
                 //TODO: check if the match can be edited
-                Database.TranDau_DAO.updateLichThiDau(selectedMatchId, ngayThiDauPicker.Value, gioThiDauPicker.Value, sanThiDauComboBox.SelectedValue.ToString());
+                DAO_QLBongDa.Database.TranDau_DAO.updateLichThiDau(selectedMatchId, ngayThiDauPicker.Value, gioThiDauPicker.Value, sanThiDauComboBox.SelectedValue.ToString());
                 MessageBox.Show("Cập nhật thành công", "Thông báo");
                 surpressDiscardPrompt = true;
                 this.Close();
@@ -82,7 +82,7 @@ namespace QuanLyGiaiVoDich
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
-            if (Database.TranDau_DAO.kiemTraTranDauDaDienRa(selectedMatchId))
+            if (DAO_QLBongDa.Database.TranDau_DAO.kiemTraTranDauDaDienRa(selectedMatchId))
             {
                 MessageBox.Show("Bạn không thể xóa trận đấu đã diễn ra", "Thông báo");
                 return;
@@ -92,7 +92,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.TranDau_DAO.removeTranDau(selectedMatchId);
+                    DAO_QLBongDa.Database.TranDau_DAO.removeTranDau(selectedMatchId);
                     MessageBox.Show("Xóa thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();

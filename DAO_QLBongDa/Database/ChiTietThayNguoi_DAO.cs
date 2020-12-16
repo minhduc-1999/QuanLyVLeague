@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace QuanLyGiaiVoDich.Database
+namespace DAO_QLBongDa.Database
 {
     public class ChiTietThayNguoi_DAO
     {

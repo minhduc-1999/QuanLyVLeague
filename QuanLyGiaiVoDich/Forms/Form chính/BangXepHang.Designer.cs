@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class BangXepHang
     {
@@ -32,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BangXepHang));
             this.bangXepHangData = new System.Windows.Forms.DataGridView();
             this.bangXepHangExtBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.thongTinPanel = new System.Windows.Forms.Panel();
             this.thoiGianPicker = new System.Windows.Forms.DateTimePicker();
             this.muaGiaiComboBox = new System.Windows.Forms.ComboBox();
@@ -43,8 +45,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bangXepHangLabel = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.bangXepHangExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.BangXepHangExtTableAdapter();
-            this.muaGiaiAllowNullTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
+            this.bangXepHangExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.BangXepHangExtTableAdapter();
+            this.muaGiaiAllowNullTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter();
             this.xuatBXH = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.xepHangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -349,9 +351,9 @@
         private System.Windows.Forms.DateTimePicker thoiGianPicker;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource bangXepHangExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.BangXepHangExtTableAdapter bangXepHangExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.BangXepHangExtTableAdapter bangXepHangExtTableAdapter;
         private System.Windows.Forms.BindingSource muaGiaiAllowNullBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.MuaGiaiAllowNullTableAdapter muaGiaiAllowNullTableAdapter;
         private System.Windows.Forms.Button xuatBXH;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn xepHangDataGridViewTextBoxColumn;

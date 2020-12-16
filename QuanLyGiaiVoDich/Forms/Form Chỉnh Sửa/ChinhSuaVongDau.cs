@@ -27,7 +27,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.VongDau_DAO.updateVongDau(selectedRoundId, tenVongTextBox.Text, muaGiaiComboBox.SelectedValue.ToString());
+                    DAO_QLBongDa.Database.VongDau_DAO.updateVongDau(selectedRoundId, tenVongTextBox.Text, muaGiaiComboBox.SelectedValue.ToString());
                     MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();
@@ -46,7 +46,7 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.VongDau_DAO.removeVongDau(selectedRoundId);
+                    DAO_QLBongDa.Database.VongDau_DAO.removeVongDau(selectedRoundId);
                     MessageBox.Show("Xóa thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();
@@ -63,7 +63,7 @@ namespace QuanLyGiaiVoDich
             // TODO: This line of code loads data into the 'quanLyGiaiVoDichDataSet.MuaGiaiAllowNull' table. You can move, or remove it, as needed.
             this.muaGiaiAllowNullTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.MuaGiaiAllowNull);
             string tenVong, maMuaGiai;
-            Database.VongDau_DAO.selectVongDau(selectedRoundId, out tenVong, out maMuaGiai);
+            DAO_QLBongDa.Database.VongDau_DAO.selectVongDau(selectedRoundId, out tenVong, out maMuaGiai);
             tenVongTextBox.Text = tenVong;
             muaGiaiComboBox.SelectedValue = maMuaGiai;
         }

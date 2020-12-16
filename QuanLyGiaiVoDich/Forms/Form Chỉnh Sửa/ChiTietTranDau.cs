@@ -63,7 +63,7 @@ namespace QuanLyGiaiVoDich
             DateTime gioThiDau;
             string MaSanThiDau;
             string MaVongDau;
-            Database.TranDau_DAO.loadThongTinThiDau(selectedMatchId, out MaDoiChuNha, out MaDoiKhach, out ngayThiDau, out gioThiDau, out MaSanThiDau, out MaVongDau);
+            DAO_QLBongDa.Database.TranDau_DAO.loadThongTinThiDau(selectedMatchId, out MaDoiChuNha, out MaDoiKhach, out ngayThiDau, out gioThiDau, out MaSanThiDau, out MaVongDau);
             doiNhaComboBox.SelectedValue = MaDoiChuNha;
             doiKhachComboBox.SelectedValue = MaDoiKhach;
             sanThiDauComboBox.SelectedValue = MaSanThiDau;
@@ -72,12 +72,12 @@ namespace QuanLyGiaiVoDich
 
             //TODO: load game score (0-0 if score is null)
             int tiSoNha; int tiSoKhach;
-            Database.TranDau_DAO.loadTiSoTranDau(selectedMatchId, out tiSoNha, out tiSoKhach);
+            DAO_QLBongDa.Database.TranDau_DAO.loadTiSoTranDau(selectedMatchId, out tiSoNha, out tiSoKhach);
             tiSoDoiNha.Text = tiSoNha.ToString();
             tiSoDoiKhach.Text = tiSoKhach.ToString();
 
             //load game time (00:00 if time is null)
-            TimeSpan thoiGianThiDau = Database.TranDau_DAO.loadThoiGianThiDau(selectedMatchId);
+            TimeSpan thoiGianThiDau = DAO_QLBongDa.Database.TranDau_DAO.loadThoiGianThiDau(selectedMatchId);
             thoiGianThiDauLabel.Text = string.Format("{0:000}:{1:00}", thoiGianThiDau.Hours * 60 + thoiGianThiDau.Minutes, thoiGianThiDau.Seconds);
         }
     }

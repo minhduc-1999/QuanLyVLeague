@@ -29,7 +29,7 @@ namespace QuanLyGiaiVoDich.helper
                 string[] component = line.Split(compSeparators, StringSplitOptions.RemoveEmptyEntries);
                 try
                 {
-                    Database.SanThiDau_DAO.createSanThiDau(component[0], GlobalState.selectedSeasonId, component[1]);
+                    DAO_QLBongDa.Database.SanThiDau_DAO.createSanThiDau(component[0], GlobalState.selectedSeasonId, component[1]);
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +55,7 @@ namespace QuanLyGiaiVoDich.helper
                 }
                 try
                 {
-                    Database.VongDau_DAO.createVongDau(line.Trim(), GlobalState.selectedSeasonId);
+                    DAO_QLBongDa.Database.VongDau_DAO.createVongDau(line.Trim(), GlobalState.selectedSeasonId);
                 }
                 catch (Exception ex)
                 {
@@ -94,7 +94,7 @@ namespace QuanLyGiaiVoDich.helper
                 if (teamStadiumField) {
                     try
                     {
-                        sanNha.SelectedValue = Database.SanThiDau_DAO.queryMaSanThiDau(component[1], GlobalState.selectedSeasonId);
+                        sanNha.SelectedValue = DAO_QLBongDa.Database.SanThiDau_DAO.queryMaSanThiDau(component[1], GlobalState.selectedSeasonId);
                     }
                     catch (Exception ex)
                     {
@@ -107,7 +107,7 @@ namespace QuanLyGiaiVoDich.helper
                 try
                 {
                     //add player to datagridview
-                    if (Database.LoaiCauThu_DAO.queryMaLoaiCauThu(component[3], GlobalState.selectedSeasonId).Equals("")) throw new Exception("Loại cầu thủ không tồn tại");
+                    if (DAO_QLBongDa.Database.LoaiCauThu_DAO.queryMaLoaiCauThu(component[3], GlobalState.selectedSeasonId).Equals("")) throw new Exception("Loại cầu thủ không tồn tại");
                     String[] row = { (cauThuData.Rows.Count + 1).ToString(), component[0].ToString(), Guid.NewGuid().ToString(), component[1], DateTime.Parse(component[2]).ToString(), component[3], component[4] };
                     cauThuData.Rows.Add(row);
                 }
@@ -139,16 +139,16 @@ namespace QuanLyGiaiVoDich.helper
 
                 try
                 {
-                    string maVongDau = Database.VongDau_DAO.queryMaVongDau(component[0], GlobalState.selectedSeasonId);
+                    string maVongDau = DAO_QLBongDa.Database.VongDau_DAO.queryMaVongDau(component[0], GlobalState.selectedSeasonId);
                     if (maVongDau.Equals("")) throw new Exception("Vòng đấu không tồn tại");
-                    string maDoiNha = Database.DoiBong_DAO.queryMaDoiBong(component[1], GlobalState.selectedSeasonId);
+                    string maDoiNha = DAO_QLBongDa.Database.DoiBong_DAO.queryMaDoiBong(component[1], GlobalState.selectedSeasonId);
                     if (maDoiNha.Equals("")) throw new Exception("Đội bóng không tồn tại");
-                    string maDoiKhach = Database.DoiBong_DAO.queryMaDoiBong(component[2], GlobalState.selectedSeasonId);
+                    string maDoiKhach = DAO_QLBongDa.Database.DoiBong_DAO.queryMaDoiBong(component[2], GlobalState.selectedSeasonId);
                     if (maDoiKhach.Equals("")) throw new Exception("Đội bóng không tồn tại");
-                    string maSanThiDau = Database.SanThiDau_DAO.queryMaSanThiDau(component[5], GlobalState.selectedSeasonId);
+                    string maSanThiDau = DAO_QLBongDa.Database.SanThiDau_DAO.queryMaSanThiDau(component[5], GlobalState.selectedSeasonId);
                     if (maSanThiDau.Equals("")) throw new Exception("Sân thi đấu không tồn tại");
 
-                    Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, maDoiNha, maDoiKhach, DateTime.Parse(component[3]), DateTime.Parse(component[4]), maSanThiDau, maVongDau);
+                    DAO_QLBongDa.Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, maDoiNha, maDoiKhach, DateTime.Parse(component[3]), DateTime.Parse(component[4]), maSanThiDau, maVongDau);
                 }
                 catch (Exception ex)
                 {

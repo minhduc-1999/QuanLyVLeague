@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich
 {
     partial class DanhSachCauThu
     {
@@ -33,10 +35,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.danhSachCauThuList = new System.Windows.Forms.ListBox();
             this.cauThuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.themCauThu = new System.Windows.Forms.Button();
-            this.cauThuTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.CauThuTableAdapter();
+            this.cauThuTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cauThuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyGiaiVoDichDataSet)).BeginInit();
@@ -144,6 +146,6 @@
         private System.Windows.Forms.Button themCauThu;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource cauThuBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.CauThuTableAdapter cauThuTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.CauThuTableAdapter cauThuTableAdapter;
     }
 }

@@ -27,9 +27,9 @@ namespace DAO_QLBongDa.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-L6M78F7;Initial Catalog=QLBD;Integrated Security=True")]
-        public string QLBDConnectionString {
+        public string QuanLyGiaiVoDichConnectionString {
             get {
-                return ((string)(this["QLBDConnectionString"]));
+                return ((string)(this["QuanLyGiaiVoDichConnectionString"]));
             }
         }
     }

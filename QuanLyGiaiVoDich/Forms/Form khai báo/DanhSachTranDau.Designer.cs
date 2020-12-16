@@ -1,4 +1,6 @@
-﻿namespace QuanLyGiaiVoDich.Forms.Form_khai_báo
+﻿using DAO_QLBongDa;
+
+namespace QuanLyGiaiVoDich.Forms.Form_khai_báo
 {
     partial class DanhSachTranDau
     {
@@ -39,8 +41,8 @@
             this.gioThiDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenSanThiDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lichThiDauExtBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyGiaiVoDichDataSet = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSet();
-            this.lichThiDauExtTableAdapter = new QuanLyGiaiVoDich.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter();
+            this.quanLyGiaiVoDichDataSet = new DAO_QLBongDa.QuanLyGiaiVoDichDataSet();
+            this.lichThiDauExtTableAdapter = new DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tieuDeForm = new System.Windows.Forms.Label();
@@ -192,7 +194,7 @@
         private System.Windows.Forms.DataGridView danhSachTranDauData;
         private QuanLyGiaiVoDichDataSet quanLyGiaiVoDichDataSet;
         private System.Windows.Forms.BindingSource lichThiDauExtBindingSource;
-        private QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter lichThiDauExtTableAdapter;
+        private DAO_QLBongDa.QuanLyGiaiVoDichDataSetTableAdapters.LichThiDauExtTableAdapter lichThiDauExtTableAdapter;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label tieuDeForm;

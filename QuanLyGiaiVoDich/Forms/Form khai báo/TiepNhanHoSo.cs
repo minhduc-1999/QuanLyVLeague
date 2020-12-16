@@ -33,7 +33,7 @@ namespace QuanLyGiaiVoDich
             soLuongCauThu = 0;
 
             // Load data to DieuKien objects
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
+            DAO_QLBongDa.Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
                 out soCauThuToiThieu, out soLuongCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa,
                 out diemSoThang, out diemSoThua, out diemSoHoa);
         }
@@ -43,7 +43,7 @@ namespace QuanLyGiaiVoDich
             this.selectedTeamId = v;
 
             InitializeComponent();
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
+            DAO_QLBongDa.Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
                 out soCauThuToiThieu, out soLuongCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa,
                 out diemSoThang, out diemSoThua, out diemSoHoa);
         }
@@ -112,8 +112,8 @@ namespace QuanLyGiaiVoDich
 
             if (!selectedTeamId.Equals(""))
             {
-                tenDoiTextBox.Text = Database.DoiBong_DAO.queryTenDoiBong(selectedTeamId);
-                string MaSanNha = Database.SanThiDau_DAO.queryMaSanNha(selectedTeamId);
+                tenDoiTextBox.Text = DAO_QLBongDa.Database.DoiBong_DAO.queryTenDoiBong(selectedTeamId);
+                string MaSanNha = DAO_QLBongDa.Database.SanThiDau_DAO.queryMaSanNha(selectedTeamId);
                 if (!MaSanNha.Equals("")) sanNhaComboBox.SelectedValue = MaSanNha;
                 groupBox3.Text = "Danh sách cầu thủ mới";
                 khoiTaoDoiBongButton.Text = "Lưu thông tin đội bóng";
@@ -234,7 +234,7 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     String tenSan, donViSoHuu, maDoiNha;
-                    Database.SanThiDau_DAO.selectSanThiDau(sanNhaComboBox.SelectedValue.ToString(), out tenSan, out donViSoHuu, out maDoiNha);
+                    DAO_QLBongDa.Database.SanThiDau_DAO.selectSanThiDau(sanNhaComboBox.SelectedValue.ToString(), out tenSan, out donViSoHuu, out maDoiNha);
                     if ((!maDoiNha.Equals("")) && (!maDoiNha.Equals(selectedTeamId)))
                     {
                         var result = MessageBox.Show("Sân bạn chọn là sân nhà của một đội khác. Nếu tiếp tục, sân đã chọn sẽ không còn là sân nhà của đội bóng đó. Tiếp tục?", "Xác nhận", MessageBoxButtons.YesNo);
@@ -248,26 +248,26 @@ namespace QuanLyGiaiVoDich
                     if (selectedTeamId.Equals(""))
                     {
                         //insert team
-                        Database.DoiBong_DAO.createDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
+                        DAO_QLBongDa.Database.DoiBong_DAO.createDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
                         //retrive newly created id
-                        MaDoi = Database.DoiBong_DAO.queryMaDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
+                        MaDoi = DAO_QLBongDa.Database.DoiBong_DAO.queryMaDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
                         //update home stadium
                         //Console.WriteLine(sanNhaComboBox.SelectedValue.ToString());
-                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, MaDoi);
-                        Database.KetQuaDoiBong_DAO.createKetQuaDoiBong(MaDoi, 0, 0, 0, 0, 0, 0);
+                        DAO_QLBongDa.Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, MaDoi);
+                        DAO_QLBongDa.Database.KetQuaDoiBong_DAO.createKetQuaDoiBong(MaDoi, 0, 0, 0, 0, 0, 0);
                     }
                     else
                     {
-                        Database.DoiBong_DAO.updateDoiBong(selectedTeamId, tenCauThuTextBox.Text);
-                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, selectedTeamId);
+                        DAO_QLBongDa.Database.DoiBong_DAO.updateDoiBong(selectedTeamId, tenCauThuTextBox.Text);
+                        DAO_QLBongDa.Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, selectedTeamId);
                         MaDoi = selectedTeamId;
                     }
                     foreach (DataGridViewRow it_row in danhSachCauThuData.Rows)
                     {
-                        Database.CauThu_DAO.createCauThu(it_row.Cells[3].Value.ToString(), DateTime.Parse(it_row.Cells[4].Value.ToString()), Database.LoaiCauThu_DAO.queryMaLoaiCauThu(it_row.Cells[5].Value.ToString(), GlobalState.selectedSeasonId), it_row.Cells[6].Value.ToString(), MaDoi, 0, Int16.Parse(it_row.Cells[1].Value.ToString()));
+                        DAO_QLBongDa.Database.CauThu_DAO.createCauThu(it_row.Cells[3].Value.ToString(), DateTime.Parse(it_row.Cells[4].Value.ToString()), DAO_QLBongDa.Database.LoaiCauThu_DAO.queryMaLoaiCauThu(it_row.Cells[5].Value.ToString(), GlobalState.selectedSeasonId), it_row.Cells[6].Value.ToString(), MaDoi, 0, Int16.Parse(it_row.Cells[1].Value.ToString()));
                     }
                     //TODO: run stored procedure to check for minimum player count
-                    string res = Database.DoiBong_DAO.checkSoCauThuToiThieu(MaDoi);
+                    string res = DAO_QLBongDa.Database.DoiBong_DAO.checkSoCauThuToiThieu(MaDoi);
                     if (!res.Equals("Thỏa điều kiện số cầu thủ tối thiểu")) MessageBox.Show(res, "Thông báo");
                     //create new team result record
                     MessageBox.Show("Thêm thành công", "Thông báo");
