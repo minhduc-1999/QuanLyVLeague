@@ -4,20 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
+
 namespace QuanLyGiaiVoDich.Database
 {
     class LoaiCauThu_DAO
     {
-        public static void createLoaiCauThu(string MaMuaGiai, string TenLoaiCauThu, bool CauThuNuocNgoai)
+        public static void createLoaiCauThu(LOAICAUTHU loaict)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO LOAICAUTHU Values (NEWID(), @TenLoaiCauThu, @CauThuNuocNgoai, @MaMuaGiai)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenLoaiCauThu", TenLoaiCauThu);
-                command.Parameters.AddWithValue("@CauThuNuocNgoai", CauThuNuocNgoai);
+                command.Parameters.AddWithValue("@MaMuaGiai", loaict.MaMuaGiai);
+                command.Parameters.AddWithValue("@TenLoaiCauThu", loaict.TenLoaiCauThu);
+                command.Parameters.AddWithValue("@CauThuNuocNgoai", loaict.CauThuNuocNgoai);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -58,16 +60,16 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateLoaiCauThu(string MaLoaiCauThu, string TenLoaiCauThu, bool CauThuNuocNgoai)
+        public static void updateLoaiCauThu(LOAICAUTHU loaict)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE LOAICAUTHU SET TenLoaiCauThu = @TenLoaiCauThu, CauThuNuocNgoai = @CauThuNuocNgoai WHERE MaLoaiCauThu = @MaLoaiCauThu";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
-                command.Parameters.AddWithValue("@TenLoaiCauThu", TenLoaiCauThu);
-                command.Parameters.AddWithValue("@CauThuNuocNgoai", CauThuNuocNgoai);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", loaict.MaLoaiCauThu);
+                command.Parameters.AddWithValue("@TenLoaiCauThu", loaict.TenLoaiCauThu);
+                command.Parameters.AddWithValue("@CauThuNuocNgoai", loaict.CauThuNuocNgoai);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -84,12 +86,12 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectLoaiCauThu(string MaLoaiCauThu, out string TenLoaiCauThu)
+        public static void selectLoaiCauThu(string MaLoaiCauThu, out LOAICAUTHU loaict)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT TenLoaiCauThu FROM LOAICAUTHU WHERE MaLoaiCauThu = @MaLoaiCauThu";
+            string queryString = "SELECT TenLoaiCauThu, MaMuaGiai, CauThuNuocNgoai FROM LOAICAUTHU WHERE MaLoaiCauThu = @MaLoaiCauThu";
             SqlCommand command = new SqlCommand(queryString);
-            TenLoaiCauThu = "";
+            loaict = new LOAICAUTHU() { MaLoaiCauThu = MaLoaiCauThu };
             try
             {
                 command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
@@ -97,7 +99,9 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenLoaiCauThu = reader.GetString(0);
+                    loaict.TenLoaiCauThu = reader.GetString(0);
+                    loaict.MaMuaGiai = reader.GetString(1);
+                    loaict.CauThuNuocNgoai = reader.GetBoolean(3);
                 }
                 reader.Close();
             }

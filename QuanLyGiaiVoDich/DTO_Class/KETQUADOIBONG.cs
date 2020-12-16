@@ -14,6 +14,16 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     
     public class KETQUADOIBONG
     {
+        public KETQUADOIBONG(String maDoi)
+        {
+            MaDoi = MaDoi;
+            Thang = 0;
+            Thua = 0;
+            Hoa = 0;
+            HieuSo = 0;
+            Diem = 0;
+            SoBanThangSanKhach = 0;
+        }
         public string MaDoi { get; set; }
         public int Thang { get; set; }
         public int Thua { get; set; }

@@ -70,18 +70,19 @@ namespace QuanLyGiaiVoDich
             this.thuTuUuTienTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.ThuTuUuTien);
             this.loaiBanThangTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.LoaiBanThang);
 
-            int diemThang; int diemHoa; int diemThua; int soCauThuToiThieu; int soCauThuToiDa;
-            int soCauThuNuocNgoaiToiDa; int soLanThayNguoiToiDa; int tuoiToiThieu; int tuoiToiDa;
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa, out soCauThuToiThieu, out soCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa, out diemThang, out diemThua, out diemHoa);
-            soLuongCauThuMax.Value = soCauThuToiDa;
-            soLuongCauThuMin.Value = soCauThuToiThieu;
-            soLuongNuocNgoaiMax.Value = soCauThuNuocNgoaiToiDa;
-            soLuotThayNguoiMax.Value = soLanThayNguoiToiDa;
-            diemSoThang.Value = diemThang;
-            diemSoHoa.Value = diemHoa;
-            diemSoThua.Value = diemThua;
-            doiTuoiMax.Value = tuoiToiDa;
-            doiTuoiMin.Value = tuoiToiThieu;
+            //int diemThang; int diemHoa; int diemThua; int soCauThuToiThieu; int soCauThuToiDa;
+            //int soCauThuNuocNgoaiToiDa; int soLanThayNguoiToiDa; int tuoiToiThieu; int tuoiToiDa;
+            DIEUKIEN dieuKien;
+            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out dieuKien);
+            soLuongCauThuMax.Value = dieuKien.SoCauThuToiDa;
+            soLuongCauThuMin.Value = dieuKien.SoCauThuToiThieu;
+            soLuongNuocNgoaiMax.Value = dieuKien.SoCauThuNuocNgoaiToiDa;
+            soLuotThayNguoiMax.Value = dieuKien.SoLanThayNguoiToiDa;
+            diemSoThang.Value = dieuKien.DiemSoThang;
+            diemSoHoa.Value = dieuKien.DiemSoHoa;
+            diemSoThua.Value = dieuKien.DiemSoThua;
+            doiTuoiMax.Value = dieuKien.TuoiToiDa;
+            doiTuoiMin.Value = dieuKien.TuoiToiThieu;
 
             this.loaiBanThangBindingSource.Filter = "MaMuaGiai = '" + GlobalState.selectedSeasonId + "'";
             this.thuTuUuTienBindingSource.Filter = "MaMuaGiai = '" + GlobalState.selectedSeasonId + "'";

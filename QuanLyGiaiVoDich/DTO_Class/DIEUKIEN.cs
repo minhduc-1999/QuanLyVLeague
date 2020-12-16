@@ -13,7 +13,7 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     using System.Collections.Generic;
     
     public class DIEUKIEN
-    {
+    {   
         public string MaMuaGiai { get; set; }
         public int TuoiToiThieu { get; set; }
         public int TuoiToiDa { get; set; }

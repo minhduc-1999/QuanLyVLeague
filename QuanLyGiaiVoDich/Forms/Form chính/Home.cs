@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -349,12 +350,12 @@ namespace QuanLyGiaiVoDich
             this.sanThiDauAllowNullBindingSource.Filter += "AND MaDoiNha = '" + traCuuTenDoiComboBox.SelectedValue.ToString() + "'";
 
             //TODO: load team result and recent match history
-            int tranThang, tranHoa, tranThua, hieuSo, banThangSanKhach, diemSo;
-            Database.KetQuaDoiBong_DAO.selectKetQuaDoiBong(traCuuTenDoiComboBox.SelectedValue.ToString(), out tranThang, out tranThua, out tranHoa, out hieuSo, out diemSo, out banThangSanKhach);
-            ketQuaDiem.Text = diemSo.ToString();
-            ketQuaTHT.Text = tranThang.ToString() + " / " + tranHoa.ToString() + " / " + tranThua.ToString();
-            ketQuaHieuSo.Text = hieuSo.ToString();
-            ketQuaBanSanKhach.Text = banThangSanKhach.ToString();
+            KETQUADOIBONG kq;
+            Database.KetQuaDoiBong_DAO.selectKetQuaDoiBong(traCuuTenDoiComboBox.SelectedValue.ToString(), out kq);
+            ketQuaDiem.Text = kq.Diem.ToString();
+            ketQuaTHT.Text = kq.Thang.ToString() + " / " + kq.Hoa.ToString() + " / " + kq.Thua.ToString();
+            ketQuaHieuSo.Text = kq.HieuSo.ToString();
+            ketQuaBanSanKhach.Text = kq.SoBanThangSanKhach.ToString();
             maDoiTextBox.Text = traCuuTenDoiComboBox.SelectedValue.ToString();
 
             listBox1.Items.Clear();

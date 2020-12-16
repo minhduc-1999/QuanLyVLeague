@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +46,13 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.LoaiBanThang_DAO.createLoaiBanThang(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
+                    LOAIBANTHANG loaibt = new LOAIBANTHANG()
+                    {
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                        TenLoaiBanThang = textBox.Text,
+                        TinhBanChoCauThu = checkBox.Checked
+                    };
+                    Database.LoaiBanThang_DAO.createLoaiBanThang(loaibt);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.Close();
                 }
@@ -58,7 +65,13 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.LoaiCauThu_DAO.createLoaiCauThu(GlobalState.selectedSeasonId, textBox.Text, checkBox.Checked);
+                    LOAICAUTHU loaict = new LOAICAUTHU()
+                    {
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                        TenLoaiCauThu = textBox.Text,
+                        CauThuNuocNgoai = checkBox.Checked
+                    };
+                    Database.LoaiCauThu_DAO.createLoaiCauThu(loaict);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.Close();
                 }

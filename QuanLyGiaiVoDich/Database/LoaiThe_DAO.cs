@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class LoaiThe_DAO
     {
-        public static void createLoaiThe(string TenThe, string MaMuaGiai)
+        public static void createLoaiThe(LOAITHE loaithe)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "INSERT INTO LOAITHE Values (NEWID(), @TenThe, @MaMuaGiai)";
+            string queryString = "INSERT INTO LOAITHE Values (NEWID(), @TenThe)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenThe", TenThe);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@TenThe", loaithe.TenThe);
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
@@ -56,16 +56,15 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateLoaiThe(string MaLoaiThe, string TenThe, string MaMuaGiai)
+        public static void updateLoaiThe(LOAITHE loaithe)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "UPDATE LOAITHE SET TenThe = @TenThe, MaMuaGiai = @MaMuaGiai WHERE MaLoaiThe = @MaLoaiThe";
+            string queryString = "UPDATE LOAITHE SET TenThe = @TenThe WHERE MaLoaiThe = @MaLoaiThe";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenThe", TenThe);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@MaLoaiThe", MaLoaiThe);
+                command.Parameters.AddWithValue("@TenThe", loaithe.TenThe);
+                command.Parameters.AddWithValue("@MaLoaiThe", loaithe.MaLoaiThe);
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
@@ -81,21 +80,19 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectLoaiThe(string MaLoaiThe, out string TenThe, out string MaMuaGiai)
+        public static void selectLoaiThe(string MaLoaiThe, out LOAITHE loaithe)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT TenThe, MaMuaGiai FROM LOAITHE WHERE MaLoaiThe = @MaLoaiThe";
+            string queryString = "SELECT TenThe FROM LOAITHE WHERE MaLoaiThe = @MaLoaiThe";
             SqlCommand command = new SqlCommand(queryString);
-            TenThe = "";
-            MaMuaGiai = "";
+            loaithe = new LOAITHE() { MaLoaiThe = MaLoaiThe };
             try
             {
                 command.Parameters.AddWithValue("@MaLoaiThe", MaLoaiThe);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenThe = reader.GetString(0);
-                    MaMuaGiai = reader.GetString(1);    
+                    loaithe.TenThe = reader.GetString(0);
                 }
             }
             catch (SqlException SQLex)

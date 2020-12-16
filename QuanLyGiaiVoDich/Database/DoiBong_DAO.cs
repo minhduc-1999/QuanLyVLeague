@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class DoiBong_DAO
     {
-        public static void createDoiBong(string TenDoiBong, string MaMuaGiai)
+        public static void createDoiBong(DOIBONG doiBong)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO DOIBONG Values (NEWID(),@MaMuaGiai,@TenDoiBong)";
             SqlCommand command = new SqlCommand(queryString);
             try 
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenDoiBong", TenDoiBong);
+                command.Parameters.AddWithValue("@MaMuaGiai", doiBong.MaMuaGiai);
+                command.Parameters.AddWithValue("@TenDoiBong", doiBong.TenDoi);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0) 
@@ -60,15 +61,15 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static void updateDoiBong(string MaDoi, string TenDoiBongMoi)
+        public static void updateDoiBong(DOIBONG doibong)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE DOIBONG SET TenDoi = @TenDoiBongMoi WHERE MaDoi = @MaDoi";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenDoiBongMoi", TenDoiBongMoi);
-                command.Parameters.AddWithValue("@MaDoi", MaDoi);
+                command.Parameters.AddWithValue("@TenDoiBongMoi", doibong.TenDoi);
+                command.Parameters.AddWithValue("@MaDoi", doibong.MaDoi);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -85,13 +86,12 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectDoiBong(string MaDoi, out string MaMuaGiai, out string TenDoi)
+        public static void selectDoiBong(string MaDoi, out DOIBONG doibong)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT MaMuaGiai, TenDoi FROM DOIBONG WHERE MaDoi = @MaDoi";
             SqlCommand command = new SqlCommand(queryString);
-            MaMuaGiai = "";
-            TenDoi = "";
+            doibong = new DOIBONG() { MaDoi = MaDoi };
             try
             {
                 command.Parameters.AddWithValue("@MaDoi", MaDoi);
@@ -99,8 +99,8 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader sqlreader = command.ExecuteReader();
                 if (sqlreader.Read())
                 {
-                    MaMuaGiai = sqlreader.GetString(0);
-                    TenDoi = sqlreader.GetString(1);
+                    doibong.MaMuaGiai = sqlreader.GetString(0);
+                    doibong.TenDoi = sqlreader.GetString(1);
                 }
                 sqlreader.Close();
             }

@@ -101,21 +101,12 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static void selectDieuKien(string MaMuaGiai, out int TuoiToiThieu, out int TuoiToiDa, out int SoCauThuToiThieu, out int SoCauThuToiDa, out int SoCauThuNuocNgoaiToiDa, out int SoLanThayNguoiToiDa, out int DiemSoThang, out int DiemSoThua, out int DiemSoHoa)
+        public static void selectDieuKien(string MaMuaGiai, out DIEUKIEN dk)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT * FROM DIEUKIEN WHERE MaMuaGiai = @MaMuaGiai";
             SqlCommand command = new SqlCommand(queryString);
-            
-            TuoiToiThieu = 0;
-            TuoiToiDa = 0;
-            SoCauThuToiThieu = 0;
-            SoCauThuToiDa = 0;
-            SoCauThuNuocNgoaiToiDa = 0;
-            SoLanThayNguoiToiDa = 0;
-            DiemSoThang = 0;
-            DiemSoThua = 0;
-            DiemSoHoa = 0;
+            dk = new DIEUKIEN() { MaMuaGiai = MaMuaGiai};           
             try
             {
                 command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
@@ -123,15 +114,15 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TuoiToiThieu = reader.GetInt32(1);
-                    TuoiToiDa = reader.GetInt32(2);
-                    SoCauThuToiThieu = reader.GetInt32(3);
-                    SoCauThuToiDa = reader.GetInt32(4);
-                    SoCauThuNuocNgoaiToiDa = reader.GetInt32(5);
-                    SoLanThayNguoiToiDa = reader.GetInt32(6);
-                    DiemSoThang = reader.GetInt32(7);
-                    DiemSoThua = reader.GetInt32(8);
-                    DiemSoHoa = reader.GetInt32(9);
+                    dk.TuoiToiThieu = reader.GetInt32(1);
+                    dk.TuoiToiDa = reader.GetInt32(2);
+                    dk.SoCauThuToiThieu = reader.GetInt32(3);
+                    dk.SoCauThuToiDa = reader.GetInt32(4);
+                    dk.SoCauThuNuocNgoaiToiDa = reader.GetInt32(5);
+                    dk.SoLanThayNguoiToiDa = reader.GetInt32(6);
+                    dk.DiemSoThang = reader.GetInt32(7);
+                    dk.DiemSoThua = reader.GetInt32(8);
+                    dk.DiemSoHoa = reader.GetInt32(9);
                 }
                 reader.Close();
             }

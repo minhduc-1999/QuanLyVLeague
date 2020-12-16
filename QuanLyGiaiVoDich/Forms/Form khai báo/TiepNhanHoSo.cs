@@ -21,10 +21,11 @@ namespace QuanLyGiaiVoDich
         private bool surpressDiscardPrompt = false;
 
         // initialize components
-        private int tuoiToiThieu;
-        private int tuoiToiDa;
-        private int soLuongCauThuToiDa, soCauThuToiThieu, soLanThayNguoiToiDa, diemSoThang, diemSoThua, diemSoHoa, soCauThuNuocNgoaiToiDa;
+        //private int tuoiToiThieu;
+        //private int tuoiToiDa;
+        //private int soLuongCauThuToiDa, soCauThuToiThieu, soLanThayNguoiToiDa, diemSoThang, diemSoThua, diemSoHoa, soCauThuNuocNgoaiToiDa;
 
+        private DIEUKIEN dieuKien;
         // amount of soccer player in team
         private int soLuongCauThu;
 
@@ -34,9 +35,7 @@ namespace QuanLyGiaiVoDich
             soLuongCauThu = 0;
 
             // Load data to DieuKien objects
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
-                out soCauThuToiThieu, out soLuongCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa,
-                out diemSoThang, out diemSoThua, out diemSoHoa);
+            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out dieuKien);
         }
 
         public TiepNhanHoSo(string v)
@@ -44,9 +43,7 @@ namespace QuanLyGiaiVoDich
             this.selectedTeamId = v;
 
             InitializeComponent();
-            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out tuoiToiThieu, out tuoiToiDa,
-                out soCauThuToiThieu, out soLuongCauThuToiDa, out soCauThuNuocNgoaiToiDa, out soLanThayNguoiToiDa,
-                out diemSoThang, out diemSoThua, out diemSoHoa);
+            Database.DieuKien_DAO.selectDieuKien(GlobalState.selectedSeasonId, out dieuKien);
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -57,7 +54,7 @@ namespace QuanLyGiaiVoDich
                 themCauThu.Enabled = true;
                 soLuongCauThu++;
                 // if team's not full player
-                if (soLuongCauThu <= soLuongCauThuToiDa)
+                if (soLuongCauThu <= dieuKien.SoCauThuToiDa)
                 {
                     //add data to column
                     themCauThu.Enabled = true;
@@ -107,9 +104,9 @@ namespace QuanLyGiaiVoDich
             loaiCauThuAllowNullBindingSource.Filter = "MaMuaGiai = '" + GlobalState.selectedSeasonId + "' OR MaLoaiCauThu = '0'";
 
             // Load data to regulation
-            quyDinhTuoiLabel.Text = "Từ " + tuoiToiThieu.ToString() + " Đến " + tuoiToiDa.ToString();
-            soLuongCauThuToiDaLabel.Text = soLuongCauThuToiDa.ToString() + " Người";
-            soLuongCauThuNuocNgoaiToiDaLabel.Text = soCauThuNuocNgoaiToiDa.ToString() + " Người";
+            quyDinhTuoiLabel.Text = "Từ " + dieuKien.TuoiToiThieu.ToString() + " Đến " + dieuKien.TuoiToiDa.ToString();
+            soLuongCauThuToiDaLabel.Text = dieuKien.SoCauThuToiDa.ToString() + " Người";
+            soLuongCauThuNuocNgoaiToiDaLabel.Text = dieuKien.SoCauThuNuocNgoaiToiDa.ToString() + " Người";
 
             if (!selectedTeamId.Equals(""))
             {
@@ -193,7 +190,7 @@ namespace QuanLyGiaiVoDich
             else if (xoaCauthu.Text.Equals("Xóa"))
             {
                 //ask user if they want to delete this entry
-                if (soLuongCauThu > soLuongCauThuToiDa)
+                if (soLuongCauThu > dieuKien.SoCauThuToiDa)
                     soLuongCauThu -= 2;
                 else
                     soLuongCauThu--;
@@ -245,23 +242,28 @@ namespace QuanLyGiaiVoDich
                         }
                     }
 
-                    String MaDoi = "";
+                    DOIBONG doiBong = new DOIBONG()
+                    {
+                        TenDoi = tenDoiTextBox.Text,
+                        MaMuaGiai = GlobalState.selectedSeasonId
+                    };
                     if (selectedTeamId.Equals(""))
                     {
-                        //insert team
-                        Database.DoiBong_DAO.createDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
+                        //insert team                        
+                        Database.DoiBong_DAO.createDoiBong(doiBong);
                         //retrive newly created id
-                        MaDoi = Database.DoiBong_DAO.queryMaDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
+                        doiBong.MaDoi = Database.DoiBong_DAO.queryMaDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
                         //update home stadium
                         //Console.WriteLine(sanNhaComboBox.SelectedValue.ToString());
-                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, MaDoi);
-                        Database.KetQuaDoiBong_DAO.createKetQuaDoiBong(MaDoi, 0, 0, 0, 0, 0, 0);
+                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, doiBong.MaDoi);
+                        KETQUADOIBONG kq = new KETQUADOIBONG(doiBong.MaDoi);
+                        Database.KetQuaDoiBong_DAO.createKetQuaDoiBong(kq);
                     }
                     else
                     {
-                        Database.DoiBong_DAO.updateDoiBong(selectedTeamId, tenCauThuTextBox.Text);
+                        doiBong.MaDoi = selectedTeamId;
+                        Database.DoiBong_DAO.updateDoiBong(doiBong);
                         Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, selectedTeamId);
-                        MaDoi = selectedTeamId;
                     }
                     foreach (DataGridViewRow it_row in danhSachCauThuData.Rows)
                     {
@@ -271,14 +273,14 @@ namespace QuanLyGiaiVoDich
                             NgaySinh = DateTime.Parse(it_row.Cells[4].Value.ToString()),
                             MaLoaiCauThu = Database.LoaiCauThu_DAO.queryMaLoaiCauThu(it_row.Cells[5].Value.ToString(), GlobalState.selectedSeasonId),
                             GhiChu = it_row.Cells[6].Value.ToString(),
-                            MaDoi = MaDoi,
+                            MaDoi = doiBong.MaDoi,
                             SoBanThang = 0,
                             SoAo = Int16.Parse(it_row.Cells[1].Value.ToString())
                         };
                         Database.CauThu_DAO.createCauThu(cauthu);
                     }
                     //TODO: run stored procedure to check for minimum player count
-                    string res = Database.DoiBong_DAO.checkSoCauThuToiThieu(MaDoi);
+                    string res = Database.DoiBong_DAO.checkSoCauThuToiThieu(doiBong.MaDoi);
                     if (!res.Equals("Thỏa điều kiện số cầu thủ tối thiểu")) MessageBox.Show(res, "Thông báo");
                     //create new team result record
                     MessageBox.Show("Thêm thành công", "Thông báo");
@@ -384,7 +386,7 @@ namespace QuanLyGiaiVoDich
             //Console.WriteLine(tuoiToiDa.ToString() + " " + tuoiToiThieu.ToString());
 
             // Kiểm tra tuổi không phù hợp sẽ hiện lỗi
-            if (age < tuoiToiThieu || age > tuoiToiDa)
+            if (age < dieuKien.TuoiToiThieu || age > dieuKien.TuoiToiDa)
             {
                 e.Cancel = true;
                 //ngaySinhPicker.Focus();
