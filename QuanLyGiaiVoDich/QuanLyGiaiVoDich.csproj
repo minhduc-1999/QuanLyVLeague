@@ -520,14 +520,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mega-ball.ico" />
-    <Content Include="QLBD 1.3.sql" />
-    <Content Include="QuanLyGiaiVoDich.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="QuanLyGiaiVoDich_log.ldf">
-      <DependentUpon>QuanLyGiaiVoDich.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\Home.png" />
     <None Include="Resources\Kết quả trận đấu 1.png" />
     <None Include="Resources\Kết quả trận đấu 2.png" />
