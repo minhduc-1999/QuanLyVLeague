@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace QuanLyGiaiVoDich.Database
 {
-    class VongDau_DAO
+    public class LoaiCauThu_DAO
     {
-        public static void createVongDau(string TenVongDau, string MaMuaGiai)
+        public static void createLoaiCauThu(string MaMuaGiai, string TenLoaiCauThu, bool CauThuNuocNgoai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "INSERT INTO VONGDAU Values (NEWID(),@TenVongDau,@MaMuaGiai)";
+            string queryString = "INSERT INTO LOAICAUTHU Values (NEWID(), @TenLoaiCauThu, @CauThuNuocNgoai, @MaMuaGiai)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
                 command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
+                command.Parameters.AddWithValue("@TenLoaiCauThu", TenLoaiCauThu);
+                command.Parameters.AddWithValue("@CauThuNuocNgoai", CauThuNuocNgoai);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
-                    throw new Exception("Cannot insert New Round!");
+                    throw new Exception();
                 }
             }
             catch (SqlException SQLex)
@@ -33,19 +34,19 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void removeVongDau(string MaVongDau)
+        public static void removeLoaiCauThu(string MaLoaiCauThu)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "DELETE FROM VONGDAU WHERE MaVongDau = @MaVongDau";
+            string queryString = "DELETE FROM LOAICAUTHU WHERE MaLoaiCauThu = @MaLoaiCauThu";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
-                    throw new Exception("Cannot remove Round!");
+                    throw new Exception();
                 }
             }
             catch (SqlException SQLex)
@@ -57,21 +58,21 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateVongDau(string MaVongDau, string TenVongDau, string MaMuaGiai)
+        public static void updateLoaiCauThu(string MaLoaiCauThu, string TenLoaiCauThu, bool CauThuNuocNgoai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "UPDATE VONGDAU SET TenVongDau = @TenVongDau, MaMuaGiai = @MaMuaGiai WHERE MaVongDau = @MaVongDau";
+            string queryString = "UPDATE LOAICAUTHU SET TenLoaiCauThu = @TenLoaiCauThu, CauThuNuocNgoai = @CauThuNuocNgoai WHERE MaLoaiCauThu = @MaLoaiCauThu";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
+                command.Parameters.AddWithValue("@TenLoaiCauThu", TenLoaiCauThu);
+                command.Parameters.AddWithValue("@CauThuNuocNgoai", CauThuNuocNgoai);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
                 {
-                    throw new Exception("Cannot update Round!");
+                    throw new Exception();
                 }
             }
             catch (SqlException SQLex)
@@ -83,22 +84,20 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectVongDau(string MaVongDau, out string TenVongDau, out string MaMuaGiai)
+        public static void selectLoaiCauThu(string MaLoaiCauThu, out string TenLoaiCauThu)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT TenVongDau, MaMuaGiai FROM VONGDAU WHERE MaVongDau = @MaVongDau";
+            string queryString = "SELECT TenLoaiCauThu FROM LOAICAUTHU WHERE MaLoaiCauThu = @MaLoaiCauThu";
             SqlCommand command = new SqlCommand(queryString);
-            TenVongDau = "";
-            MaMuaGiai = "";
+            TenLoaiCauThu = "";
             try
             {
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
                 command.Connection = conn;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenVongDau = reader.GetString(0);
-                    MaMuaGiai = reader.GetString(1);
+                    TenLoaiCauThu = reader.GetString(0);
                 }
                 reader.Close();
             }
@@ -112,23 +111,23 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static string queryMaVongDau(string TenVongDau, string MaMuaGiai)
+        public static string queryMaLoaiCauThu(string TenLoaiCauThu, string MaMuaGiai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT MaVongDau FROM VONGDAU WHERE TenVongDau = @TenVongDau AND MaMuaGiai = @MaMuaGiai";
+            string queryString = "SELECT MaLoaiCauThu FROM LOAICAUTHU WHERE TenLoaiCauThu = @TenLoaiCauThu AND MaMuaGiai = @MaMuaGiai";
             SqlCommand command = new SqlCommand(queryString);
-            string result = "";
+            string MaLoaiCauThu = "";
             try
             {
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
+                command.Parameters.AddWithValue("@TenLoaiCauThu", TenLoaiCauThu);
                 command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
                 command.Connection = conn;
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                SqlDataReader sqlreader = command.ExecuteReader();
+                if (sqlreader.Read())
                 {
-                    if (!reader.IsDBNull(0)) result = reader.GetString(0);
+                    MaLoaiCauThu = sqlreader.GetString(0);
                 }
-                reader.Close();
+                sqlreader.Close();
             }
             catch (SqlException SQLex)
             {
@@ -138,7 +137,7 @@ namespace QuanLyGiaiVoDich.Database
             {
                 throw ex;
             }
-            return result;
+            return MaLoaiCauThu;
         }
     }
 }

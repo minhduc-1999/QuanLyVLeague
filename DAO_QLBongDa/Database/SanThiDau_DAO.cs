@@ -9,7 +9,7 @@ namespace QuanLyGiaiVoDich.Database
 {
     //call example:
     //dataAccess
-    class SanThiDau_DAO
+    public class SanThiDau_DAO
     {
         //param: 
         public static void createSanThiDau(string tenSanThiDau, string maGiaiDau, string donViQuanLi, string maDoiNha = "")

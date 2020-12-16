@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace QuanLyGiaiVoDich.Database
 {
-    class BangXepHang_DAO
+    public class BangXepHang_DAO
     {
         public static void updateBXH(string MaMuaGiai)
         {

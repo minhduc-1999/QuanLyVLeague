@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace QuanLyGiaiVoDich.Database
 {
-    class DoiBong_DAO
+    public class DoiBong_DAO
     {
         public static void createDoiBong(string TenDoiBong, string MaMuaGiai)
         {

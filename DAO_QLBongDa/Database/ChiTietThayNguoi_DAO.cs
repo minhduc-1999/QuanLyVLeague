@@ -7,17 +7,20 @@ using System.Data.SqlClient;
 
 namespace QuanLyGiaiVoDich.Database
 {
-    class MuaGiai_DAO
+    public class ChiTietThayNguoi_DAO
     {
-        public static void createMuaGiai(string TenMuaGiai)
+        public static void createChiTietThayNguoi(string MaCauThuVaoSan, string MaCauThuRaSan, TimeSpan dtThoiDiem, string MaTranDau)
         {
+            string ThoiDiem = dtThoiDiem.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "INSERT INTO MUAGIAI Values (NEWID(), @TenMuaGiai, @TrangThai)";
+            string queryString = "INSERT INTO CHITIETTHAYNGUOI Values (NEWID(), @MaCauThuVaoSan, @MaCauThuRaSan, @ThoiDiem, @MaTranDau)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
-                command.Parameters.AddWithValue("@TrangThai", 0);
+                command.Parameters.AddWithValue("@MaCauThuVaoSan", MaCauThuVaoSan);
+                command.Parameters.AddWithValue("@MaCauThuRaSan", MaCauThuRaSan);
+                command.Parameters.AddWithValue("@ThoiDiem", ThoiDiem);
+                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -34,14 +37,14 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void removeMuaGiai(string MaMuaGiai)
+        public static void removeChiTietThayNguoi(string MaThayNguoi)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "DELETE FROM MUAGIAI WHERE MaMuaGiai = @MaMuaGiai";
+            string queryString = "DELETE FROM CHITIETTHAYNGUOI WHERE MaThayNguoi = @MaThayNguoi";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@MaThayNguoi", MaThayNguoi);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -58,16 +61,19 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateMuaGiai(string MaMuaGiai, string TenMuaGiai, int TrangThai)
+        public static void updateChiTietThayNguoi(string MaThayNguoi, string MaCauThuVaoSan, string MaCauThuRaSan, TimeSpan dtThoiDiem, string MaTranDau)
         {
+            string ThoiDiem = dtThoiDiem.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "UPDATE MUAGIAI SET TenMuaGiai = @TenMuaGiai, TrangThai = @TrangThai WHERE MaMuaGiai = @MaMuaGiai";
+            string queryString = "UPDATE CHITIETTHAYNGUOI SET MaCauThuVaoSan = @MaCauThuVaoSan, MaCauThuRaSan = @MaCauThuRaSan, ThoiDiem = @ThoiDiem, MaTranDau = @MaTranDau WHERE MaThayNguoi = @MaThayNguoi";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
-                command.Parameters.AddWithValue("@TrangThai", TrangThai);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@MaThayNguoi", MaThayNguoi);
+                command.Parameters.AddWithValue("@MaCauThuVaoSan", MaCauThuVaoSan);
+                command.Parameters.AddWithValue("@MaCauThuRaSan", MaCauThuRaSan);
+                command.Parameters.AddWithValue("@ThoiDiem", ThoiDiem);
+                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -84,22 +90,24 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectMuaGiai(string MaMuaGiai, out string TenMuaGiai, out int TrangThai)
+        public static void selectChiTietThayNguoi(string MaThayNguoi, out string MaCauThuVaoSan, out string MaCauThuRaSan, out TimeSpan ThoiDiem)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT TenMuaGiai, TrangThai FROM MUAGIAI WHERE MaMuaGiai = @MaMuaGiai";
+            string queryString = "SELECT MaCauThuVaoSan, MaCauThuRaSan, ThoiDiem FROM CHITIETTHAYNGUOI WHERE MaThayNguoi = @MaThayNguoi";
             SqlCommand command = new SqlCommand(queryString);
-            TenMuaGiai = "";
-            TrangThai = 0;
+            MaCauThuVaoSan = "";
+            MaCauThuRaSan = "";
+            ThoiDiem = new TimeSpan(0);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@MaThayNguoi", MaThayNguoi);
                 command.Connection = conn;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenMuaGiai = reader.GetString(0);
-                    TrangThai = reader.GetInt32(1);
+                    MaCauThuVaoSan = reader.GetString(0);
+                    MaCauThuRaSan = reader.GetString(1);
+                    ThoiDiem = reader.GetTimeSpan(2);
                 }
                 reader.Close();
             }
@@ -111,35 +119,6 @@ namespace QuanLyGiaiVoDich.Database
             {
                 throw ex;
             }
-        }
-
-        public static string queryMaMuaGiai(string TenMuaGiai, int TrangThai)
-        {
-            SqlConnection conn = DatabaseManager.Instance.getConnection();
-            string queryString = "SELECT MaMuaGiai FROM MUAGIAI WHERE TenMuaGiai = @TenMuaGiai AND TrangThai = @TrangThai";
-            SqlCommand command = new SqlCommand(queryString);
-            string result = "";
-            try
-            {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
-                command.Parameters.AddWithValue("@TrangThai", TrangThai);
-                command.Connection = conn;
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    result = reader.GetString(0);
-                }
-                reader.Close();
-            }
-            catch (SqlException SQLex)
-            {
-                throw SQLex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
         }
     }
 }

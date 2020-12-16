@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace QuanLyGiaiVoDich.Database
 {
-    class TranDau_DAO
+    public class TranDau_DAO
     {
         public static void createTranDau(string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDau, DateTime dtGioThiDauChinh, string MaSanThiDau, string MaSanThiDauChinh, int SoBanThangDoiNha, int SoBanThangDoiKhach, TimeSpan dtThoiGianThiDau, string MaVongDau)
         {

@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyGiaiVoDich", "QuanLyGiaiVoDich\QuanLyGiaiVoDich.csproj", "{5D230FD9-5415-4FDA-85CE-13E2B17DF5C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO_QLBongDa", "DAO_QLBongDa\DAO_QLBongDa.csproj", "{7BEA6179-CB8A-4EEC-A914-FC6F8D19019F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_BLBongDa", "DTO_BLBongDa\DTO_BLBongDa.csproj", "{AC521C89-9D61-43F0-B9D3-5A9C6A862001}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5D230FD9-5415-4FDA-85CE-13E2B17DF5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D230FD9-5415-4FDA-85CE-13E2B17DF5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D230FD9-5415-4FDA-85CE-13E2B17DF5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BEA6179-CB8A-4EEC-A914-FC6F8D19019F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BEA6179-CB8A-4EEC-A914-FC6F8D19019F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BEA6179-CB8A-4EEC-A914-FC6F8D19019F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEA6179-CB8A-4EEC-A914-FC6F8D19019F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC521C89-9D61-43F0-B9D3-5A9C6A862001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC521C89-9D61-43F0-B9D3-5A9C6A862001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC521C89-9D61-43F0-B9D3-5A9C6A862001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC521C89-9D61-43F0-B9D3-5A9C6A862001}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

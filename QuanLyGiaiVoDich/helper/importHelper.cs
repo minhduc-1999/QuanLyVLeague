@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace QuanLyGiaiVoDich.helper
 {
-    class importHelper
+    public class importHelper
     {
         public static void importSanThiDau(string filename)
         {

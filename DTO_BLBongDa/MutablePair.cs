@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyGiaiVoDich.helper
 {
-    class MutablePair<T, U>
+    public class MutablePair<T, U>
     {
         public MutablePair()
         {

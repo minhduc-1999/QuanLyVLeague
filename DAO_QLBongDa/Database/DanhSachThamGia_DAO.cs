@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace QuanLyGiaiVoDich.Database
 {
-    class DanhSachThamGia_DAO
+    public class DanhSachThamGia_DAO
     {
         public static void createDanhSachThamGia(string MaTranDau, string MaCauThu, bool CauThuDuBi, bool CauThuChinhThuc)
         {

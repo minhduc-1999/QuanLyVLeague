@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace QuanLyGiaiVoDich.Database
 {
-    class DatabaseManager
+    public class DatabaseManager
     {
         //singleton class to get sql connection interface
         //to prevent opening and closing too much connection

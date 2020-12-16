@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace QuanLyGiaiVoDich.Database
 {
-    class KetQuaDoiBong_DAO
+    public class KetQuaDoiBong_DAO
     {
         public static void createKetQuaDoiBong(string MaDoi, int Thang, int Thua, int Hoa, int HieuSo, int Diem, int SoBanThangSanKhach)
         {
