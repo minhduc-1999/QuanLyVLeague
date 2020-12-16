@@ -58,9 +58,14 @@
     <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -90,6 +95,23 @@
     <Compile Include="Database\ThuTuUuTien_DAO.cs" />
     <Compile Include="Database\TranDau_DAO.cs" />
     <Compile Include="Database\VongDau_DAO.cs" />
+    <Compile Include="DTO_Class\BANGXEPHANG.cs" />
+    <Compile Include="DTO_Class\BANTHANG.cs" />
+    <Compile Include="DTO_Class\CAUTHU.cs" />
+    <Compile Include="DTO_Class\CHITIETTHAYNGUOI.cs" />
+    <Compile Include="DTO_Class\DANHSACHTHAMGIA.cs" />
+    <Compile Include="DTO_Class\DIEUKIEN.cs" />
+    <Compile Include="DTO_Class\DOIBONG.cs" />
+    <Compile Include="DTO_Class\KETQUADOIBONG.cs" />
+    <Compile Include="DTO_Class\LOAIBANTHANG.cs" />
+    <Compile Include="DTO_Class\LOAICAUTHU.cs" />
+    <Compile Include="DTO_Class\LOAITHE.cs" />
+    <Compile Include="DTO_Class\MUAGIAI.cs" />
+    <Compile Include="DTO_Class\PHATTHE.cs" />
+    <Compile Include="DTO_Class\SANTHIDAU.cs" />
+    <Compile Include="DTO_Class\THUTUUUTIEN.cs" />
+    <Compile Include="DTO_Class\TRANDAU.cs" />
+    <Compile Include="DTO_Class\VONGDAU.cs" />
     <Compile Include="Forms\Form chính\BangXepHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -555,6 +577,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
