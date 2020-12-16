@@ -623,7 +623,14 @@ namespace QuanLyGiaiVoDich
         {
             try
             {
-                Database.DanhSachThamGia_DAO.createDanhSachThamGia(GlobalState.selectedMatchId, cauThuDoiNhaComboBox.SelectedValue.ToString(), false, false);
+                DANHSACHTHAMGIA dsThamGia = new DANHSACHTHAMGIA()
+                {
+                    MaTranDau = GlobalState.selectedMatchId,
+                    MaCauThu = cauThuDoiNhaComboBox.SelectedValue.ToString(),
+                    CauThuChinhThuc = false,
+                    CauThuDuBi = false
+                };
+                Database.DanhSachThamGia_DAO.createDanhSachThamGia(dsThamGia);
                 this.raSanExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.RaSanExt);
             }
             catch (Exception ex)
@@ -662,7 +669,15 @@ namespace QuanLyGiaiVoDich
         {
             try
             {
-                Database.DanhSachThamGia_DAO.createDanhSachThamGia(GlobalState.selectedMatchId, cauThuDoiKhachComboBox.SelectedValue.ToString(), false, false);
+
+                DANHSACHTHAMGIA dsThamGia = new DANHSACHTHAMGIA()
+                {
+                    MaTranDau = GlobalState.selectedMatchId,
+                    MaCauThu = cauThuDoiKhachComboBox.SelectedValue.ToString(),
+                    CauThuChinhThuc = false,
+                    CauThuDuBi = false
+                };
+                Database.DanhSachThamGia_DAO.createDanhSachThamGia(dsThamGia);
                 this.raSanExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.RaSanExt);
             }
             catch (Exception ex)

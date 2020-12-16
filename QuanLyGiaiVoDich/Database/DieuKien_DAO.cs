@@ -4,28 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class DieuKien_DAO
     {
-        public static void createDIEUKIEN(string MaMuaGiai, int TuoiToiThieu, int TuoiToiDa, int SoCauThuToiThieu, int SoCauThuToiDa, int SoCauThuNuocNgoaiToiDa, int SoLanThayNguoiToiDa, int DiemSoThang, int DiemSoThua, int DiemSoHoa)
+        public static void createDIEUKIEN(DIEUKIEN dk)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO DIEUKIEN Values (@MaMuaGiai, @TuoiToiThieu, @TuoiToiDa, @SoCauThuToiThieu, @SoCauThuToiDa, @SoCauThuNuocNgoaiToiDa, @SoLanThayNguoiToiDa, @DiemSoThang, @DiemSoThua, @DiemSoHoa)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TuoiToiThieu", TuoiToiThieu);
-                command.Parameters.AddWithValue("@TuoiToiDa", TuoiToiDa);
-                command.Parameters.AddWithValue("@SoCauThuToiThieu", SoCauThuToiThieu);
-                command.Parameters.AddWithValue("@SoCauThuToiDa", SoCauThuToiDa);
-                command.Parameters.AddWithValue("@SoCauThuNuocNgoaiToiDa", SoCauThuNuocNgoaiToiDa);
-                command.Parameters.AddWithValue("@SoLanThayNguoiToiDa", SoLanThayNguoiToiDa);
-                command.Parameters.AddWithValue("@DiemSoThang", DiemSoThang);
-                command.Parameters.AddWithValue("@DiemSoThua", DiemSoThua);
-                command.Parameters.AddWithValue("@DiemSoHoa", DiemSoHoa);
+                command.Parameters.AddWithValue("@MaMuaGiai", dk.MaMuaGiai);
+                command.Parameters.AddWithValue("@TuoiToiThieu", dk.TuoiToiThieu);
+                command.Parameters.AddWithValue("@TuoiToiDa", dk.TuoiToiDa);
+                command.Parameters.AddWithValue("@SoCauThuToiThieu", dk.SoCauThuToiThieu);
+                command.Parameters.AddWithValue("@SoCauThuToiDa", dk.SoCauThuToiDa);
+                command.Parameters.AddWithValue("@SoCauThuNuocNgoaiToiDa", dk.SoCauThuNuocNgoaiToiDa);
+                command.Parameters.AddWithValue("@SoLanThayNguoiToiDa", dk.SoLanThayNguoiToiDa);
+                command.Parameters.AddWithValue("@DiemSoThang", dk.DiemSoThang);
+                command.Parameters.AddWithValue("@DiemSoThua", dk.DiemSoThua);
+                command.Parameters.AddWithValue("@DiemSoHoa", dk.DiemSoHoa);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -66,23 +67,23 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateDieuKien(string MaMuaGiai, int TuoiToiThieu, int TuoiToiDa, int SoCauThuToiThieu, int SoCauThuToiDa, int SoCauThuNuocNgoaiToiDa, int SoLanThayNguoiToiDa, int DiemSoThang, int DiemSoThua, int DiemSoHoa)
+        public static void updateDieuKien(DIEUKIEN dk)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE DIEUKIEN SET TuoiToiThieu = @TuoiToiThieu, TuoiToiDa = @TuoiToiDa, SoCauThuToiThieu = @SoCauThuToiThieu, SoCauThuToiDa = @SoCauThuToiDa, SoCauThuNuocNgoaiToiDa = @SoCauThuNuocNgoaiToiDa, SoLanThayNguoiToiDa = @SoLanThayNguoiToiDa, DiemSoThang = @DiemSoThang, DiemSoThua = @DiemSoThua, DiemSoHoa = @DiemSoHoa WHERE MaMuaGiai = @MaMuaGiai";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TuoiToiThieu", TuoiToiThieu);
-                command.Parameters.AddWithValue("@TuoiToiDa", TuoiToiDa);
-                command.Parameters.AddWithValue("@SoCauThuToiThieu", SoCauThuToiThieu);
-                command.Parameters.AddWithValue("@SoCauThuToiDa", SoCauThuToiDa);
-                command.Parameters.AddWithValue("@SoCauThuNuocNgoaiToiDa", SoCauThuNuocNgoaiToiDa);
-                command.Parameters.AddWithValue("@SoLanThayNguoiToiDa", SoLanThayNguoiToiDa);
-                command.Parameters.AddWithValue("@DiemSoThang", DiemSoThang);
-                command.Parameters.AddWithValue("@DiemSoThua", DiemSoThua);
-                command.Parameters.AddWithValue("@DiemSoHoa", DiemSoHoa);
+                command.Parameters.AddWithValue("@MaMuaGiai", dk.MaMuaGiai);
+                command.Parameters.AddWithValue("@TuoiToiThieu", dk.TuoiToiThieu);
+                command.Parameters.AddWithValue("@TuoiToiDa", dk.TuoiToiDa);
+                command.Parameters.AddWithValue("@SoCauThuToiThieu", dk.SoCauThuToiThieu);
+                command.Parameters.AddWithValue("@SoCauThuToiDa", dk.SoCauThuToiDa);
+                command.Parameters.AddWithValue("@SoCauThuNuocNgoaiToiDa", dk.SoCauThuNuocNgoaiToiDa);
+                command.Parameters.AddWithValue("@SoLanThayNguoiToiDa", dk.SoLanThayNguoiToiDa);
+                command.Parameters.AddWithValue("@DiemSoThang", dk.DiemSoThang);
+                command.Parameters.AddWithValue("@DiemSoThua", dk.DiemSoThua);
+                command.Parameters.AddWithValue("@DiemSoHoa", dk.DiemSoHoa);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)

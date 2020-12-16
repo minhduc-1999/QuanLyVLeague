@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,8 +34,14 @@ namespace QuanLyGiaiVoDich
             {
                 foreach (var item in lst)
                 {
-                    String selectedPlayerId = item.Row[0].ToString();
-                    Database.DanhSachThamGia_DAO.createDanhSachThamGia(GlobalState.selectedMatchId, selectedPlayerId, false, false);
+                    DANHSACHTHAMGIA dsThamGia = new DANHSACHTHAMGIA()
+                    {
+                        MaCauThu = item.Row[0].ToString(),
+                        MaTranDau = GlobalState.selectedMatchId,
+                        CauThuDuBi = false,
+                        CauThuChinhThuc = false
+                    };
+                    Database.DanhSachThamGia_DAO.createDanhSachThamGia(dsThamGia);
                 }
                 this.Close();
             }
