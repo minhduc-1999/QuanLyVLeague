@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyGiaiVoDich
@@ -100,7 +95,18 @@ namespace QuanLyGiaiVoDich
                 // update information for soccer player
                 try
                 {
-                    Database.CauThu_DAO.updateCauThu(selectedPlayerId, tenCauThuLabel.Text, ngaySinhPicker.Value, loaiCauThuComboBox.SelectedValue.ToString(), ghiChuEditBox.Text, doiBongComboBox.SelectedValue.ToString(), Int32.Parse(soBanThangLabel.Text), Int16.Parse(chonSoAo.Value.ToString()));
+                    CAUTHU cauthu = new CAUTHU()
+                    {
+                        MaCauThu = selectedPlayerId,
+                        TenCauThu = tenCauThuLabel.Text,
+                        NgaySinh = ngaySinhPicker.Value,
+                        MaLoaiCauThu = loaiCauThuComboBox.SelectedValue.ToString(),
+                        GhiChu = ghiChuEditBox.Text,
+                        MaDoi = doiBongComboBox.SelectedValue.ToString(),
+                        SoBanThang = Int32.Parse(soBanThangLabel.Text),
+                        SoAo = Int16.Parse(chonSoAo.Value.ToString())
+                    };
+                    Database.CauThu_DAO.updateCauThu(cauthu);
                     MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();

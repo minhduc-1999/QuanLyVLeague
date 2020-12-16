@@ -14,7 +14,6 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     
     public class LOAITHE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LOAITHE()
         {
         }

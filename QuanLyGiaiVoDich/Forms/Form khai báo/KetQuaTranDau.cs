@@ -1,4 +1,5 @@
-﻿using QuanLyGiaiVoDich.Forms.Form_khai_báo;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using QuanLyGiaiVoDich.Forms.Form_khai_báo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -318,7 +319,15 @@ namespace QuanLyGiaiVoDich
                 {
                     //Console.WriteLine(cauThuVaoSanComboBox.SelectedValue.ToString());
                     //Console.WriteLine(cauThuRaSanComboBox.SelectedValue.ToString());
-                    Database.ChiTietThayNguoi_DAO.createChiTietThayNguoi(cauThuVaoSanComboBox.SelectedValue.ToString(), cauThuRaSanComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutThayNguoi.Value.ToString()), Int16.Parse(giayThayNguoi.Value.ToString())), GlobalState.selectedMatchId);
+                    CHITIETTHAYNGUOI thaynguoi = new CHITIETTHAYNGUOI()
+                    {
+                        MaCauThuVaoSan = cauThuVaoSanComboBox.SelectedValue.ToString(),
+                        MaCauThuRaSan = cauThuRaSanComboBox.SelectedValue.ToString(),
+                        ThoiDiem = new TimeSpan(0, Int16.Parse(phutThayNguoi.Value.ToString()), Int16.Parse(giayThayNguoi.Value.ToString())),
+                        MaTranDau = GlobalState.selectedMatchId
+                    };
+
+                    Database.ChiTietThayNguoi_DAO.createChiTietThayNguoi(thaynguoi);
                     this.thayNguoiExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.ThayNguoiExt);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                 }
@@ -391,7 +400,14 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.BanThang_DAO.createBanThang(cauThuGhiBanComboBox.SelectedValue.ToString(), loaiBanThangComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutGhiBan.Value.ToString()), Int16.Parse(giayGhiBan.Value.ToString())), GlobalState.selectedMatchId);
+                    BANTHANG banThang = new BANTHANG()
+                    {
+                        MaCauThu = cauThuGhiBanComboBox.SelectedValue.ToString(),
+                        MaLoaiBanThang = loaiBanThangComboBox.SelectedValue.ToString(),
+                        ThoiDiem = new TimeSpan(0, Int16.Parse(phutGhiBan.Value.ToString()), Int16.Parse(giayGhiBan.Value.ToString())),
+                        MaTranDau = GlobalState.selectedMatchId
+                    };
+                    Database.BanThang_DAO.createBanThang(banThang);
                     this.banThangExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.BanThangExt);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     //TODO: update game score
@@ -461,16 +477,15 @@ namespace QuanLyGiaiVoDich
                 }
                 else
                 {
-                    string maCauThu, maLoaiBan;
-                    TimeSpan thoiDiem;
+                    BANTHANG banThang;
                     selectedGoalId = danhSachGhiBanData.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
                     try
                     {
-                        Database.BanThang_DAO.selectBanThang(selectedGoalId, out maCauThu, out maLoaiBan, out thoiDiem);
-                        cauThuGhiBanComboBox.SelectedValue = maCauThu;
-                        loaiBanThangComboBox.SelectedValue = maLoaiBan;
-                        phutGhiBan.Value = thoiDiem.Hours * 60 + thoiDiem.Minutes;
-                        giayGhiBan.Value = thoiDiem.Seconds;
+                        Database.BanThang_DAO.selectBanThang(selectedGoalId, out banThang);
+                        cauThuGhiBanComboBox.SelectedValue = banThang.MaCauThu;
+                        loaiBanThangComboBox.SelectedValue = banThang.MaLoaiBanThang;
+                        phutGhiBan.Value = banThang.ThoiDiem.Hours * 60 + banThang.ThoiDiem.Minutes;
+                        giayGhiBan.Value = banThang.ThoiDiem.Seconds;
                         xoaBanThang.Text = "Hủy";
                         suaBanThang.Text = "Lưu";
                         themBanThang.Enabled = false;
@@ -489,7 +504,15 @@ namespace QuanLyGiaiVoDich
                 //update goal infotry
                 try
                 {
-                    Database.BanThang_DAO.updateBanThang(selectedGoalId, cauThuGhiBanComboBox.SelectedValue.ToString(), loaiBanThangComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutGhiBan.Value.ToString()), Int16.Parse(giayGhiBan.Value.ToString())), GlobalState.selectedMatchId);
+                    BANTHANG banThang = new BANTHANG()
+                    {
+                        MaBanThang = selectedGoalId,
+                        MaCauThu = cauThuGhiBanComboBox.SelectedValue.ToString(),
+                        MaLoaiBanThang = loaiBanThangComboBox.SelectedValue.ToString(),
+                        ThoiDiem = new TimeSpan(0, Int16.Parse(phutGhiBan.Value.ToString()), Int16.Parse(giayGhiBan.Value.ToString())),
+                        MaTranDau = GlobalState.selectedMatchId
+                    };
+                    Database.BanThang_DAO.updateBanThang(banThang);
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
                     banThangExtTableAdapter.Fill(quanLyGiaiVoDichDataSet.BanThangExt);
                     selectedGoalId = "";
@@ -686,17 +709,15 @@ namespace QuanLyGiaiVoDich
                 else
                 {
                     //load change info into the fields
-
-                    string maCauThuVao, maCauThuRa;
-                    TimeSpan thoiDiem;
+                    CHITIETTHAYNGUOI thaynguoi;
                     selectedChangeId = dataGridView6.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
                     try
                     {
-                        Database.ChiTietThayNguoi_DAO.selectChiTietThayNguoi(selectedChangeId, out maCauThuVao, out maCauThuRa, out thoiDiem);
-                        cauThuVaoSanComboBox.SelectedValue = maCauThuVao;
-                        cauThuRaSanComboBox.SelectedValue = maCauThuRa;
-                        phutThayNguoi.Value = thoiDiem.Hours * 60 + thoiDiem.Minutes;
-                        giayThayNguoi.Value = thoiDiem.Seconds;
+                        Database.ChiTietThayNguoi_DAO.selectChiTietThayNguoi(selectedChangeId, out thaynguoi);
+                        cauThuVaoSanComboBox.SelectedValue = thaynguoi.MaCauThuVaoSan;
+                        cauThuRaSanComboBox.SelectedValue = thaynguoi.MaCauThuRaSan;
+                        phutThayNguoi.Value = thaynguoi.ThoiDiem.Hours * 60 + thaynguoi.ThoiDiem.Minutes;
+                        giayThayNguoi.Value = thaynguoi.ThoiDiem.Seconds;
 
                         xoaThayNguoi.Text = "Hủy";
                         suaThayNguoi.Text = "Lưu";
@@ -716,7 +737,15 @@ namespace QuanLyGiaiVoDich
                 //update change info
                 try
                 {
-                    Database.ChiTietThayNguoi_DAO.updateChiTietThayNguoi(selectedChangeId, cauThuVaoSanComboBox.SelectedValue.ToString(), cauThuRaSanComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutThayNguoi.Value.ToString()), Int16.Parse(giayThayNguoi.Value.ToString())), GlobalState.selectedMatchId);
+                    CHITIETTHAYNGUOI thaynguoi = new CHITIETTHAYNGUOI()
+                    {
+                        MaThayNguoi = selectedChangeId,
+                        MaCauThuVaoSan = cauThuVaoSanComboBox.SelectedValue.ToString(),
+                        MaCauThuRaSan = cauThuRaSanComboBox.SelectedValue.ToString(),
+                        ThoiDiem = new TimeSpan(0, Int16.Parse(phutThayNguoi.Value.ToString()), Int16.Parse(giayThayNguoi.Value.ToString())),
+                        MaTranDau = GlobalState.selectedMatchId
+                    };
+                    Database.ChiTietThayNguoi_DAO.updateChiTietThayNguoi(thaynguoi);
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
                     thayNguoiExtTableAdapter.Fill(quanLyGiaiVoDichDataSet.ThayNguoiExt);
                     selectedChangeId = "";

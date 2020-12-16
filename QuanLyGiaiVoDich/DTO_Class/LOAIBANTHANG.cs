@@ -22,7 +22,7 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
         public string MaLoaiBanThang { get; set; }
         public string MaMuaGiai { get; set; }
         public string TenLoaiBanThang { get; set; }
-        public Nullable<bool> TinhBanChoCauThu { get; set; }
+        public bool TinhBanChoCauThu { get; set; }
     
       
     }

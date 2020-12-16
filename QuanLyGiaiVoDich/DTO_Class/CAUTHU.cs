@@ -20,13 +20,13 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     
         public string MaCauThu { get; set; }
         public string TenCauThu { get; set; }
-        public Nullable<byte> SoAo { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
-        public Nullable<System.DateTime> NgayRoiDi { get; set; }
+        public int SoAo { get; set; }
+        public System.DateTime NgaySinh { get; set; }
+        public System.DateTime NgayRoiDi { get; set; }
         public string MaLoaiCauThu { get; set; }
         public string GhiChu { get; set; }
         public string MaDoi { get; set; }
-        public Nullable<int> SoBanThang { get; set; }
+        public int SoBanThang { get; set; }
     
       
     }

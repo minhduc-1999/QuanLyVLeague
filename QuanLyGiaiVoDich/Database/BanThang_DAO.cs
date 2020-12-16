@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class BanThang_DAO
     {
-        public static void createBanThang(string MaCauThu, string MaLoaiBanThang, TimeSpan dtThoiDiem, string MaTranDau)
+        public static void createBanThang(BANTHANG banThang)
         {
-            string ThoiDiem = dtThoiDiem.ToString("c");
+            string ThoiDiem = banThang.ThoiDiem.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO BANTHANG Values (NEWID(),@MaCauThu,@MaLoaiBanThang,@ThoiDiem,@MaTranDau)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaCauThu", MaCauThu);
-                command.Parameters.AddWithValue("@MaLoaiBanThang", MaLoaiBanThang);
+                command.Parameters.AddWithValue("@MaCauThu", banThang.MaCauThu);
+                command.Parameters.AddWithValue("@MaLoaiBanThang", banThang.MaLoaiBanThang);
                 command.Parameters.AddWithValue("@ThoiDiem", ThoiDiem);
-                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
+                command.Parameters.AddWithValue("@MaTranDau", banThang.MaTranDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -61,19 +62,19 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateBanThang(string MaBanThang, string MaCauThu, string MaLoaiBanThang, TimeSpan dtThoiDiem, string MaTranDau)
+        public static void updateBanThang(BANTHANG banThang)
         {
-            string ThoiDiem = dtThoiDiem.ToString("c");
+            string ThoiDiem = banThang.ThoiDiem.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE BANTHANG SET MaCauThu = @MaCauThu, MaLoaiBanThang = @MaLoaiBanThang, ThoiDiem = @ThoiDiem, MaTranDau = @MaTranDau WHERE MaBanThang = @MaBanThang";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaCauThu", MaCauThu);
-                command.Parameters.AddWithValue("@MaLoaiBanThang", MaLoaiBanThang);
+                command.Parameters.AddWithValue("@MaCauThu", banThang.MaCauThu);
+                command.Parameters.AddWithValue("@MaLoaiBanThang", banThang.MaLoaiBanThang);
                 command.Parameters.AddWithValue("@ThoiDiem", ThoiDiem);
-                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
-                command.Parameters.AddWithValue("@MaBanThang", MaBanThang);
+                command.Parameters.AddWithValue("@MaTranDau", banThang.MaTranDau);
+                command.Parameters.AddWithValue("@MaBanThang", banThang.MaBanThang);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -90,15 +91,19 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectBanThang(string MaBanThang, out string MaCauThu, out string MaLoaiBanThang, out TimeSpan ThoiDiem)
+        public static void selectBanThang(string MaBanThang, out BANTHANG banThang)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            
+
             string queryString = "SELECT MaCauThu, MaLoaiBanThang, ThoiDiem FROM BANTHANG WHERE MaBanThang = @MaBanThang";
             SqlCommand command = new SqlCommand(queryString);
-            MaCauThu = "";
-            MaLoaiBanThang = "";
-            ThoiDiem = new TimeSpan(0);
+            banThang = new BANTHANG()
+            {
+                MaBanThang = MaBanThang,
+                MaCauThu = "",
+                MaLoaiBanThang = "",
+                ThoiDiem = new TimeSpan(0)
+            };
             try
             {
                 command.Parameters.AddWithValue("@MaBanThang", MaBanThang);
@@ -106,9 +111,9 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    MaCauThu = reader.GetString(0);
-                    MaLoaiBanThang = reader.GetString(1);
-                    ThoiDiem = reader.GetTimeSpan(2);
+                    banThang.MaCauThu = reader.GetString(0);
+                    banThang.MaLoaiBanThang = reader.GetString(1);
+                    banThang.ThoiDiem = reader.GetTimeSpan(2);
                 }
                 reader.Close();
             }

@@ -15,12 +15,12 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     public class KETQUADOIBONG
     {
         public string MaDoi { get; set; }
-        public Nullable<int> Thang { get; set; }
-        public Nullable<int> Thua { get; set; }
-        public Nullable<int> Hoa { get; set; }
-        public Nullable<int> HieuSo { get; set; }
-        public Nullable<int> Diem { get; set; }
-        public Nullable<int> SoBanThangSanKhach { get; set; }
+        public int Thang { get; set; }
+        public int Thua { get; set; }
+        public int Hoa { get; set; }
+        public int HieuSo { get; set; }
+        public int Diem { get; set; }
+        public int SoBanThangSanKhach { get; set; }
     
     }
 }

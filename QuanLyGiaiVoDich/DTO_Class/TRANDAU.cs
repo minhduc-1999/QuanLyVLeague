@@ -23,15 +23,15 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
         public string MaMuaGiai { get; set; }
         public string DoiChuNha { get; set; }
         public string DoiKhach { get; set; }
-        public Nullable<System.DateTime> NgayThiDau { get; set; }
-        public Nullable<System.DateTime> NgayThiDauChinh { get; set; }
-        public Nullable<System.TimeSpan> GioThiDau { get; set; }
-        public Nullable<System.TimeSpan> GioThiDauChinh { get; set; }
+        public System.DateTime NgayThiDau { get; set; }
+        public System.DateTime NgayThiDauChinh { get; set; }
+        public System.TimeSpan GioThiDau { get; set; }
+        public System.TimeSpan GioThiDauChinh { get; set; }
         public string MaSanThiDau { get; set; }
         public string MaSanThiDauChinh { get; set; }
-        public Nullable<int> SoBanThangDoiNha { get; set; }
-        public Nullable<int> SoBanThangDoiKhach { get; set; }
-        public Nullable<System.TimeSpan> ThoiGianThiDau { get; set; }
+        public int SoBanThangDoiNha { get; set; }
+        public int SoBanThangDoiKhach { get; set; }
+        public System.TimeSpan ThoiGianThiDau { get; set; }
         public string MaVongDau { get; set; }
     
        

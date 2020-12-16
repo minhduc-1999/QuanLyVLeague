@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class CauThu_DAO
     {
-        public static void createCauThu(string TenCauThu, DateTime dtNgaySinh, string MaLoaiCauThu, string GhiChu, string MaDoi, int SoBanThang, int SoAo)
+        public static void createCauThu(CAUTHU cauthu)
         {
-            string NgaySinh = dtNgaySinh.ToString("yyyy-MM-dd");
+            string NgaySinh = cauthu.NgaySinh.ToString("yyyy-MM-dd");
             //Console.WriteLine(NgaySinh);
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO CAUTHU Values (NEWID(), @TenCauThu, @NgaySinh, NULL, @MaLoaiCauThu, @GhiChu, @MaDoi, @SoBanThang, @SoAo)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenCauThu",TenCauThu);
+                command.Parameters.AddWithValue("@TenCauThu",cauthu.TenCauThu);
                 command.Parameters.AddWithValue("@NgaySinh",NgaySinh);
-                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
-                command.Parameters.AddWithValue("@GhiChu", GhiChu);
-                command.Parameters.AddWithValue("@MaDoi", MaDoi);
-                command.Parameters.AddWithValue("@SoBanThang", SoBanThang);
-                command.Parameters.AddWithValue("@SoAo", SoAo);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", cauthu.MaLoaiCauThu);
+                command.Parameters.AddWithValue("@GhiChu", cauthu.GhiChu);
+                command.Parameters.AddWithValue("@MaDoi", cauthu.MaDoi);
+                command.Parameters.AddWithValue("@SoBanThang", cauthu.SoBanThang);
+                command.Parameters.AddWithValue("@SoAo", cauthu.SoAo);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -65,22 +66,22 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateCauThu(string MaCauThu, string TenCauThu, DateTime dtNgaySinh, string MaLoaiCauThu, string GhiChu, string MaDoi, int SoBanThang, int SoAo)
+        public static void updateCauThu(CAUTHU cauthu)
         {
-            string NgaySinh = dtNgaySinh.ToString("YYYY-MM-DD");
+            string NgaySinh = cauthu.NgaySinh.ToString("YYYY-MM-DD");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE CAUTHU SET TenCauThu = @TenCauThu, NgaySinh = @NgaySinh, MaLoaiCauThu = @MaLoaiCauThu, GhiChu = @GhiChu, MaDoi = @MaDoi, SoBanThang = @SoBanThang, SoAo = @SoAo WHERE MaCauThu = @MaCauThu";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaCauThu", MaCauThu);
-                command.Parameters.AddWithValue("@TenCauThu", TenCauThu);
-                command.Parameters.AddWithValue("@NgaySinh", NgaySinh);
-                command.Parameters.AddWithValue("@MaLoaiCauThu", MaLoaiCauThu);
-                command.Parameters.AddWithValue("@GhiChu", GhiChu);
-                command.Parameters.AddWithValue("@MaDoi", MaDoi);
-                command.Parameters.AddWithValue("@SoBanThang", SoBanThang);
-                command.Parameters.AddWithValue("@SoAo", SoAo);
+                command.Parameters.AddWithValue("@MaCauThu", cauthu.MaCauThu);
+                command.Parameters.AddWithValue("@TenCauThu", cauthu.TenCauThu);
+                command.Parameters.AddWithValue("@NgaySinh", cauthu.NgaySinh);
+                command.Parameters.AddWithValue("@MaLoaiCauThu", cauthu.MaLoaiCauThu);
+                command.Parameters.AddWithValue("@GhiChu", cauthu.GhiChu);
+                command.Parameters.AddWithValue("@MaDoi", cauthu.MaDoi);
+                command.Parameters.AddWithValue("@SoBanThang", cauthu.SoBanThang);
+                command.Parameters.AddWithValue("@SoAo", cauthu.SoAo);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)

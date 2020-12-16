@@ -15,15 +15,15 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     public class DIEUKIEN
     {
         public string MaMuaGiai { get; set; }
-        public Nullable<int> TuoiToiThieu { get; set; }
-        public Nullable<int> TuoiToiDa { get; set; }
-        public Nullable<int> SoCauThuToiThieu { get; set; }
-        public Nullable<int> SoCauThuToiDa { get; set; }
-        public Nullable<int> SoCauThuNuocNgoaiToiDa { get; set; }
-        public Nullable<int> SoLanThayNguoiToiDa { get; set; }
-        public Nullable<int> DiemSoThang { get; set; }
-        public Nullable<int> DiemSoThua { get; set; }
-        public Nullable<int> DiemSoHoa { get; set; }
+        public int TuoiToiThieu { get; set; }
+        public int TuoiToiDa { get; set; }
+        public int SoCauThuToiThieu { get; set; }
+        public int SoCauThuToiDa { get; set; }
+        public int SoCauThuNuocNgoaiToiDa { get; set; }
+        public int SoLanThayNguoiToiDa { get; set; }
+        public int DiemSoThang { get; set; }
+        public int DiemSoThua { get; set; }
+        public int DiemSoHoa { get; set; }
     
     }
 }

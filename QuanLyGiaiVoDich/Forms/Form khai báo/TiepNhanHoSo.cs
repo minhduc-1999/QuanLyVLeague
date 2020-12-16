@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -264,7 +265,17 @@ namespace QuanLyGiaiVoDich
                     }
                     foreach (DataGridViewRow it_row in danhSachCauThuData.Rows)
                     {
-                        Database.CauThu_DAO.createCauThu(it_row.Cells[3].Value.ToString(), DateTime.Parse(it_row.Cells[4].Value.ToString()), Database.LoaiCauThu_DAO.queryMaLoaiCauThu(it_row.Cells[5].Value.ToString(), GlobalState.selectedSeasonId), it_row.Cells[6].Value.ToString(), MaDoi, 0, Int16.Parse(it_row.Cells[1].Value.ToString()));
+                        CAUTHU cauthu = new CAUTHU()
+                        {
+                            TenCauThu = it_row.Cells[3].Value.ToString(),
+                            NgaySinh = DateTime.Parse(it_row.Cells[4].Value.ToString()),
+                            MaLoaiCauThu = Database.LoaiCauThu_DAO.queryMaLoaiCauThu(it_row.Cells[5].Value.ToString(), GlobalState.selectedSeasonId),
+                            GhiChu = it_row.Cells[6].Value.ToString(),
+                            MaDoi = MaDoi,
+                            SoBanThang = 0,
+                            SoAo = Int16.Parse(it_row.Cells[1].Value.ToString())
+                        };
+                        Database.CauThu_DAO.createCauThu(cauthu);
                     }
                     //TODO: run stored procedure to check for minimum player count
                     string res = Database.DoiBong_DAO.checkSoCauThuToiThieu(MaDoi);

@@ -21,7 +21,7 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     
         public string MaMuaGiai { get; set; }
         public string TenMuaGiai { get; set; }
-        public Nullable<int> TrangThai { get; set; }
+        public int TrangThai { get; set; }
     
       
     }

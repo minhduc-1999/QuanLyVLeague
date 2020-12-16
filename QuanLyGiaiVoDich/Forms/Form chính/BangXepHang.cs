@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,7 +77,13 @@ namespace QuanLyGiaiVoDich
                                 current_pr = tbRes[j].Second;
                                 current_place = origin_place + j;
                             }
-                            Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
+                            BANGXEPHANG xh = new BANGXEPHANG()
+                            {
+                                MaDoi = tbRes[j].First,
+                                Ngay = thoiGianPicker.Value,
+                                XepHang = current_place
+                            };
+                            Database.BangXepHang_DAO.updateXepHang(xh);
                         }
                     }
                     MaDoiDongHang.Clear();
@@ -98,7 +105,13 @@ namespace QuanLyGiaiVoDich
                                 current_pr = tbRes[j].Second;
                                 current_place = origin_place + j;
                             }
-                            Database.BangXepHang_DAO.updateXepHang(tbRes[j].First, thoiGianPicker.Value, current_place);
+                            BANGXEPHANG xh = new BANGXEPHANG()
+                            {
+                                MaDoi = tbRes[j].First,
+                                Ngay = thoiGianPicker.Value,
+                                XepHang = current_place
+                            };
+                            Database.BangXepHang_DAO.updateXepHang(xh);
                         }
                     }
                     MaDoiDongHang.Clear();

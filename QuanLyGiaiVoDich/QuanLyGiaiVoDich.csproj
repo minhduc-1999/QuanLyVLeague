@@ -16,6 +16,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -302,7 +302,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyGiaiVoDichDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="Forms\Form chính\BangXepHang.resx">
       <DependentUpon>BangXepHang.cs</DependentUpon>
@@ -421,17 +421,17 @@
   <ItemGroup>
     <None Include="QuanLyGiaiVoDichDataSet.xsc">
       <DependentUpon>QuanLyGiaiVoDichDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="QuanLyGiaiVoDichDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>QuanLyGiaiVoDichDataSet.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="QuanLyGiaiVoDichDataSet.xss">
       <DependentUpon>QuanLyGiaiVoDichDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\paper&amp;pencil_48.png" />
   </ItemGroup>
@@ -552,6 +552,13 @@
     <None Include="Resources\Kết thúc mùa giiar.PNG" />
     <None Include="Resources\Khởi tạo vòng đấu.png" />
     <None Include="Resources\Lập lịch thi đấu.png" />
+    <Content Include="QuanLyGiaiVoDich.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QuanLyGiaiVoDich_log.ldf">
+      <DependentUpon>QuanLyGiaiVoDich.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\more.png" />
     <Content Include="Resources\more_16pt.png" />
     <Content Include="Resources\soccer_profile.png" />

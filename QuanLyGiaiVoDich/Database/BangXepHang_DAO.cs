@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
+
 namespace QuanLyGiaiVoDich.Database
 {
     class BangXepHang_DAO
@@ -111,7 +113,7 @@ namespace QuanLyGiaiVoDich.Database
             return res;
         }
 
-        public static void updateXepHang(String MaDoi, DateTime Ngay, int XepHangMoi)
+        public static void updateXepHang(BANGXEPHANG xh)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE BANGXEPHANG SET XepHang = @XepHang WHERE MaDoi = @MaDoi AND Ngay = @Ngay";
@@ -120,9 +122,9 @@ namespace QuanLyGiaiVoDich.Database
             try
             {
                 //command.Parameters.AddWithValue("@MaMuaThucHien", MaMuaGiai);
-                command.Parameters.AddWithValue("@MaDoi", MaDoi);
-                command.Parameters.AddWithValue("@Ngay", Ngay.ToString("yyyy-MM-dd"));
-                command.Parameters.AddWithValue("@XepHang", XepHangMoi);
+                command.Parameters.AddWithValue("@MaDoi", xh.MaDoi);
+                command.Parameters.AddWithValue("@Ngay", xh.Ngay.ToString("yyyy-MM-dd"));
+                command.Parameters.AddWithValue("@XepHang", xh.XepHang);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)

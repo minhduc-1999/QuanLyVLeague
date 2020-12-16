@@ -17,7 +17,7 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
         public string MaPhatThe { get; set; }
         public string MaCauThu { get; set; }
         public string MaLoaiThe { get; set; }
-        public Nullable<System.TimeSpan> ThoiDiem { get; set; }
+        public System.TimeSpan ThoiDiem { get; set; }
         public string MaTranDau { get; set; }
     
     }

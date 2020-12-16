@@ -16,8 +16,8 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
     {
         public string MaTranDau { get; set; }
         public string MaCauThu { get; set; }
-        public Nullable<bool> CauThuDuBi { get; set; }
-        public Nullable<bool> CauThuChinhThuc { get; set; }
+        public bool CauThuDuBi { get; set; }
+        public bool CauThuChinhThuc { get; set; }
     
     }
 }

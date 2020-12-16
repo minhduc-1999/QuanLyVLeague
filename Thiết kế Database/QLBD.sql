@@ -6,8 +6,8 @@ go
 create table CAUTHU(
 	MaCauThu varchar(45),
 	TenCauThu nvarchar(45),
-	SoAo tinyint,
 	NgaySinh date,
+	SoAo tinyint,
 	NgayRoiDi date,
 	MaLoaiCauThu varchar(45),
 	GhiChu nvarchar(45),

@@ -26,7 +26,8 @@ namespace QuanLyGiaiVoDich.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data source=.; Initial Catalog=QLBD; Integrated security=SSPI")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\QuanLyGiaiVoD" +
+            "ich.mdf;Integrated Security=True")]
         public string QuanLyGiaiVoDichConnectionString {
             get {
                 return ((string)(this["QuanLyGiaiVoDichConnectionString"]));

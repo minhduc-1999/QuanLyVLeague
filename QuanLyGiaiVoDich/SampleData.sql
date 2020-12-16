@@ -1,5 +1,5 @@
 ﻿--Sample Data--
-
+set dateformat dmy
 --MuaGiai
 INSERT INTO MUAGIAI VALUES(NEWID(), N'Giải Bóng Đá VĐQG 2019', 1)
 --SELECT * FROM MUAGIAI
@@ -38,7 +38,7 @@ INSERT INTO SANTHIDAU VALUES(NEWID(), N'Sân Vận Động Vinh', @MaMuaGiai, N'
 INSERT INTO SANTHIDAU VALUES(NEWID(), N'Sân Vận Động Cửa Ông', @MaMuaGiai, N'Câu lạc bộ bóng đá Than Quảng Ninh', (SELECT MaDoi FROM DOIBONG WHERE TenDoi = N'Than Quảng Ninh'))
 INSERT INTO SANTHIDAU VALUES(NEWID(), N'Sân Vận Động Thanh Hóa', @MaMuaGiai, N'Ban Quản Lí Sân Thanh Hóa', (SELECT MaDoi FROM DOIBONG WHERE TenDoi = N'Thanh Hóa'))
 INSERT INTO SANTHIDAU VALUES(NEWID(), N'Sân Vận Động Hàng Đẫy (2)', @MaMuaGiai, N'Liên Đoàn Bóng Đá Việt Nam', (SELECT MaDoi FROM DOIBONG WHERE TenDoi = N'Viettel'))
-
+go
 --LoaiCauThu
 DECLARE @MaMuaGiai VARCHAR(45)
 SET @MaMuaGiai = (SELECT MaMuaGiai FROM MUAGIAI WHERE TenMuaGiai = N'Giải Bóng Đá VĐQG 2019')
@@ -52,18 +52,18 @@ INSERT INTO LOAICAUTHU VALUES(NEWID(), N'Hậu vệ nước ngoài', 1, @MaMuaGi
 INSERT INTO LOAICAUTHU VALUES(NEWID(), N'Trung vệ nước ngoài', 1, @MaMuaGiai)
 INSERT INTO LOAICAUTHU VALUES(NEWID(), N'Tiền vệ nước ngoài', 1, @MaMuaGiai)
 INSERT INTO LOAICAUTHU VALUES(NEWID(), N'Tiền đạo nước ngoài', 1, @MaMuaGiai)
-
+go
 --LoaiThe
 INSERT INTO LOAITHE VALUES(NEWID(), N'Thẻ Vàng')
 INSERT INTO LOAITHE VALUES(NEWID(), N'Thẻ Đỏ')
-
+go
 --LoaiBanThang
 DECLARE @MaMuaGiai VARCHAR(45)
 SET @MaMuaGiai = (SELECT MaMuaGiai FROM MUAGIAI WHERE TenMuaGiai = N'Giải Bóng Đá VĐQG 2019')
 INSERT INTO LOAIBANTHANG VALUES (NEWID(), @MaMuaGiai, N'Bàn Thường', 1)
 INSERT INTO LOAIBANTHANG VALUES (NEWID(), @MaMuaGiai, N'Bàn Penalty', 1)
 INSERT INTO LOAIBANTHANG VALUES (NEWID(), @MaMuaGiai, N'Bàn Phản Lưới', 0)
-
+go
 --CauThu
 --Becamex Bình Dương
 INSERT INTO CAUTHU VALUES(NEWID(), N'Phạm Văn Tiến', CONVERT(date, '30-04-1993', 105), NULL, (SELECT MaLoaiCauThu FROM LOAICAUTHU WHERE TenLoaiCauThu = N'Thủ môn'), '', (SELECT MaDoi FROM DOIBONG WHERE TenDoi = N'Becamex Bình Dương'), 0, 1)
