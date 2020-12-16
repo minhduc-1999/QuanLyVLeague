@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -181,16 +182,20 @@ namespace QuanLyGiaiVoDich
                 //TODO: update things
                 try
                 {
-                    Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId,
-                        Int16.Parse(doiTuoiMin.Value.ToString()),
-                        Int16.Parse(doiTuoiMax.Value.ToString()),
-                        Int16.Parse(soLuongCauThuMin.Value.ToString()),
-                        Int16.Parse(soLuongCauThuMax.Value.ToString()),
-                        Int16.Parse(soLuongNuocNgoaiMax.Value.ToString()),
-                        Int16.Parse(soLuotThayNguoiMax.Value.ToString()),
-                        Int16.Parse(diemSoThang.Value.ToString()),
-                        Int16.Parse(diemSoThua.Value.ToString()),
-                        Int16.Parse(diemSoHoa.Value.ToString()));
+                    DIEUKIEN dk = new DIEUKIEN()
+                    {
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                        SoCauThuToiThieu = Int16.Parse(soLuongCauThuMin.Value.ToString()),
+                        SoCauThuToiDa = Int16.Parse(soLuongCauThuMax.Value.ToString()),
+                        TuoiToiDa = Int16.Parse(doiTuoiMax.Value.ToString()),
+                        TuoiToiThieu = Int16.Parse(doiTuoiMin.Value.ToString()),
+                        SoLanThayNguoiToiDa = Int16.Parse(soLuotThayNguoiMax.Value.ToString()),
+                        SoCauThuNuocNgoaiToiDa = Int16.Parse(soLuongNuocNgoaiMax.Value.ToString()),
+                        DiemSoHoa = Int16.Parse(diemSoHoa.Value.ToString()),
+                        DiemSoThang = Int16.Parse(diemSoThang.Value.ToString()),
+                        DiemSoThua = Int16.Parse(diemSoThua.Value.ToString())
+                    };
+                    Database.DieuKien_DAO.updateDieuKien(dk);
 
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
                 }
@@ -296,7 +301,20 @@ namespace QuanLyGiaiVoDich
         private void MacDichButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Đã đặt lại quy định mặc định!", "Thông Báo");
-            Database.DieuKien_DAO.updateDieuKien(GlobalState.selectedSeasonId, 15, 40, 11, 40, 3, 3, 3, 0, 1);
+            DIEUKIEN dk = new DIEUKIEN()
+            {
+                MaMuaGiai = GlobalState.selectedSeasonId,
+                SoCauThuToiThieu = 11,
+                SoCauThuToiDa = 40,
+                TuoiToiDa = 40,
+                TuoiToiThieu = 18,
+                SoLanThayNguoiToiDa = 3,
+                SoCauThuNuocNgoaiToiDa = 3,
+                DiemSoHoa = 1,
+                DiemSoThang = 3,
+                DiemSoThua = 0
+            };
+            Database.DieuKien_DAO.updateDieuKien(dk);
             ThayDoiQuyDinh_Load(this, new EventArgs());
         }
     }

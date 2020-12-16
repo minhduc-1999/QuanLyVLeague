@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,20 @@ namespace QuanLyGiaiVoDich
             {
                 Database.MuaGiai_DAO.createMuaGiai(tenMuaGiaTextBox.Text);
                 string new_MaMuaGiai = Database.MuaGiai_DAO.queryMaMuaGiai(tenMuaGiaTextBox.Text, 0);
-                Database.DieuKien_DAO.createDIEUKIEN(new_MaMuaGiai, 15, 40, 11, 40, 3, 3, 3, 0, 1);
+                DIEUKIEN dk = new DIEUKIEN()
+                {
+                    MaMuaGiai = new_MaMuaGiai,
+                    SoCauThuToiThieu = 11,
+                    SoCauThuToiDa = 40,
+                    TuoiToiDa = 40,
+                    TuoiToiThieu = 18,
+                    SoLanThayNguoiToiDa = 3,
+                    SoCauThuNuocNgoaiToiDa = 3,
+                    DiemSoHoa = 1,
+                    DiemSoThang = 3,
+                    DiemSoThua = 0
+                };
+                Database.DieuKien_DAO.createDIEUKIEN(dk);
                 Database.ThuTuUuTien_DAO.createThuTuUuTien(1, new_MaMuaGiai, "Điểm");
                 Database.ThuTuUuTien_DAO.createThuTuUuTien(2, new_MaMuaGiai, "Hiệu Số");
                 Database.ThuTuUuTien_DAO.createThuTuUuTien(3, new_MaMuaGiai, "Số Bàn Sân Khách");
