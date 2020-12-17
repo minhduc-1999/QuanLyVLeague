@@ -196,13 +196,21 @@ namespace QuanLyGiaiVoDich
             if (luuKetQuaButton.Text.Equals("Nhập Chi Tiết Trận Đấu"))
             {
                 //save match info and disable all match info field
+                string MaTranDau = GlobalState.selectedMatchId;
+                DateTime NgayThiDauChinh = ngayPicker.Value;
+                DateTime GioThiDauChinh = gioPicker.Value;
+                string MaSanThiDauChinh = sanThiDauComboBox.SelectedValue.ToString();
+                TimeSpan ThoiGianThiDau = new TimeSpan(0, Int32.Parse(phutTranDau.Value.ToString()),
+                    Int32.Parse(giayTranDau.Value.ToString()));
+                int SoBanThangDoiNha = Int32.Parse(tiSoDoiNha.Text);
+                int SoBanThangDoiKhach = Int32.Parse(tiSoDoiKhach.Text);
                 TRANDAU trandau = new TRANDAU()
                 {
                     MaTranDau = GlobalState.selectedMatchId,
                     NgayThiDauChinh = ngayPicker.Value,
                     GioThiDauChinh = gioPicker.Value,
                     MaSanThiDauChinh = sanThiDauComboBox.SelectedValue.ToString(),
-                    ThoiGianThiDau = new DateTime(0, Int32.Parse(phutTranDau.Value.ToString()), Int32.Parse(giayTranDau.Value.ToString())),
+                    ThoiGianThiDau = new TimeSpan(0, Int32.Parse(phutTranDau.Value.ToString()), Int32.Parse(giayTranDau.Value.ToString())),
                     SoBanThangDoiNha = Int32.Parse(tiSoDoiNha.Text),
                     SoBanThangDoiKhach = Int32.Parse(tiSoDoiKhach.Text)
                 };
@@ -375,6 +383,7 @@ namespace QuanLyGiaiVoDich
                 {
                     PHATTHE phatthe = new PHATTHE()
                     {
+                        MaTranDau = GlobalState.selectedMatchId,
                         MaCauThu = cauThuPhamLoiComboBox.SelectedValue.ToString(),
                         MaLoaiThe = loaiThePhatComboBox.SelectedValue.ToString(),
                         ThoiDiem = new TimeSpan(0, Int16.Parse(phutPhamLoi.Value.ToString()), Int16.Parse(giayPhamLoi.Value.ToString())),
@@ -594,8 +603,6 @@ namespace QuanLyGiaiVoDich
                 }
                 else
                 {
-                    string maCauThu, maThePhat;
-                    TimeSpan thoiDiem;
                     selectedFoulId = danhSachPhamLoiData.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
                     try
                     {

@@ -19,7 +19,6 @@ namespace QuanLyGiaiVoDich
             InitializeComponent();      
         }
 
-        private string maMuaGiai;
         private void KhoiTaoMuaGiaiButton_Click(object sender, EventArgs e)
         {
             //call data access

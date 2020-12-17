@@ -92,6 +92,7 @@ namespace QuanLyGiaiVoDich.Database
             SqlCommand command = new SqlCommand(queryString);
             muagiai = new MUAGIAI()
             {
+                MaMuaGiai = MaMuaGiai,
                 TenMuaGiai = "",
                 TrangThai = 0,
             };

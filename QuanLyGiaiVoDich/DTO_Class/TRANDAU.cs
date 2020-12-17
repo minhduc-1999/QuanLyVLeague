@@ -31,7 +31,7 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
         public string MaSanThiDauChinh { get; set; }
         public int SoBanThangDoiNha { get; set; }
         public int SoBanThangDoiKhach { get; set; }
-        public System.DateTime ThoiGianThiDau { get; set; }
+        public System.TimeSpan ThoiGianThiDau { get; set; }
         public string MaVongDau { get; set; }
     
        

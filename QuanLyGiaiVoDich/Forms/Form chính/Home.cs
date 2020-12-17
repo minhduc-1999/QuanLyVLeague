@@ -162,8 +162,7 @@ namespace QuanLyGiaiVoDich
             form.ShowDialog();
         }
 
-        string maMuaGiai, tenMuaGiai;
-        int trangThaiMuaGiai;
+        private MUAGIAI _muagiai;
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -200,19 +199,14 @@ namespace QuanLyGiaiVoDich
             this.loaiCauThuAllowNullBindingSource.Filter = "MaMuaGiai = '" + GlobalState.selectedSeasonId + "' OR MaLoaiCauThu = '0'";
 
             // get seasonID
-            maMuaGiai = GlobalState.selectedSeasonId;
-            MUAGIAI muagiai = new MUAGIAI()
-            {
-               TenMuaGiai= tenMuaGiai,
-               TrangThai= trangThaiMuaGiai,
-            };
-            Database.MuaGiai_DAO.selectMuaGiai(maMuaGiai, out muagiai);
+          
+            Database.MuaGiai_DAO.selectMuaGiai(GlobalState.selectedSeasonId, out _muagiai);
 
             surpressStatusChangePrompt = true;
-            trangThaiComboBox.SelectedIndex = muagiai.TrangThai;
+            trangThaiComboBox.SelectedIndex = _muagiai.TrangThai;
 
             // change seasonName
-            tenMuaGiaiThongTinLabel.Text = muagiai.TenMuaGiai;
+            tenMuaGiaiThongTinLabel.Text = _muagiai.TenMuaGiai;
         }
 
         private void suaDanhSachCauThuDoiBong_Click(object sender, EventArgs e)
@@ -453,7 +447,7 @@ namespace QuanLyGiaiVoDich
                     danhSachGhiBanButton.Enabled = true;
                     break;
             }
-            if (surpressStatusChangePrompt || trangThaiComboBox.SelectedIndex == trangThaiMuaGiai)
+            if (surpressStatusChangePrompt || trangThaiComboBox.SelectedIndex == _muagiai.TrangThai)
             {
                 surpressStatusChangePrompt = false;
                 return;
@@ -463,21 +457,15 @@ namespace QuanLyGiaiVoDich
             if (result == DialogResult.No)
             {
                 surpressStatusChangePrompt = true;
-                trangThaiComboBox.SelectedIndex = trangThaiMuaGiai;
+                trangThaiComboBox.SelectedIndex = _muagiai.TrangThai;
                 return;
             }
             else
             {
                 try
                 {
-                    trangThaiMuaGiai = trangThaiComboBox.SelectedIndex;
-                    MUAGIAI muagiai = new MUAGIAI()
-                    {
-                        MaMuaGiai= GlobalState.selectedSeasonId,
-                        TenMuaGiai= tenMuaGiai,
-                        TrangThai= trangThaiMuaGiai,
-                    };
-                    Database.MuaGiai_DAO.updateMuaGiai(muagiai);
+                    _muagiai.TrangThai = trangThaiComboBox.SelectedIndex;
+                    Database.MuaGiai_DAO.updateMuaGiai(_muagiai);
                 }
                 catch (Exception ex)
                 {
@@ -803,14 +791,13 @@ namespace QuanLyGiaiVoDich
 
         private void thongtinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Đồ án Nhập môn Công nghệ Phần mềm\n" +
-                "- Trương Bá Cường - 18520013\n" +
-                "- Nguyễn Ngọc Đăng - 18520557\n" +
-                "- Hà Nhật Linh - 18520086\n" +
-                "- Nguyễn Thành Long - 18520092\n" +
-                "- Hà Minh Hiệu - 18520736\n" +
-                "Giáo viên hướng dẫn: Đỗ Thị Thanh Tuyền\n" +
-                "Tháng 7 Năm 2020", "Thông tin nhà phát triển");
+            MessageBox.Show("Đồ án OOAD\n" +
+                "- Hà Nhật Linh\t\t- 18520086\n" +
+                "- Nguyễn Thành Long\t- 18520092\n" +
+                "- Trương Hữu Minh Đức\t- 18520626\n" +
+                "- Vi Hữu Đức\t\t- 18520022\n" +
+                "Giáo viên hướng dẫn: Huỳnh Nguyễn Khắc Huy\n" +
+                "Tháng 12 Năm 2020", "Thông tin nhà phát triển");
         }
 
         void comboBox_MouseWheel_disable(object sender, MouseEventArgs e)

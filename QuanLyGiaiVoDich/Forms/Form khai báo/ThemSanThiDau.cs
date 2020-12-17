@@ -109,7 +109,7 @@ namespace QuanLyGiaiVoDich
         {
             try
             {
-                Database.VongDau_DAO.removeVongDau(selectedRow.Cells[0].Value.ToString());
+                Database.SanThiDau_DAO.removeSanThiDau(selectedRow.Cells[0].Value.ToString());
                 selectedRow = null;
                 this.sanThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.SanThiDauExt);
                 xoaSanThiDau.Enabled = false;
