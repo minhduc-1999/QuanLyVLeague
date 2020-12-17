@@ -231,9 +231,9 @@ namespace QuanLyGiaiVoDich
                 }
                 try
                 {
-                    String tenSan, donViSoHuu, maDoiNha;
-                    Database.SanThiDau_DAO.selectSanThiDau(sanNhaComboBox.SelectedValue.ToString(), out tenSan, out donViSoHuu, out maDoiNha);
-                    if ((!maDoiNha.Equals("")) && (!maDoiNha.Equals(selectedTeamId)))
+                    SANTHIDAU santhidau1;
+                    Database.SanThiDau_DAO.selectSanThiDau(sanNhaComboBox.SelectedValue.ToString(), out santhidau1);
+                    if ((!santhidau1.MaDoiNha.Equals("")) && (!santhidau1.MaDoiNha.Equals(selectedTeamId)))
                     {
                         var result = MessageBox.Show("Sân bạn chọn là sân nhà của một đội khác. Nếu tiếp tục, sân đã chọn sẽ không còn là sân nhà của đội bóng đó. Tiếp tục?", "Xác nhận", MessageBoxButtons.YesNo);
                         if (result == DialogResult.No)
@@ -255,7 +255,14 @@ namespace QuanLyGiaiVoDich
                         doiBong.MaDoi = Database.DoiBong_DAO.queryMaDoiBong(tenDoiTextBox.Text, GlobalState.selectedSeasonId);
                         //update home stadium
                         //Console.WriteLine(sanNhaComboBox.SelectedValue.ToString());
-                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, doiBong.MaDoi);
+                        SANTHIDAU santhidau = new SANTHIDAU()
+                        {
+                           MaSanThiDau= sanNhaComboBox.SelectedValue.ToString(),
+                           TenSanThiDau= santhidau1.TenSanThiDau,
+                           DonViSoHuu=santhidau1.DonViSoHuu,
+                           MaDoiNha= doiBong.MaDoi,
+                        };
+                        Database.SanThiDau_DAO.updateSanThiDau(santhidau);
                         KETQUADOIBONG kq = new KETQUADOIBONG(doiBong.MaDoi);
                         Database.KetQuaDoiBong_DAO.createKetQuaDoiBong(kq);
                     }
@@ -263,7 +270,14 @@ namespace QuanLyGiaiVoDich
                     {
                         doiBong.MaDoi = selectedTeamId;
                         Database.DoiBong_DAO.updateDoiBong(doiBong);
-                        Database.SanThiDau_DAO.updateSanThiDau(sanNhaComboBox.SelectedValue.ToString(), tenSan, donViSoHuu, selectedTeamId);
+                        SANTHIDAU santhidau = new SANTHIDAU()
+                        {
+                            MaSanThiDau = sanNhaComboBox.SelectedValue.ToString(),
+                            TenSanThiDau = santhidau1.TenSanThiDau,
+                            DonViSoHuu = santhidau1.DonViSoHuu,
+                            MaDoiNha = selectedTeamId,
+                        };
+                        Database.SanThiDau_DAO.updateSanThiDau(santhidau);
                     }
                     foreach (DataGridViewRow it_row in danhSachCauThuData.Rows)
                     {

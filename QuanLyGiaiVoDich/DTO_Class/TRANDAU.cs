@@ -25,13 +25,13 @@ namespace QuanLyGiaiVoDich.DTO_Class.Class
         public string DoiKhach { get; set; }
         public System.DateTime NgayThiDau { get; set; }
         public System.DateTime NgayThiDauChinh { get; set; }
-        public System.TimeSpan GioThiDau { get; set; }
-        public System.TimeSpan GioThiDauChinh { get; set; }
+        public System.DateTime GioThiDau { get; set; }
+        public System.DateTime GioThiDauChinh { get; set; }
         public string MaSanThiDau { get; set; }
         public string MaSanThiDauChinh { get; set; }
         public int SoBanThangDoiNha { get; set; }
         public int SoBanThangDoiKhach { get; set; }
-        public System.TimeSpan ThoiGianThiDau { get; set; }
+        public System.DateTime ThoiGianThiDau { get; set; }
         public string MaVongDau { get; set; }
     
        

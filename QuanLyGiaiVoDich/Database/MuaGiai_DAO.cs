@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class MuaGiai_DAO
     {
-        public static void createMuaGiai(string TenMuaGiai)
+        public static void createMuaGiai(MUAGIAI muagiai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO MUAGIAI Values (NEWID(), @TenMuaGiai, @TrangThai)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
+                command.Parameters.AddWithValue("@TenMuaGiai", muagiai.TenMuaGiai);
                 command.Parameters.AddWithValue("@TrangThai", 0);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
@@ -58,16 +59,16 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateMuaGiai(string MaMuaGiai, string TenMuaGiai, int TrangThai)
+        public static void updateMuaGiai(MUAGIAI muagiai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE MUAGIAI SET TenMuaGiai = @TenMuaGiai, TrangThai = @TrangThai WHERE MaMuaGiai = @MaMuaGiai";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
-                command.Parameters.AddWithValue("@TrangThai", TrangThai);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@TenMuaGiai", muagiai.TenMuaGiai);
+                command.Parameters.AddWithValue("@TrangThai", muagiai.TrangThai);
+                command.Parameters.AddWithValue("@MaMuaGiai", muagiai.MaMuaGiai);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -84,13 +85,16 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectMuaGiai(string MaMuaGiai, out string TenMuaGiai, out int TrangThai)
+        public static void selectMuaGiai(string MaMuaGiai, out MUAGIAI muagiai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT TenMuaGiai, TrangThai FROM MUAGIAI WHERE MaMuaGiai = @MaMuaGiai";
             SqlCommand command = new SqlCommand(queryString);
-            TenMuaGiai = "";
-            TrangThai = 0;
+            muagiai = new MUAGIAI()
+            {
+                TenMuaGiai = "",
+                TrangThai = 0,
+            };
             try
             {
                 command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
@@ -98,8 +102,8 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenMuaGiai = reader.GetString(0);
-                    TrangThai = reader.GetInt32(1);
+                    muagiai.TenMuaGiai = reader.GetString(0);
+                    muagiai.TrangThai = reader.GetInt32(1);
                 }
                 reader.Close();
             }
@@ -113,7 +117,7 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static string queryMaMuaGiai(string TenMuaGiai, int TrangThai)
+        public static string queryMaMuaGiai(MUAGIAI muagiai)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT MaMuaGiai FROM MUAGIAI WHERE TenMuaGiai = @TenMuaGiai AND TrangThai = @TrangThai";
@@ -121,8 +125,8 @@ namespace QuanLyGiaiVoDich.Database
             string result = "";
             try
             {
-                command.Parameters.AddWithValue("@TenMuaGiai", TenMuaGiai);
-                command.Parameters.AddWithValue("@TrangThai", TrangThai);
+                command.Parameters.AddWithValue("@TenMuaGiai", muagiai.TenMuaGiai);
+                command.Parameters.AddWithValue("@TrangThai", muagiai.TrangThai);
                 command.Connection = conn;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())

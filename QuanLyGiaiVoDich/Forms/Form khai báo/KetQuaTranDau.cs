@@ -196,7 +196,17 @@ namespace QuanLyGiaiVoDich
             if (luuKetQuaButton.Text.Equals("Nhập Chi Tiết Trận Đấu"))
             {
                 //save match info and disable all match info field
-                Database.TranDau_DAO.updateTranDau(GlobalState.selectedMatchId, ngayPicker.Value, gioPicker.Value, sanThiDauComboBox.SelectedValue.ToString(), new TimeSpan(0, Int32.Parse(phutTranDau.Value.ToString()), Int32.Parse(giayTranDau.Value.ToString())), Int32.Parse(tiSoDoiNha.Text), Int32.Parse(tiSoDoiKhach.Text));
+                TRANDAU trandau = new TRANDAU()
+                {
+                    MaTranDau = GlobalState.selectedMatchId,
+                    NgayThiDauChinh = ngayPicker.Value,
+                    GioThiDauChinh = gioPicker.Value,
+                    MaSanThiDauChinh = sanThiDauComboBox.SelectedValue.ToString(),
+                    ThoiGianThiDau = new DateTime(0, Int32.Parse(phutTranDau.Value.ToString()), Int32.Parse(giayTranDau.Value.ToString())),
+                    SoBanThangDoiNha = Int32.Parse(tiSoDoiNha.Text),
+                    SoBanThangDoiKhach = Int32.Parse(tiSoDoiKhach.Text)
+                };
+                Database.TranDau_DAO.updateTranDau(trandau);
                 maTranDauTextBox.Enabled = false;
                 ngayPicker.Enabled = false;
                 gioPicker.Enabled = false;
@@ -363,7 +373,14 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.PhatThe_DAO.createPhatThe(cauThuPhamLoiComboBox.SelectedValue.ToString(), loaiThePhatComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutPhamLoi.Value.ToString()), Int16.Parse(giayPhamLoi.Value.ToString())), GlobalState.selectedMatchId);
+                    PHATTHE phatthe = new PHATTHE()
+                    {
+                        MaCauThu = cauThuPhamLoiComboBox.SelectedValue.ToString(),
+                        MaLoaiThe = loaiThePhatComboBox.SelectedValue.ToString(),
+                        ThoiDiem = new TimeSpan(0, Int16.Parse(phutPhamLoi.Value.ToString()), Int16.Parse(giayPhamLoi.Value.ToString())),
+                        MaPhatThe = GlobalState.selectedMatchId,
+                    };
+                    Database.PhatThe_DAO.createPhatThe(phatthe);
                     this.thePhatExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.ThePhatExt);
                     MessageBox.Show("Thêm thành công", "Thông báo");
                 }
@@ -582,11 +599,12 @@ namespace QuanLyGiaiVoDich
                     selectedFoulId = danhSachPhamLoiData.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
                     try
                     {
-                        Database.PhatThe_DAO.selectPhatThe(selectedFoulId, out maCauThu, out maThePhat, out thoiDiem);
-                        cauThuPhamLoiComboBox.SelectedValue = maCauThu;
-                        loaiThePhatComboBox.SelectedValue = maThePhat;
-                        phutPhamLoi.Value = thoiDiem.Hours * 60 + thoiDiem.Minutes;
-                        giayPhamLoi.Value = thoiDiem.Seconds;
+                        PHATTHE phatthe;
+                        Database.PhatThe_DAO.selectPhatThe(selectedFoulId,out phatthe);
+                        cauThuPhamLoiComboBox.SelectedValue = phatthe.MaCauThu;
+                        loaiThePhatComboBox.SelectedValue = phatthe.MaLoaiThe;
+                        phutPhamLoi.Value = phatthe.ThoiDiem.Hours * 60 + phatthe.ThoiDiem.Minutes;
+                        giayPhamLoi.Value = phatthe.ThoiDiem.Seconds;
 
                         xoaThePhat.Text = "Hủy";
                         suaThePhat.Text = "Lưu";
@@ -604,7 +622,15 @@ namespace QuanLyGiaiVoDich
 
                 try
                 {
-                    Database.PhatThe_DAO.updatePhatThe(selectedFoulId, cauThuPhamLoiComboBox.SelectedValue.ToString(), loaiThePhatComboBox.SelectedValue.ToString(), new TimeSpan(0, Int16.Parse(phutPhamLoi.Value.ToString()), Int16.Parse(giayPhamLoi.Value.ToString())), GlobalState.selectedMatchId);
+                    PHATTHE phatthe = new PHATTHE()
+                    {
+                        MaPhatThe = selectedFoulId,
+                        MaCauThu= cauThuPhamLoiComboBox.SelectedValue.ToString(),
+                        MaLoaiThe= loaiThePhatComboBox.SelectedValue.ToString(),
+                        ThoiDiem= new TimeSpan(0, Int16.Parse(phutPhamLoi.Value.ToString()), Int16.Parse(giayPhamLoi.Value.ToString())),
+                        MaTranDau= GlobalState.selectedMatchId,
+                    };
+                    Database.PhatThe_DAO.updatePhatThe(phatthe);
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
                     thePhatExtTableAdapter.Fill(quanLyGiaiVoDichDataSet.ThePhatExt);
                     selectedFoulId = "";

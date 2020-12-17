@@ -4,19 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
+
 namespace QuanLyGiaiVoDich.Database
+
 {
     class VongDau_DAO
     {
-        public static void createVongDau(string TenVongDau, string MaMuaGiai)
+        //public static void createVongDau(string TenVongDau, string MaMuaGiai)
+        public static void createVongDau(VONGDAU vongdau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO VONGDAU Values (NEWID(),@TenVongDau,@MaMuaGiai)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
+                command.Parameters.AddWithValue("@MaMuaGiai", vongdau.MaMuaGiai);
+                command.Parameters.AddWithValue("@TenVongDau", vongdau.TenVongDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -57,16 +61,16 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateVongDau(string MaVongDau, string TenVongDau, string MaMuaGiai)
+        public static void updateVongDau(VONGDAU vongdau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE VONGDAU SET TenVongDau = @TenVongDau, MaMuaGiai = @MaMuaGiai WHERE MaVongDau = @MaVongDau";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaMuaGiai", vongdau.MaMuaGiai);
+                command.Parameters.AddWithValue("@TenVongDau", vongdau.TenVongDau);
+                command.Parameters.AddWithValue("@MaVongDau", vongdau.MaVongDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -83,13 +87,16 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void selectVongDau(string MaVongDau, out string TenVongDau, out string MaMuaGiai)
+        public static void selectVongDau(string MaVongDau, out VONGDAU vongdau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT TenVongDau, MaMuaGiai FROM VONGDAU WHERE MaVongDau = @MaVongDau";
             SqlCommand command = new SqlCommand(queryString);
-            TenVongDau = "";
-            MaMuaGiai = "";
+            vongdau = new VONGDAU()
+            {
+                TenVongDau = "",
+                MaMuaGiai = "",
+            };
             try
             {
                 command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
@@ -97,8 +104,8 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    TenVongDau = reader.GetString(0);
-                    MaMuaGiai = reader.GetString(1);
+                    vongdau.TenVongDau = reader.GetString(0);
+                    vongdau.MaMuaGiai = reader.GetString(1);
                 }
                 reader.Close();
             }
@@ -111,8 +118,7 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-
-        public static string queryMaVongDau(string TenVongDau, string MaMuaGiai)
+        public static string queryMaVongDau(VONGDAU vongdau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "SELECT MaVongDau FROM VONGDAU WHERE TenVongDau = @TenVongDau AND MaMuaGiai = @MaMuaGiai";
@@ -120,8 +126,8 @@ namespace QuanLyGiaiVoDich.Database
             string result = "";
             try
             {
-                command.Parameters.AddWithValue("@TenVongDau", TenVongDau);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
+                command.Parameters.AddWithValue("@TenVongDau", vongdau.TenVongDau);
+                command.Parameters.AddWithValue("@MaMuaGiai", vongdau.MaMuaGiai);
                 command.Connection = conn;
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())

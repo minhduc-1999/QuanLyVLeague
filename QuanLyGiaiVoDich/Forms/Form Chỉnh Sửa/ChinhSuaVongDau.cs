@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,13 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.VongDau_DAO.updateVongDau(selectedRoundId, tenVongTextBox.Text, muaGiaiComboBox.SelectedValue.ToString());
+                    VONGDAU vongdau = new VONGDAU()
+                    {
+                        MaVongDau= selectedRoundId,
+                        TenVongDau= tenVongTextBox.Text,
+                        MaMuaGiai= muaGiaiComboBox.SelectedValue.ToString(),
+                    };
+                    Database.VongDau_DAO.updateVongDau(vongdau);
                     MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                     surpressDiscardPrompt = true;
                     this.Close();
@@ -62,10 +69,10 @@ namespace QuanLyGiaiVoDich
         {
             // TODO: This line of code loads data into the 'quanLyGiaiVoDichDataSet.MuaGiaiAllowNull' table. You can move, or remove it, as needed.
             this.muaGiaiAllowNullTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.MuaGiaiAllowNull);
-            string tenVong, maMuaGiai;
-            Database.VongDau_DAO.selectVongDau(selectedRoundId, out tenVong, out maMuaGiai);
-            tenVongTextBox.Text = tenVong;
-            muaGiaiComboBox.SelectedValue = maMuaGiai;
+            VONGDAU vongdau;
+            Database.VongDau_DAO.selectVongDau(selectedRoundId, out vongdau);
+            tenVongTextBox.Text = vongdau.TenVongDau;
+            muaGiaiComboBox.SelectedValue = vongdau.MaMuaGiai;
         }
 
         private void ChinhSuaVongDau_FormClosing(object sender, FormClosingEventArgs e)

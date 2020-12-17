@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
@@ -12,20 +13,21 @@ namespace QuanLyGiaiVoDich.Database
     class SanThiDau_DAO
     {
         //param: 
-        public static void createSanThiDau(string tenSanThiDau, string maGiaiDau, string donViQuanLi, string maDoiNha = "")
+        public static void createSanThiDau(SANTHIDAU santhidau)
         {
+            santhidau.MaDoiNha= "";
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO SanThiDau(MaSanThiDau, TenSanThiDau, MaMuaGiai, DonViSoHuu) VALUES(NEWID(), @TenSanThiDau, @MaGiaiDau, @DonViQuanLi)";
-            if (maDoiNha != "")
+            if (santhidau.MaDoiNha != "")
                 queryString = "INSERT INTO SanThiDau(MaSanThiDau, TenSanThiDau, MaMuaGiai, DonViSoHuu, MaDoiNha) VALUES(NEWID(), @TenSanThiDau, @MaGiaiDau, @DonViQuanLi, @MaDoiNha)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenSanThiDau", tenSanThiDau);
-                command.Parameters.AddWithValue("@MaGiaiDau", maGiaiDau);
-                command.Parameters.AddWithValue("@DonViQuanLi", donViQuanLi);
-                if (maDoiNha != "")
-                    command.Parameters.AddWithValue("@MaDoiNha", maDoiNha);
+                command.Parameters.AddWithValue("@TenSanThiDau", santhidau.TenSanThiDau);
+                command.Parameters.AddWithValue("@MaGiaiDau", santhidau.MaMuaGiai);
+                command.Parameters.AddWithValue("@DonViQuanLi", santhidau.DonViSoHuu);
+                if (santhidau.MaDoiNha != "")
+                    command.Parameters.AddWithValue("@MaDoiNha", santhidau.MaDoiNha);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -70,7 +72,7 @@ namespace QuanLyGiaiVoDich.Database
             }
 
         }
-        public static void updateSanThiDau(string MaSanThiDau, string tenSanThiDau, string donViQuanLi, string maDoiNha)
+        public static void updateSanThiDau(SANTHIDAU santhidau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "";
@@ -78,10 +80,10 @@ namespace QuanLyGiaiVoDich.Database
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenSanThiDau", tenSanThiDau);
-                command.Parameters.AddWithValue("@MaSanThiDau", MaSanThiDau);
-                command.Parameters.AddWithValue("@DonViQuanLi", donViQuanLi);
-                command.Parameters.AddWithValue("@MaDoiNha", maDoiNha);
+                command.Parameters.AddWithValue("@TenSanThiDau", santhidau.TenSanThiDau);
+                command.Parameters.AddWithValue("@MaSanThiDau", santhidau.MaSanThiDau);
+                command.Parameters.AddWithValue("@DonViQuanLi", santhidau.DonViSoHuu);
+                command.Parameters.AddWithValue("@MaDoiNha", santhidau.MaDoiNha);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -101,7 +103,7 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static void updateSanThiDau(string MaSanThiDau, string tenSanThiDau, string donViQuanLi)
+        public static void updateSanThiDau2(SANTHIDAU santhidau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "";
@@ -109,9 +111,9 @@ namespace QuanLyGiaiVoDich.Database
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@TenSanThiDau", tenSanThiDau);
-                command.Parameters.AddWithValue("@MaSanThiDau", MaSanThiDau);
-                command.Parameters.AddWithValue("@DonViQuanLi", donViQuanLi);
+                command.Parameters.AddWithValue("@TenSanThiDau", santhidau.TenSanThiDau);
+                command.Parameters.AddWithValue("@MaSanThiDau", santhidau.MaSanThiDau);
+                command.Parameters.AddWithValue("@DonViQuanLi", santhidau.DonViSoHuu);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -130,14 +132,15 @@ namespace QuanLyGiaiVoDich.Database
                 //TODO: throw exception to higher level
             }
         }
-
-
-        public static void selectSanThiDau(string MaSanThiDau, out string TenSanThiDau, out string DonViSoHuu, out string MaDoiNha)
+        public static void selectSanThiDau(string MaSanThiDau, out SANTHIDAU santhidau)
         {
             SqlConnection conn = DatabaseManager.Instance.getConnection();
-            TenSanThiDau = "";
-            DonViSoHuu = "";
-            MaDoiNha = "";
+            santhidau = new SANTHIDAU()
+            {
+                TenSanThiDau = "",
+                DonViSoHuu = "",
+                MaDoiNha = "",
+            };
             string queryString = "SELECT TenSanThiDau, DonViSoHuu, MaDoiNha FROM SANTHIDAU WHERE MaSanThiDau = @MaSanThiDau";
             SqlCommand command = new SqlCommand(queryString);
             try
@@ -147,9 +150,9 @@ namespace QuanLyGiaiVoDich.Database
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read()) 
                 {
-                    TenSanThiDau = reader.GetString(0);
-                    DonViSoHuu = reader.GetString(1);
-                    if (!reader.IsDBNull(2)) MaDoiNha = reader.GetString(2);
+                    santhidau.TenSanThiDau = reader.GetString(0);
+                    santhidau.DonViSoHuu = reader.GetString(1);
+                    if (!reader.IsDBNull(2)) santhidau.MaDoiNha = reader.GetString(2);
                 }
                 reader.Close();
             }

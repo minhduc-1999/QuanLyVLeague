@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,7 +49,12 @@ namespace QuanLyGiaiVoDich
                 {
                     try
                     {
-                        Database.VongDau_DAO.createVongDau(tenVongDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue);
+                        VONGDAU vongdau = new VONGDAU()
+                        {
+                            TenVongDau = tenVongDauTextBox.Text,
+                            MaMuaGiai = (string)muaGiaiComboBox.SelectedValue,
+                        };
+                        Database.VongDau_DAO.createVongDau(vongdau);
                         tenVongDauTextBox.Text = "";
                         xoaVongDau.Enabled = false;
                         MessageBox.Show("Thêm thành công", "Thông báo");

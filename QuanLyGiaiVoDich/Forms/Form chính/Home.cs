@@ -201,13 +201,18 @@ namespace QuanLyGiaiVoDich
 
             // get seasonID
             maMuaGiai = GlobalState.selectedSeasonId;
-            Database.MuaGiai_DAO.selectMuaGiai(maMuaGiai, out tenMuaGiai, out trangThaiMuaGiai);
+            MUAGIAI muagiai = new MUAGIAI()
+            {
+               TenMuaGiai= tenMuaGiai,
+               TrangThai= trangThaiMuaGiai,
+            };
+            Database.MuaGiai_DAO.selectMuaGiai(maMuaGiai, out muagiai);
 
             surpressStatusChangePrompt = true;
-            trangThaiComboBox.SelectedIndex = trangThaiMuaGiai;
+            trangThaiComboBox.SelectedIndex = muagiai.TrangThai;
 
             // change seasonName
-            tenMuaGiaiThongTinLabel.Text = tenMuaGiai;
+            tenMuaGiaiThongTinLabel.Text = muagiai.TenMuaGiai;
         }
 
         private void suaDanhSachCauThuDoiBong_Click(object sender, EventArgs e)
@@ -466,7 +471,13 @@ namespace QuanLyGiaiVoDich
                 try
                 {
                     trangThaiMuaGiai = trangThaiComboBox.SelectedIndex;
-                    Database.MuaGiai_DAO.updateMuaGiai(GlobalState.selectedSeasonId, tenMuaGiai, trangThaiMuaGiai);
+                    MUAGIAI muagiai = new MUAGIAI()
+                    {
+                        MaMuaGiai= GlobalState.selectedSeasonId,
+                        TenMuaGiai= tenMuaGiai,
+                        TrangThai= trangThaiMuaGiai,
+                    };
+                    Database.MuaGiai_DAO.updateMuaGiai(muagiai);
                 }
                 catch (Exception ex)
                 {

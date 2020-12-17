@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +40,13 @@ namespace QuanLyGiaiVoDich
             {
                 try
                 {
-                    Database.SanThiDau_DAO.createSanThiDau(tenSanThiDauTextBox.Text, (string)muaGiaiComboBox.SelectedValue, tenDonViSoHuuTextBox.Text);
+                    SANTHIDAU santhidau = new SANTHIDAU()
+                    {
+                        TenSanThiDau = tenSanThiDauTextBox.Text,
+                        MaMuaGiai = (string)muaGiaiComboBox.SelectedValue,
+                        DonViSoHuu = tenDonViSoHuuTextBox.Text,
+                    };
+                    Database.SanThiDau_DAO.createSanThiDau(santhidau);
                     xoaSanThiDau.Enabled = false;
                     MessageBox.Show("Thêm thành công", "Thông Báo");
                 }

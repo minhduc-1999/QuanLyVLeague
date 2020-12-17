@@ -4,36 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.Database
 {
     class TranDau_DAO
     {
-        public static void createTranDau(string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDau, DateTime dtGioThiDauChinh, string MaSanThiDau, string MaSanThiDauChinh, int SoBanThangDoiNha, int SoBanThangDoiKhach, TimeSpan dtThoiGianThiDau, string MaVongDau)
+        //public static void createTranDau(string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDau, DateTime dtGioThiDauChinh, string MaSanThiDau, string MaSanThiDauChinh, int SoBanThangDoiNha, int SoBanThangDoiKhach, TimeSpan dtThoiGianThiDau, string MaVongDau)
+        public static void createTranDau1(TRANDAU trandau)
         {
-            string NgayThiDau = dtNgayThiDau.ToString("yyyy-MM-dd");
-            string NgayThiDauChinh = dtNgayThiDauChinh.ToString("yyyy-MM-dd");
-            string GioThiDau = dtGioThiDau.ToString("HH:mm:ss");
-            string GioThiDauChinh = dtGioThiDauChinh.ToString("HH:mm:ss");
-            string ThoiGianThiDau = dtThoiGianThiDau.ToString("c");
+            string NgayThiDau = trandau.NgayThiDau.ToString("yyyy-MM-dd");
+            string NgayThiDauChinh = trandau.NgayThiDauChinh.ToString("yyyy-MM-dd");
+            string GioThiDau = trandau.GioThiDau.ToString("HH:mm:ss");
+            string GioThiDauChinh = trandau.GioThiDauChinh.ToString("HH:mm:ss");
+            string ThoiGianThiDau = trandau.ThoiGianThiDau.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO TRANDAU Values (NEWID(),@MaMuaGiai,@DoiChuNha,@DoiKhach,@NgayThiDau,@NgayThiDauChinh,@GioThiDau,@GioThiDauChinh,@MaSanThiDau,@MaSanThiDauChinh,@SoBanThangDoiNha,@SoBanThangDoiKhach,@ThoiGianThiDau,@MaVongDau)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@DoiChuNha", DoiChuNha);
-                command.Parameters.AddWithValue("@DoiKhach", DoiKhach);
+                command.Parameters.AddWithValue("@MaMuaGiai", trandau.MaMuaGiai);
+                command.Parameters.AddWithValue("@DoiChuNha", trandau.DoiChuNha);
+                command.Parameters.AddWithValue("@DoiKhach", trandau.DoiKhach);
                 command.Parameters.AddWithValue("@NgayThiDau", NgayThiDau);
                 command.Parameters.AddWithValue("@NgayThiDauChinh", NgayThiDauChinh);
                 command.Parameters.AddWithValue("@GioThiDau", GioThiDau);
                 command.Parameters.AddWithValue("@GioThiDauChinh", GioThiDauChinh);
-                command.Parameters.AddWithValue("@MaSanThiDau", MaSanThiDau);
-                command.Parameters.AddWithValue("@MaSanThiDauChinh", MaSanThiDauChinh);
-                command.Parameters.AddWithValue("@SoBanThangDoiNha", SoBanThangDoiNha);
-                command.Parameters.AddWithValue("@SoBanThangDoiKhach", SoBanThangDoiKhach);
+                command.Parameters.AddWithValue("@MaSanThiDau", trandau.MaSanThiDau);
+                command.Parameters.AddWithValue("@MaSanThiDauChinh", trandau.MaSanThiDauChinh);
+                command.Parameters.AddWithValue("@SoBanThangDoiNha", trandau.SoBanThangDoiNha);
+                command.Parameters.AddWithValue("@SoBanThangDoiKhach", trandau.SoBanThangDoiKhach);
                 command.Parameters.AddWithValue("@ThoiGianThiDau", ThoiGianThiDau);
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaVongDau", trandau.MaVongDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -52,24 +54,24 @@ namespace QuanLyGiaiVoDich.Database
             }
 
         }
-
-        public static void createTranDau(string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtGioThiDau, string MaSanThiDau, string MaVongDau)
+        //public static void createTranDau(string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtGioThiDau, string MaSanThiDau, string MaVongDau)
+        public static void createTranDau(TRANDAU trandau)
         {
             //for creating match schedule
-            string NgayThiDau = dtNgayThiDau.ToString("yyyy-MM-dd");
-            string GioThiDau = dtGioThiDau.ToString("HH:mm:ss");
+            string NgayThiDau = trandau.NgayThiDau.ToString("yyyy-MM-dd");
+            string GioThiDau = trandau.GioThiDau.ToString("HH:mm:ss");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "INSERT INTO TRANDAU(MaTranDau, MaMuaGiai, DoiChuNha, DoiKhach, NgayThiDau, GioThiDau, MaSanThiDau, MaVongDau) Values (NEWID(),@MaMuaGiai,@DoiChuNha,@DoiKhach,@NgayThiDau,@GioThiDau,@MaSanThiDau,@MaVongDau)";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@DoiChuNha", DoiChuNha);
-                command.Parameters.AddWithValue("@DoiKhach", DoiKhach);
+                command.Parameters.AddWithValue("@MaMuaGiai", trandau.MaMuaGiai);
+                command.Parameters.AddWithValue("@DoiChuNha", trandau.DoiChuNha);
+                command.Parameters.AddWithValue("@DoiKhach", trandau.DoiKhach);
                 command.Parameters.AddWithValue("@NgayThiDau", NgayThiDau);
                 command.Parameters.AddWithValue("@GioThiDau", GioThiDau);
-                command.Parameters.AddWithValue("@MaSanThiDau", MaSanThiDau);
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaSanThiDau", trandau.MaSanThiDau);
+                command.Parameters.AddWithValue("@MaVongDau", trandau.MaVongDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -111,33 +113,34 @@ namespace QuanLyGiaiVoDich.Database
                 throw ex;
             }
         }
-        public static void updateTranDau(string MaTranDau, string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDau, DateTime dtGioThiDauChinh,
-            string MaSanThiDau, string MaSanThiDauChinh, int SoBanThangDoiNha, int SoBanThangDoiKhach, TimeSpan dtThoiGianThiDau, string MaVongDau)
+        //public static void updateTranDau(string MaTranDau, string MaMuaGiai, string DoiChuNha, string DoiKhach, DateTime dtNgayThiDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDau, DateTime dtGioThiDauChinh,
+        //    string MaSanThiDau, string MaSanThiDauChinh, int SoBanThangDoiNha, int SoBanThangDoiKhach, TimeSpan dtThoiGianThiDau, string MaVongDau)
+        public static void updateTranDau1(TRANDAU trandau)
         {
-            string NgayThiDau = dtNgayThiDau.ToString("yyyy-MM-dd");
-            string NgayThiDauChinh = dtNgayThiDauChinh.ToString("yyyy-MM-dd");
-            string GioThiDau = dtGioThiDau.ToString("HH:mm:ss");
-            string GioThiDauChinh = dtGioThiDauChinh.ToString("HH:mm:ss");
-            string ThoiGianThiDau = dtThoiGianThiDau.ToString("c");
+            string NgayThiDau = trandau.NgayThiDau.ToString("yyyy-MM-dd");
+            string NgayThiDauChinh = trandau.NgayThiDauChinh.ToString("yyyy-MM-dd");
+            string GioThiDau = trandau.GioThiDau.ToString("HH:mm:ss");
+            string GioThiDauChinh = trandau.GioThiDauChinh.ToString("HH:mm:ss");
+            string ThoiGianThiDau = trandau.ThoiGianThiDau.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE TRANDAU SET MaMuaGiai = @MaMuaGiai, DoiChuNha = @DoiChuNha, DoiKhach = @DoiKhach, NgayThiDau = @NgayThiDau, NgayThiDauChinh = @NgayThiDauChinh, GioThiDau = @GioThiDau, GioThiDauChinh = @GioThiDauChinh, MaSanThiDau = @MaSanThiDau, MaSanThiDauChinh = @MaSanThiDauChinh, SoBanThangDoiNha = @SoBanThangDoiNha, SoBanThangDoiKhach = @SoBanThangDoiKhach, ThoiGianThiDau = @ThoiGianThiDau, MaVongDau = @MaVongDau WHERE MaTranDau = @MaTranDau";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
-                command.Parameters.AddWithValue("@MaMuaGiai", MaMuaGiai);
-                command.Parameters.AddWithValue("@DoiChuNha", DoiChuNha);
-                command.Parameters.AddWithValue("@DoiKhach", DoiKhach);
+                command.Parameters.AddWithValue("@MaTranDau", trandau.MaTranDau);
+                command.Parameters.AddWithValue("@MaMuaGiai", trandau.MaMuaGiai);
+                command.Parameters.AddWithValue("@DoiChuNha", trandau.DoiChuNha);
+                command.Parameters.AddWithValue("@DoiKhach", trandau.DoiKhach);
                 command.Parameters.AddWithValue("@NgayThiDau", NgayThiDau);
                 command.Parameters.AddWithValue("@NgayThiDauChinh", NgayThiDauChinh);
                 command.Parameters.AddWithValue("@GioThiDau", GioThiDau);
                 command.Parameters.AddWithValue("@GioThiDauChinh", GioThiDauChinh);
-                command.Parameters.AddWithValue("@MaSanThiDau", MaSanThiDau);
-                command.Parameters.AddWithValue("@MaSanThiDauChinh", MaSanThiDauChinh);
-                command.Parameters.AddWithValue("@SoBanThangDoiNha", SoBanThangDoiNha);
-                command.Parameters.AddWithValue("@SoBanThangDoiKhach", SoBanThangDoiKhach);
+                command.Parameters.AddWithValue("@MaSanThiDau", trandau.MaSanThiDau);
+                command.Parameters.AddWithValue("@MaSanThiDauChinh", trandau.MaSanThiDauChinh);
+                command.Parameters.AddWithValue("@SoBanThangDoiNha", trandau.SoBanThangDoiNha);
+                command.Parameters.AddWithValue("@SoBanThangDoiKhach", trandau.SoBanThangDoiKhach);
                 command.Parameters.AddWithValue("@ThoiGianThiDau", ThoiGianThiDau);
-                command.Parameters.AddWithValue("@MaVongDau", MaVongDau);
+                command.Parameters.AddWithValue("@MaVongDau", trandau.MaVongDau);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)
@@ -155,24 +158,25 @@ namespace QuanLyGiaiVoDich.Database
             }
         }
 
-        public static void updateTranDau(string MaTranDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDauChinh,
-            string MaSanThiDauChinh, TimeSpan dtThoiGianThiDau, int SoBanThangDoiNha, int SoBanThangDoiKhach)
+        //public static void updateTranDau(string MaTranDau, DateTime dtNgayThiDauChinh, DateTime dtGioThiDauChinh,
+        //    string MaSanThiDauChinh, TimeSpan dtThoiGianThiDau, int SoBanThangDoiNha, int SoBanThangDoiKhach)
+        public static void updateTranDau(TRANDAU trandau)
         {
-            string NgayThiDauChinh = dtNgayThiDauChinh.ToString("yyyy-MM-dd");
-            string GioThiDauChinh = dtGioThiDauChinh.ToString("HH:mm:ss");
-            string ThoiGianThiDau = dtThoiGianThiDau.ToString("c");
+            string NgayThiDauChinh = trandau.NgayThiDauChinh.ToString("yyyy-MM-dd");
+            string GioThiDauChinh = trandau.GioThiDauChinh.ToString("HH:mm:ss");
+            string ThoiGianThiDau = trandau.ThoiGianThiDau.ToString("c");
             SqlConnection conn = DatabaseManager.Instance.getConnection();
             string queryString = "UPDATE TRANDAU SET NgayThiDauChinh = @NgayThiDauChinh, GioThiDauChinh = @GioThiDauChinh, MaSanThiDauChinh = @MaSanThiDauChinh, ThoiGianThiDau = @ThoiGianThiDau, SoBanThangDoiNha = @SoBanThangDoiNha, SoBanThangDoiKhach = @SoBanThangDoiKhach WHERE MaTranDau = @MaTranDau";
             SqlCommand command = new SqlCommand(queryString);
             try
             {
-                command.Parameters.AddWithValue("@MaTranDau", MaTranDau);
+                command.Parameters.AddWithValue("@MaTranDau", trandau.MaTranDau);
                 command.Parameters.AddWithValue("@NgayThiDauChinh", NgayThiDauChinh);
                 command.Parameters.AddWithValue("@GioThiDauChinh", GioThiDauChinh);
-                command.Parameters.AddWithValue("@MaSanThiDauChinh", MaSanThiDauChinh);
+                command.Parameters.AddWithValue("@MaSanThiDauChinh", trandau.MaSanThiDauChinh);
                 command.Parameters.AddWithValue("@ThoiGianThiDau", ThoiGianThiDau);
-                command.Parameters.AddWithValue("@SoBanThangDoiNha", SoBanThangDoiNha);
-                command.Parameters.AddWithValue("@SoBanThangDoiKhach", SoBanThangDoiKhach);
+                command.Parameters.AddWithValue("@SoBanThangDoiNha", trandau.SoBanThangDoiNha);
+                command.Parameters.AddWithValue("@SoBanThangDoiKhach", trandau.SoBanThangDoiKhach);
                 command.Connection = conn;
                 int res = command.ExecuteNonQuery();
                 if (res == 0)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyGiaiVoDich.DTO_Class.Class;
 
 namespace QuanLyGiaiVoDich.helper
 {
@@ -29,7 +30,13 @@ namespace QuanLyGiaiVoDich.helper
                 string[] component = line.Split(compSeparators, StringSplitOptions.RemoveEmptyEntries);
                 try
                 {
-                    Database.SanThiDau_DAO.createSanThiDau(component[0], GlobalState.selectedSeasonId, component[1]);
+                    SANTHIDAU santhidau = new SANTHIDAU()
+                    {
+                        TenSanThiDau = component[0],
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                        DonViSoHuu = component[1]
+                    };
+                    Database.SanThiDau_DAO.createSanThiDau(santhidau);
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +62,12 @@ namespace QuanLyGiaiVoDich.helper
                 }
                 try
                 {
-                    Database.VongDau_DAO.createVongDau(line.Trim(), GlobalState.selectedSeasonId);
+                    VONGDAU vongdau = new VONGDAU()
+                    {
+                        TenVongDau = line.Trim(),
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                    };
+                    Database.VongDau_DAO.createVongDau(vongdau);
                 }
                 catch (Exception ex)
                 {
@@ -139,7 +151,12 @@ namespace QuanLyGiaiVoDich.helper
 
                 try
                 {
-                    string maVongDau = Database.VongDau_DAO.queryMaVongDau(component[0], GlobalState.selectedSeasonId);
+                    VONGDAU vongdau = new VONGDAU()
+                    {
+                        TenVongDau= component[0],
+                        MaMuaGiai= GlobalState.selectedSeasonId
+                    };
+                    string maVongDau = Database.VongDau_DAO.queryMaVongDau(vongdau);
                     if (maVongDau.Equals("")) throw new Exception("Vòng đấu không tồn tại");
                     string maDoiNha = Database.DoiBong_DAO.queryMaDoiBong(component[1], GlobalState.selectedSeasonId);
                     if (maDoiNha.Equals("")) throw new Exception("Đội bóng không tồn tại");
@@ -147,8 +164,17 @@ namespace QuanLyGiaiVoDich.helper
                     if (maDoiKhach.Equals("")) throw new Exception("Đội bóng không tồn tại");
                     string maSanThiDau = Database.SanThiDau_DAO.queryMaSanThiDau(component[5], GlobalState.selectedSeasonId);
                     if (maSanThiDau.Equals("")) throw new Exception("Sân thi đấu không tồn tại");
-
-                    Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, maDoiNha, maDoiKhach, DateTime.Parse(component[3]), DateTime.Parse(component[4]), maSanThiDau, maVongDau);
+                    TRANDAU trandau = new TRANDAU()
+                    {
+                        MaMuaGiai = GlobalState.selectedSeasonId,
+                        DoiChuNha = maDoiNha,
+                        DoiKhach = maDoiKhach,
+                        NgayThiDau = DateTime.Parse(component[3]),
+                        GioThiDau = DateTime.Parse(component[4]),
+                        MaSanThiDau = maSanThiDau,
+                        MaVongDau = maVongDau,
+                    };
+                    Database.TranDau_DAO.createTranDau(trandau);
                 }
                 catch (Exception ex)
                 {

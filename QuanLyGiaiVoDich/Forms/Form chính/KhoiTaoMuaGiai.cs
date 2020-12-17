@@ -25,8 +25,13 @@ namespace QuanLyGiaiVoDich
             //call data access
             try
             {
-                Database.MuaGiai_DAO.createMuaGiai(tenMuaGiaTextBox.Text);
-                string new_MaMuaGiai = Database.MuaGiai_DAO.queryMaMuaGiai(tenMuaGiaTextBox.Text, 0);
+                MUAGIAI muagiai = new MUAGIAI()
+                {
+                    TenMuaGiai = tenMuaGiaTextBox.Text,
+                    TrangThai = 0,
+                };
+                Database.MuaGiai_DAO.createMuaGiai(muagiai);
+                string new_MaMuaGiai = Database.MuaGiai_DAO.queryMaMuaGiai(muagiai);
                 DIEUKIEN dk = new DIEUKIEN()
                 {
                     MaMuaGiai = new_MaMuaGiai,
@@ -41,10 +46,34 @@ namespace QuanLyGiaiVoDich
                     DiemSoThua = 0
                 };
                 Database.DieuKien_DAO.createDIEUKIEN(dk);
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(1, new_MaMuaGiai, "Điểm");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(2, new_MaMuaGiai, "Hiệu Số");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(3, new_MaMuaGiai, "Số Bàn Sân Khách");
-                Database.ThuTuUuTien_DAO.createThuTuUuTien(4, new_MaMuaGiai, "Kết Quả Đối Đầu");
+                THUTUUUTIEN thutu = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = 1,
+                    MaMuaGiai = new_MaMuaGiai,
+                    TenLoaiUuTien = "Điểm",
+                };
+                Database.ThuTuUuTien_DAO.createThuTuUuTien(thutu);
+                THUTUUUTIEN thutu2 = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = 2,
+                    MaMuaGiai = new_MaMuaGiai,
+                    TenLoaiUuTien = "Hiệu Số",
+                };
+                Database.ThuTuUuTien_DAO.createThuTuUuTien(thutu2);
+                THUTUUUTIEN thutu3 = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = 3,
+                    MaMuaGiai = new_MaMuaGiai,
+                    TenLoaiUuTien = "Số Bàn Sân Khách",
+                };
+                Database.ThuTuUuTien_DAO.createThuTuUuTien(thutu3);
+                THUTUUUTIEN thutu4 = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = 4,
+                    MaMuaGiai = new_MaMuaGiai,
+                    TenLoaiUuTien = "Kết Quả Đối Đầu",
+                };
+                Database.ThuTuUuTien_DAO.createThuTuUuTien(thutu4);
 
             }
             catch (Exception ex)

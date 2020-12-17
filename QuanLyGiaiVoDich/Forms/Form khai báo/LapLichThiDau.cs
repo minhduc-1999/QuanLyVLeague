@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,7 +68,17 @@ namespace QuanLyGiaiVoDich
                 //save match schedule
                 try
                 {
-                    Database.TranDau_DAO.createTranDau(GlobalState.selectedSeasonId, doChuNhaComboBox.SelectedValue.ToString(), doiKhachComboBox.SelectedValue.ToString(), ngayThiDauPicker.Value, gioThiDauPicker.Value, sanThiDauComboBox.SelectedValue.ToString(), vongThiDauComboBox.SelectedValue.ToString());
+                    TRANDAU trandau = new TRANDAU()
+                    { 
+                        MaMuaGiai= GlobalState.selectedSeasonId,
+                        DoiChuNha= doChuNhaComboBox.SelectedValue.ToString(),
+                        DoiKhach= doiKhachComboBox.SelectedValue.ToString(),
+                        NgayThiDau= ngayThiDauPicker.Value,
+                        GioThiDau=  gioThiDauPicker.Value,
+                        MaSanThiDau= sanThiDauComboBox.SelectedValue.ToString(),
+                        MaVongDau= vongThiDauComboBox.SelectedValue.ToString(),
+                    };
+                    Database.TranDau_DAO.createTranDau(trandau);
                     button1.Enabled = false;
                     MessageBox.Show("Thêm thành công", "Thông báo");
                     this.lichThiDauExtTableAdapter.Fill(this.quanLyGiaiVoDichDataSet.LichThiDauExt);

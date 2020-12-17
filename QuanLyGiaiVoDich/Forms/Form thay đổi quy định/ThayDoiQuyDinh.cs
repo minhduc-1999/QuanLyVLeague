@@ -151,12 +151,32 @@ namespace QuanLyGiaiVoDich
                 int dest_pos = source_pos + direction;
 
                 if (source_pos == 4 || dest_pos == 4) return;
-
-                string swap_source = Database.ThuTuUuTien_DAO.selectThuTuUuTien(source_pos, GlobalState.selectedSeasonId);
-                string swap_dest = Database.ThuTuUuTien_DAO.selectThuTuUuTien(dest_pos, GlobalState.selectedSeasonId);
-
-                Database.ThuTuUuTien_DAO.updateThuTuUuTien(source_pos, GlobalState.selectedSeasonId, swap_dest);
-                Database.ThuTuUuTien_DAO.updateThuTuUuTien(dest_pos, GlobalState.selectedSeasonId, swap_source);
+                THUTUUUTIEN thutu0 = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = source_pos,
+                    MaMuaGiai = GlobalState.selectedSeasonId,
+                };
+                string swap_source = Database.ThuTuUuTien_DAO.selectThuTuUuTien(thutu0);
+                THUTUUUTIEN thutui = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = dest_pos,
+                    MaMuaGiai = GlobalState.selectedSeasonId,
+                };
+                string swap_dest = Database.ThuTuUuTien_DAO.selectThuTuUuTien(thutui);
+                THUTUUUTIEN thutu = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien= source_pos,
+                    MaMuaGiai= GlobalState.selectedSeasonId,
+                    TenLoaiUuTien= swap_dest,
+                };
+                Database.ThuTuUuTien_DAO.updateThuTuUuTien(thutu);
+                THUTUUUTIEN thutu1 = new THUTUUUTIEN()
+                {
+                    ChiSoUuTien = dest_pos,
+                    MaMuaGiai = GlobalState.selectedSeasonId,
+                    TenLoaiUuTien = swap_source,
+                };
+                Database.ThuTuUuTien_DAO.updateThuTuUuTien(thutu1);
                 thuTuUuTienTableAdapter.Fill(quanLyGiaiVoDichDataSet.ThuTuUuTien);
             }
             catch (Exception ex)

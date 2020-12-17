@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyGiaiVoDich.DTO_Class.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,17 +24,23 @@ namespace QuanLyGiaiVoDich
 
         private void ChinhSuaSanThiDau_Load(object sender, EventArgs e)
         {
-            string maDoiNha, tenSan, tenDVSoHuu;
-            Database.SanThiDau_DAO.selectSanThiDau(selectedStadiumId, out tenSan, out tenDVSoHuu, out maDoiNha);
-            tenSanThiDauTextBox.Text = tenSan;
-            tenDonViSoHuuTextBox.Text = tenDVSoHuu;
+            SANTHIDAU santhidau;
+            Database.SanThiDau_DAO.selectSanThiDau(selectedStadiumId, out santhidau);
+            tenSanThiDauTextBox.Text = santhidau.TenSanThiDau;
+            tenDonViSoHuuTextBox.Text = santhidau.DonViSoHuu;
         }
 
         private void capNhatButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Database.SanThiDau_DAO.updateSanThiDau(selectedStadiumId, tenSanThiDauTextBox.Text, tenDonViSoHuuTextBox.Text);
+                SANTHIDAU santhidau = new SANTHIDAU()
+                {
+                    TenSanThiDau= tenSanThiDauTextBox.Text,
+                    DonViSoHuu= tenDonViSoHuuTextBox.Text,
+                    MaSanThiDau= selectedStadiumId,
+                };
+                Database.SanThiDau_DAO.updateSanThiDau2(santhidau);
                 MessageBox.Show("Cập nhật thông tin thành công", "Thông báo");
                 surpressDiscardPrompt = true;
                 this.Close();
